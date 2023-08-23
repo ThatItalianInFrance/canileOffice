@@ -66,7 +66,7 @@ let loadProduct = async function (id) {
 
     return
   }
-  fetch(`http://localhost:8000/office/cani/${id}`) // par défaut, fetch() fait une requête GET
+  fetch(`https://canileserver.onrender.com/office/cani/${id}`) // par défaut, fetch() fait une requête GET
     .then(function (response) {
       return response.json()
     })
