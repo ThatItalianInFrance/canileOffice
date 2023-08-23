@@ -137,7 +137,7 @@ let SaveProduct = async function (product) {
     )
     console.log(nome.value)
   } else {
-    product = await fetch('http://localhost:8000/office/cani/'+id, {
+    product = await fetch('https://canileserver.onrender.com/office/cani/'+id, {
       method: 'PUT',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
