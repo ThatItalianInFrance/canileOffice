@@ -24,7 +24,7 @@
               <div class="collapse show" id="home-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                   <li class="nav-item">
-                    <RouterLink class="nav-link active" to="/listacani">Lista Cani</RouterLink>
+                    <RouterLink class="nav-link active fs-4" to="/listacani">Lista Cani</RouterLink>
                   </li>
                   <li class="nav-item">
                     <RouterLink class="nav-link active fs-4" to="/cani/edit/0"
