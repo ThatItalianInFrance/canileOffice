@@ -173,6 +173,9 @@ let SaveProduct = async function (product) {
         <div class="col-lg-6">
           <h1>Scheda cane</h1>
           <form>
+            <button type="button" class="btn btn-primary mt-3" @click.prevent="SaveProduct">
+              Enregistrer
+            </button>
             <div class="mb-3">
               <label for="nome" class="form-label">Nome Cane</label>
               <input type="text" class="form-control" id="nome" v-model="nome" />
@@ -181,23 +184,16 @@ let SaveProduct = async function (product) {
               <label for="carattere" class="form-label">carattere</label>
               <input type="text" class="form-control" id="carattere" v-model="carattere" />
             </div>
-            <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-              <textarea
-                class="form-control"
-                id="description"
-                rows="3"
-                v-model="id"
-              ></textarea>
+            <div class="mb-3" >
+              <label for="description" class="form-label">Id</label>
+            <div>{{ products.id }}</div>
             </div>
             <div class="mb-3">
               <label for="image" class="form-label">Image (.jpg seulement)</label>
               <input type="file" class="form-control" id="image" @change="onChangeImage" />
             </div>
             
-            <button type="button" class="btn btn-primary mt-3" @click.prevent="SaveProduct">
-              Enregistrer
-            </button>
+ 
           </form>
         </div>
         <div class="col-lg-6 my-5">
@@ -246,10 +242,6 @@ let SaveProduct = async function (product) {
                       <input type="text" class="form-control" id="chip" v-model="chip" />
                     </div>
 
-                    <div class="mb-3">
-                      <label for="alive" class="form-label">alive</label>
-                      <input type="text" class="form-control" id="alive" v-model="alive" />
-                    </div>
                     
                   </form>
                 </div>
