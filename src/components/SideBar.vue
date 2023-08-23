@@ -30,6 +30,7 @@
                   <li><RouterLink to="/" class="fs-5">Home</RouterLink></li>
                   <li><RouterLink to="/about" class="fs-5">mappa</RouterLink></li>
                   <li class="nav-item " ><RouterLink class="nav-link active "  to="/listacani">Lista Cani</RouterLink></li>
+                  <li class="nav-item " ><RouterLink class="nav-link active "  to="/cani/edit/0">Lista Cani</RouterLink></li>
                 
                   <li><a href="/cani/edit/0" class="link-dark rounded nav-link active" ><h3>Nuovo Cane</h3></a></li>
                   <li><a href="#" class="link-dark rounded"><p class="fs-5"> Nuovo Cane</p></a></li>
