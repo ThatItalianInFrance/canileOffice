@@ -1,10 +1,6 @@
-
-
 <template>
   <div>
     <nav class="navbar navbar-expand-lg">
-     
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- sidenav -->
         <div class="flex-shrink-0 p-3 bg-white" style="width: 280px">
@@ -26,30 +22,30 @@
                 Cani
               </button>
               <div class="collapse show" id="home-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" >
-                  <li><RouterLink to="/" class="fs-5">Home</RouterLink></li>
-                  <li><RouterLink to="/about" class="fs-5">mappa</RouterLink></li>
-                  <li class="nav-item " ><RouterLink class="nav-link active "  to="/listacani">Lista Cani</RouterLink></li>
-                  <li class="nav-item " ><RouterLink class="nav-link active fs-4 "  to="/cani/edit/0">Lista Cani</RouterLink></li>
-                
-                  <li><a href="/cani/edit/0" class="link-dark rounded nav-link active" ><h3>Nuovo Cane</h3></a></li>
-                  <li><a href="#" class="link-dark rounded"><p class="fs-5"> Nuovo Cane</p></a></li>
-                  <li><a href="#" class="link-dark rounded">Updates</a></li>
-                  <li><a href="#" class="link-dark rounded">Reports</a></li>
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li class="nav-item">
+                    <RouterLink class="nav-link active" to="/listacani">Lista Cani</RouterLink>
+                  </li>
+                  <li class="nav-item">
+                    <RouterLink class="nav-link active fs-4" to="/cani/edit/0"
+                      >Nuovo Cane</RouterLink
+                    >
+                  </li>
                 </ul>
               </div>
             </li>
             <li class="mb-1">
               <button
-                class="btn btn-toggle align-items-center rounded collapsed"
+                class="btn btn-toggle align-items-center rounded collapsed fs-3"
                 data-bs-toggle="collapse"
                 data-bs-target="#dashboard-collapse"
                 aria-expanded="false"
               >
-                Dashboard
+                Struttura
               </button>
               <div class="collapse" id="dashboard-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li class="nav-item"><RouterLink to="/about" class="fs-5">mappa</RouterLink></li>
                   <li><a href="#" class="link-dark rounded">Overview</a></li>
                   <li><a href="#" class="link-dark rounded">Weekly</a></li>
                   <li><a href="#" class="link-dark rounded">Monthly</a></li>
@@ -116,8 +112,5 @@
     </nav>
   </div>
 </template>
-<script>
-
-
-</script>
+<script></script>
 <style scoped></style>
