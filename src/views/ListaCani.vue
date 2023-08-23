@@ -12,7 +12,7 @@ let products = ref([])
 let loadProducts = function () {
   // check = JSON.parse(localStorage.getItem('user'))
   // console.log('ciccio' + check.token)
-  fetch('http://localhost:8000/office/cani', {
+  fetch('https://canileserver.onrender.com/office/cani/', {
     method: 'GET',
     // withCredentials: true,
     // credentials: 'include',
