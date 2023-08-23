@@ -109,7 +109,7 @@ let SaveProduct = async function (product) {
 
 
     }
-    products.value = fetch('http://localhost:8000/office/cani/', {
+    products.value = fetch('https://canileserver.onrender.com/office/cani/', {
       method: 'POST',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
