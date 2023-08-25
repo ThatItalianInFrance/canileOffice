@@ -1,7 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import SideBar from './components/SideBar.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+
+// console.log(import.meta.env)
 
 </script>
 
@@ -24,5 +26,4 @@ import SideBar from './components/SideBar.vue'
 </template>
 
 <style scoped>
-
 </style>

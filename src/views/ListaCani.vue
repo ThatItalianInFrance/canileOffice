@@ -12,7 +12,7 @@ let products = ref([])
 let loadProducts = function () {
   // check = JSON.parse(localStorage.getItem('user'))
   // console.log('ciccio' + check.token)
-  fetch('https://canileserver.onrender.com/office/cani/', {
+  fetch(`${import.meta.env.VITE_SERVER}/office/cani`, {
     method: 'GET',
     // withCredentials: true,
     // credentials: 'include',
@@ -24,10 +24,10 @@ let loadProducts = function () {
     .then(function (response) {
       return response.json()
     })
-    .then(function (contacts) {
-      products.value = contacts
+    .then(function (cani) {
+      products.value = cani.data
       console.log(products.value)
-      console.log(contacts)
+      // console.log(cani)
     })
 }
 
@@ -37,29 +37,29 @@ console.log(products.value)
 
 <template>
   <main class="container-fluid my-4">
-<h3>Lista Cani</h3>
+    <h3>Lista Cani</h3>
 
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Carattere</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody class="table-group-divider" >
-    <tr v-for="product in products" :key="product.id">
-      <th scope="row" >{{ product.id }}</th>
-      <td>  <router-link :to="{path:'/cani/edit/'+product.id}">{{ product.nome }}</router-link>
-         </td>
-      <td>{{ product.carattere }}</td>
-      <td>@mdo</td>
-    </tr>
-    
-  </tbody>
-</table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Carattere</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr v-for="product in products" :key="product.id">
+          <th scope="row">{{ product.id }}</th>
+          <td> <router-link :to="{ path: '/cani/edit/' + product.id }">{{ product.nome }}</router-link>
+          </td>
+          <td>{{ product.carattere }}</td>
+          <td>@mdo</td>
+        </tr>
 
-</main>
+      </tbody>
+    </table>
+
+  </main>
 </template>
 <script></script>
