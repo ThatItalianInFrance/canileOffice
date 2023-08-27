@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ListaCani from '../views/ListaCani.vue'
 import ListaUsers from '../views/ListaUsers.vue'
 import CaniEdit from '../views/CaniEdit.vue'
+import UsersEdit from '../views/UsersEdit.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +17,11 @@ const router = createRouter({
       path: '/cani/edit/:id',
       name: 'edit',
       component: CaniEdit
+    },
+    {
+      path: '/users/edit/:id',
+      name: 'useredit',
+      component: UsersEdit
     },
     {
       path: '/listacani',

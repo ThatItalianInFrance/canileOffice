@@ -52,7 +52,7 @@ console.log(products.value)
       <tbody class="table-group-divider">
         <tr v-for="product in products" :key="product.id">
           <th scope="row">{{ product.id }}</th>
-          <td> <router-link :to="{ path: '/cani/edit/' + product.id }">{{ product.username }}</router-link>
+          <td> <router-link :to="{ path: '/users/edit/' + product.id }">{{ product.username }}</router-link>
           </td>
           <td>{{ product.email }}</td>
           <td>{{ product.tipo }}</td>
