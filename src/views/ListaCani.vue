@@ -44,8 +44,10 @@ console.log(products.value)
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Nome</th>
-          <th scope="col">Carattere</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Morsicatore</th>
+          <th scope="col">Taglia</th>
+          <th scope="col">Sesso</th>
+          <th scope="col">Mantello</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
@@ -53,8 +55,10 @@ console.log(products.value)
           <th scope="row">{{ product.id }}</th>
           <td> <router-link :to="{ path: '/cani/edit/' + product.id }">{{ product.nome }}</router-link>
           </td>
-          <td>{{ product.carattere }}</td>
-          <td>@mdo</td>
+          <td>{{ product.morsicatore }}</td>
+          <td>{{ product.taglia }}</td>
+          <td>{{ product.sesso }}</td>
+          <td>{{ product.mantello }}</td>
         </tr>
 
       </tbody>

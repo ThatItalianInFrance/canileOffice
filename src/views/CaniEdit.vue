@@ -36,6 +36,7 @@ let cane = ref({
   patologie: '',
   alive: '',
   image: '',
+  morsicatore: '',
 });
 
 
@@ -112,6 +113,12 @@ let saveCane = async function () {
               <label for="carattere" class="form-label">carattere</label>
               <input type="text" class="form-control" id="carattere" v-model="cane.carattere" />
             </div>
+
+            <div class="mb-3">
+              <label for="morsicatore" class="form-label">morsicatore</label>
+              <input type="text" class="form-control" id="carattere" v-model="cane.morsicatore" />
+            </div>
+
             <div class="mb-3">
               <label for="description" class="form-label">Id</label>
               <div>{{ cane.id }}</div>
@@ -157,6 +164,22 @@ let saveCane = async function () {
                       <input type="date" class="form-control" id="birth" v-model="cane.birth" />
                     </div>
                     <div class="mb-3">
+              <label for="razza" class="form-label">razza</label>
+              <input type="text" class="form-control" id="carattere" v-model="cane.razza" />
+            </div>
+            <div class="mb-3">
+              <label for="taglia" class="form-label">taglia</label>
+              <input type="text" class="form-control" id="carattere" v-model="cane.taglia" />
+            </div>
+            <div class="mb-3">
+              <label for="sesso" class="form-label">sesso</label>
+              <input type="text" class="form-control" id="carattere" v-model="cane.sesso" />
+            </div>
+            <div class="mb-3">
+              <label for="mantello" class="form-label">mantello</label>
+              <input type="text" class="form-control" id="carattere" v-model="cane.mantello" />
+            </div>
+                    <div class="mb-3">
                       <label for="chip" class="form-label">chip</label>
                       <input type="text" class="form-control" id="chip" v-model="cane.chip" />
                     </div>
@@ -192,6 +215,10 @@ let saveCane = async function () {
                       data-bs-parent="#accordionExample">
                       <div class="accordion-body">
                         <form>
+                          <div class="mb-3">
+              <label for="sterilizzazione" class="form-label">sterilizzazione</label>
+              <input type="text" class="form-control" id="carattere" v-model="cane.sterilizzazione" />
+            </div>
                           <div class="mb-3">
                             <label for="terapia" class="form-label">terapia</label>
                             <input type="text" class="form-control" id="terapia" v-model="cane.terapia" />

@@ -21,7 +21,7 @@
               >
                 Cani
               </button>
-              <div class="collapse show" id="home-collapse">
+              <div class="collapse " id="home-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                   <li class="nav-item">
                     <RouterLink class="nav-link active fs-4" to="/listacani">Lista Cani</RouterLink>
@@ -29,6 +29,28 @@
                   <li class="nav-item">
                     <RouterLink class="nav-link active fs-4" to="/cani/edit/0"
                       >Nuovo Cane</RouterLink
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="mb-1">
+              <button
+                class="btn btn-toggle align-items-center rounded collapsed fs-3"
+                data-bs-toggle="collapse"
+                data-bs-target="#home1-collapse"
+                aria-expanded="true"
+              >
+                Utenti
+              </button>
+              <div class="collapse " id="home1-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li class="nav-item">
+                    <RouterLink class="nav-link active fs-4" to="/listausers">Lista Utenti</RouterLink>
+                  </li>
+                  <li class="nav-item">
+                    <RouterLink class="nav-link active fs-4" to="/users/edit/0"
+                      >Nuovo Utente</RouterLink
                     >
                   </li>
                 </ul>

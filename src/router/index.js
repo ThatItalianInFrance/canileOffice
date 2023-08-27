@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ListaCani from '../views/ListaCani.vue'
+import ListaUsers from '../views/ListaUsers.vue'
 import CaniEdit from '../views/CaniEdit.vue'
 
 const router = createRouter({
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/listacani',
       name: 'listacani',
       component: ListaCani
+    },
+    {
+      path: '/listausers',
+      name: 'listausers',
+      component: ListaUsers
     },
     {
       path: '/about',
