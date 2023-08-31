@@ -87,7 +87,7 @@ let saveCane = async function () {
     })
     // console.log(image.value);
   }
-  router.push({ path: '/listacani' })
+  // router.push({ path: '/listacani' })
 }
 </script>
 
@@ -112,7 +112,7 @@ let saveCane = async function () {
 
             <div class="mb-3">
               <label for="morsicatore" class="form-label">morsicatore</label>
-              <input type="text" class="form-control" id="carattere" v-model="cane.morsicatore" />
+              <input type="text" class="form-control" id="morsicatore" v-model="cane.morsicatore" />
             </div>
 
             <div class="mb-3">
@@ -130,7 +130,7 @@ let saveCane = async function () {
           <td>
             <img
               v-if="cane.hasImg"
-              :src="getImageUrl(cane)"
+              :src="getImageUrl(cane.id)"
               style="max-height: 500px; max-width: 500px"
             />
           </td>
