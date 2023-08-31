@@ -16,10 +16,10 @@ function onChangeImage(evt) {
       base64Image = fileReader.result
       const newImage = document.createElement('img')
       newImage.src = base64Image
-      newImage.style = "max-height: 500px; max-width:500px"
+      newImage.style = 'max-height: 500px; max-width:500px'
       document.getElementById('thumbnail').innerHTML = newImage.outerHTML
 
-      console.log(base64Image);
+      console.log(base64Image)
       // console.log(fileReader.readAsDataURL(imageFile));
     }
     fileReader.readAsDataURL(imageFile)
@@ -36,9 +36,8 @@ let cane = ref({
   patologie: '',
   alive: '',
   image: '',
-});
-
-
+  morsicatore: ''
+})
 
 // function format(date) {
 //   if (!(date instanceof Date)) {
@@ -52,24 +51,22 @@ let cane = ref({
 //   return `${year}-${month}-${day}`
 // }
 
-
 let loadCane = async function (id) {
   if (id == 0) {
     console.log('id 0')
-    return;
+    return
   }
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`) // par défaut, fetch() fait une requête GET
-  let json = await response.json();
+  let json = await response.json()
   cane.value = json.data
-
 }
 loadCane(id)
 function getImageUrl(id) {
-  return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`;
+  return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
 }
 
 let saveCane = async function () {
-  if (base64Image != "") cane.value.image = base64Image;
+  if (base64Image != '') cane.value.image = base64Image
   if (id == 0) {
     await fetch(`${import.meta.env.VITE_SERVER}/office/cane`, {
       method: 'POST',
@@ -112,6 +109,12 @@ let saveCane = async function () {
               <label for="carattere" class="form-label">carattere</label>
               <input type="text" class="form-control" id="carattere" v-model="cane.carattere" />
             </div>
+
+            <div class="mb-3">
+              <label for="morsicatore" class="form-label">morsicatore</label>
+              <input type="text" class="form-control" id="carattere" v-model="cane.morsicatore" />
+            </div>
+
             <div class="mb-3">
               <label for="description" class="form-label">Id</label>
               <div>{{ cane.id }}</div>
@@ -120,48 +123,82 @@ let saveCane = async function () {
               <label for="image" class="form-label">Image (.jpg seulement)</label>
               <input type="file" class="form-control" id="image" @change="onChangeImage" />
             </div>
-
-
           </form>
         </div>
         <div class="col-lg-6 my-5">
-
           <div id="thumbnail"></div>
-          <td><img v-if="cane.hasImg" :src="getImageUrl(cane)" style="max-height: 500px; max-width:500px" />
+          <td>
+            <img
+              v-if="cane.hasImg"
+              :src="getImageUrl(cane)"
+              style="max-height: 500px; max-width: 500px"
+            />
           </td>
           <!-- <img src="https://placedog.net/500/500" alt="" /> -->
         </div>
-
-
 
         <div class="col-lg-6">
           <!-- accordion -->
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
                   <h3>dati anagrafici</h3>
                 </button>
               </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              >
                 <div class="accordion-body">
                   <form>
                     <div class="mb-3">
                       <label for="birth" class="form-label">
-                        <h4>
-
-                          Nascita: {{ new Date(cane.birth).toLocaleDateString() }}
-                        </h4>
+                        <h4>Nascita: {{ new Date(cane.birth).toLocaleDateString() }}</h4>
                       </label>
                       <input type="date" class="form-control" id="birth" v-model="cane.birth" />
+                    </div>
+                    <div class="mb-3">
+                      <label for="razza" class="form-label">razza</label>
+                      <input type="text" class="form-control" id="carattere" v-model="cane.razza" />
+                    </div>
+                    <div class="mb-3">
+                      <label for="taglia" class="form-label">taglia</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="carattere"
+                        v-model="cane.taglia"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="sesso" class="form-label">sesso</label>
+                      <input type="text" class="form-control" id="carattere" v-model="cane.sesso" />
+                    </div>
+                    <div class="mb-3">
+                      <label for="mantello" class="form-label">mantello</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="carattere"
+                        v-model="cane.mantello"
+                      />
                     </div>
                     <div class="mb-3">
                       <label for="chip" class="form-label">chip</label>
                       <input type="text" class="form-control" id="chip" v-model="cane.chip" />
                     </div>
-
-
+                    <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
+              Enregistrer
+            </button>
                   </form>
                 </div>
               </div>
@@ -174,36 +211,78 @@ let saveCane = async function () {
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="true"
+                  aria-controls="collapseTwo"
+                >
                   <h3>dati sanitari</h3>
                 </button>
               </h2>
-              <div id="collapseTwo" class="accordion-collapse  " data-bs-parent="#accordionExample">
+              <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                   <div class="accordion-item">
                     <h2 class="accordion-header">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#CollapseSeven" aria-expanded="false" aria-controls="CollapseSeven">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#CollapseSeven"
+                        aria-expanded="false"
+                        aria-controls="CollapseSeven"
+                      >
                         Terapie
                       </button>
                     </h2>
-                    <div id="CollapseSeven" class="accordion-collapse collapse show"
-                      data-bs-parent="#accordionExample">
+                    <div
+                      id="CollapseSeven"
+                      class="accordion-collapse collapse show"
+                      data-bs-parent="#accordionExample"
+                    >
                       <div class="accordion-body">
                         <form>
                           <div class="mb-3">
+                            <label for="sterilizzazione" class="form-label">sterilizzazione</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="carattere"
+                              v-model="cane.sterilizzazione"
+                            />
+                          </div>
+                          <div class="mb-3">
                             <label for="terapia" class="form-label">terapia</label>
-                            <input type="text" class="form-control" id="terapia" v-model="cane.terapia" />
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="terapia"
+                              v-model="cane.terapia"
+                            />
                           </div>
                           <div class="mb-3">
                             <label for="patologie" class="form-label">patologie</label>
-                            <input type="text" class="form-control" id="patologie" v-model="cane.patologie" />
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="patologie"
+                              v-model="cane.patologie"
+                            />
                           </div>
                           <div class="mb-3">
                             <label for="alive" class="form-label">alive</label>
-                            <input type="text" class="form-control" id="alive" v-model="cane.alive" />
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="alive"
+                              v-model="cane.alive"
+                            />
                           </div>
+                          <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
+              Enregistrer
+            </button>
                         </form>
                       </div>
                     </div>
@@ -220,23 +299,42 @@ let saveCane = async function () {
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#CollapseSix" aria-expanded="true" aria-controls="CollapseSix">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#CollapseSix"
+                  aria-expanded="true"
+                  aria-controls="CollapseSix"
+                >
                   <h3>dati Canile</h3>
                 </button>
               </h2>
-              <div id="CollapseSix" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-              </div>
+              <div
+                id="CollapseSix"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              ></div>
             </div>
 
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#CollapseEight" aria-expanded="false" aria-controls="CollapseEight">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#CollapseEight"
+                  aria-expanded="false"
+                  aria-controls="CollapseEight"
+                >
                   Accordion Item #3
                 </button>
               </h2>
-              <div id="CollapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div
+                id="CollapseEight"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExample"
+              >
                 <div class="accordion-body">
                   <strong>This is the third item's accordion body.</strong> It is hidden by default,
                   until the collapse plugin adds the appropriate classes that we use to style each
@@ -253,9 +351,5 @@ let saveCane = async function () {
         </div>
       </div>
     </div>
-
-
-
-
   </main>
 </template>
