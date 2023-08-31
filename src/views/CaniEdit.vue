@@ -17,6 +17,8 @@ function onChangeImage(evt) {
       const newImage = document.createElement('img')
       newImage.src = base64Image
       newImage.style = 'max-height: 500px; max-width:500px'
+      // document.getElementById('thumbnail').src = getImageUrl(cane.id)
+      document.getElementById('thumbnail').src = base64Image
       document.getElementById('thumbnail').innerHTML = newImage.outerHTML
 
       console.log(base64Image)
@@ -90,54 +92,88 @@ let saveCane = async function () {
   // router.push({ path: '/listacani' })
 }
 </script>
+<style scoped>
 
+/* * {
+  border: solid red 1px;
+} */
+.image-container {
+  width: 300px; /* Adjust the size as needed */
+  height: 300px; /* Same as width */
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.circular-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
 <template>
   <main>
     <div class="container">
       <div class="row my-3">
-        <div class="col-lg-6">
-          <h1>Scheda cane</h1>
+        <div class="col-auto">
+          <h1>{{ cane.nome }}</h1>
           <form>
-            <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
-              Enregistrer
-            </button>
-            <div class="mb-3">
-              <label for="nome" class="form-label">Nome Cane</label>
-              <input type="text" class="form-control" id="nome" v-model="cane.nome" />
-            </div>
-            <div class="mb-3">
-              <label for="carattere" class="form-label">carattere</label>
-              <input type="text" class="form-control" id="carattere" v-model="cane.carattere" />
-            </div>
+           
+            <div class="mb-3 container" >
+              
+              
+              <div class="container">
+                <div class=" my-5">
+                  <div class="image-container shadow" width="">
+                    <img
+                      v-if="cane.hasImg"
+                      id="thumbnail"
+                      :src="getImageUrl(cane.id)"
+                      class="img circular-image"
+                      width=""
+                      style=""
+                    />
+                  </div>
+                  <!-- <img src="https://placedog.net/500/500" alt="" /> -->
+                </div>
+              </div>
 
-            <div class="mb-3">
-              <label for="morsicatore" class="form-label">morsicatore</label>
-              <input type="text" class="form-control" id="morsicatore" v-model="cane.morsicatore" />
-            </div>
 
-            <div class="mb-3">
-              <label for="description" class="form-label">Id</label>
-              <div>{{ cane.id }}</div>
-            </div>
-            <div class="mb-3">
-              <label for="image" class="form-label">Image (.jpg seulement)</label>
-              <input type="file" class="form-control" id="image" @change="onChangeImage" />
+
+              <div class="row">
+
+                <div class="col-4">
+                  <label for="nome" class="col-form-label">Mi chiamo:</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="nome" v-model="cane.nome" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label for="carattere" class="col-form-label">Carattere</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="nome" v-model="cane.carattere" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label for="morsicatore" class="col-form-label">Morsicatore</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="nome" v-model="cane.morsicatore" />
+                </div>
+              </div>
+              
+              <div class="col-8">
+                <label for="image" class="col-form-label">Immagine (solo .jpg)</label>
+                <input type="file" class="col-form-control" id="image" @change="onChangeImage" />
+              </div>
             </div>
           </form>
         </div>
-        <div class="col-lg-6 my-5">
-          <div id="thumbnail"></div>
-          <td>
-            <img
-              v-if="cane.hasImg"
-              :src="getImageUrl(cane.id)"
-              style="max-height: 500px; max-width: 500px"
-            />
-          </td>
-          <!-- <img src="https://placedog.net/500/500" alt="" /> -->
-        </div>
 
-        <div class="col-lg-6">
+        <div class="col-auto">
           <!-- accordion -->
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -150,7 +186,7 @@ let saveCane = async function () {
                   aria-expanded="true"
                   aria-controls="collapseOne"
                 >
-                  <h3>dati anagrafici</h3>
+                  <span>dati anagrafici</span>
                 </button>
               </h2>
               <div
@@ -160,45 +196,89 @@ let saveCane = async function () {
               >
                 <div class="accordion-body">
                   <form>
-                    <div class="mb-3">
-                      <label for="birth" class="form-label">
-                        <h4>Nascita: {{ new Date(cane.birth).toLocaleDateString() }}</h4>
-                      </label>
-                      <input type="date" class="form-control" id="birth" v-model="cane.birth" />
+                    <div class="mb-3 container">
+                      <div class="row">
+                        <div class="col-auto">
+                          <label for="birth" class="col-form-label">
+                            <span>Nascita: {{ new Date(cane.birth).toLocaleDateString() }}</span>
+                          </label>
+                        </div>
+                        <div class="col-auto">
+                          <input type="date" class="form-control" id="birth" v-model="cane.birth" />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4">
+                          <label for="razza" class="col-form-label">razza</label>
+                        </div>
+                        <div class="col-8">
+                          <input type="text" class="form-control" id="razza" v-model="cane.razza" />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4">
+                          <label for="taglia" class="col-form-label">taglia</label>
+                        </div>
+                        <div class="col-8">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="carattere"
+                            v-model="cane.taglia"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-4">
+                          <label for="sesso" class="col-form-label">sesso</label>
+                        </div>
+
+                        <div class="col-8">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="carattere"
+                            v-model="cane.sesso"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-4"></div>
+
+                        <div class="col-4"></div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-4">
+                          <label for="mantello" class="col-form-label">mantello</label>
+                        </div>
+
+                        <div class="col-8">
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="carattere"
+                            v-model="cane.mantello"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-4">
+                          <label for="chip" class="form-label">chip</label>
+                        </div>
+
+                        <div class="col-8">
+                          <input type="text" class="form-control" id="chip" v-model="cane.chip" />
+                        </div>
+                      </div>
                     </div>
-                    <div class="mb-3">
-                      <label for="razza" class="form-label">razza</label>
-                      <input type="text" class="form-control" id="carattere" v-model="cane.razza" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="taglia" class="form-label">taglia</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="carattere"
-                        v-model="cane.taglia"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="sesso" class="form-label">sesso</label>
-                      <input type="text" class="form-control" id="carattere" v-model="cane.sesso" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="mantello" class="form-label">mantello</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="carattere"
-                        v-model="cane.mantello"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="chip" class="form-label">chip</label>
-                      <input type="text" class="form-control" id="chip" v-model="cane.chip" />
-                    </div>
+
                     <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
-              Enregistrer
-            </button>
+                      Enregistrer
+                    </button>
                   </form>
                 </div>
               </div>
@@ -206,7 +286,7 @@ let saveCane = async function () {
           </div>
           <!-- accordion -->
         </div>
-        <div class="col-lg-6">
+        <div class="col-auto">
           <!-- accordion -->
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
@@ -223,25 +303,12 @@ let saveCane = async function () {
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
+              
                   <div class="accordion-item">
                     <h2 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#CollapseSeven"
-                        aria-expanded="false"
-                        aria-controls="CollapseSeven"
-                      >
-                        Terapie
-                      </button>
+             
                     </h2>
-                    <div
-                      id="CollapseSeven"
-                      class="accordion-collapse collapse show"
-                      data-bs-parent="#accordionExample"
-                    >
+                    
                       <div class="accordion-body">
                         <form>
                           <div class="mb-3">
@@ -280,21 +347,25 @@ let saveCane = async function () {
                               v-model="cane.alive"
                             />
                           </div>
-                          <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
-              Enregistrer
-            </button>
+                          <button
+                            type="button"
+                            class="btn btn-primary mt-3"
+                            @click.prevent="saveCane"
+                          >
+                            Enregistrer
+                          </button>
                         </form>
                       </div>
-                    </div>
+                   
                   </div>
                 </div>
-              </div>
+              
             </div>
           </div>
           <!-- accordion -->
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-auto">
           <!-- accordion -->
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
