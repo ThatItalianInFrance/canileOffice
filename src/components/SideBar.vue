@@ -1,9 +1,18 @@
-<template>
-  <div>
-    <nav class="navbar navbar-expand-lg">
+<style scoped>
+.bgprimary {
+
+
+background: #ddfcf3
+}
+
+</style>
+
+<template class="vh-100 ">
+  <div class="bgprimary">
+    <nav class="navbar navbar-expand-lg bgprimary">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- sidenav -->
-        <div class="flex-shrink-0 p-3 bg-white" style="width: 280px">
+        <div class="flex-shrink-0 p-3 bgprimary " style="width: 280px">
           <a
             href="/"
             class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom"
@@ -19,38 +28,57 @@
                 data-bs-target="#home-collapse"
                 aria-expanded="true"
               >
+              <span class="material-symbols-outlined">
+pets
+</span>
                 Cani
               </button>
               <div class="collapse " id="home-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                   <li class="nav-item">
-                    <RouterLink class="nav-link active fs-4" to="/listacani">Lista Cani</RouterLink>
+                    <RouterLink class="nav-link active fs-4" to="/listacani"><span class="material-symbols-outlined">
+lists
+</span> Lista Cani</RouterLink>
                   </li>
                   <li class="nav-item">
                     <RouterLink class="nav-link active fs-4" to="/cani/edit/0"
-                      >Nuovo Cane</RouterLink
+                      ><span class="material-symbols-outlined">
+pet_supplies
+</span> Nuovo Cane</RouterLink
                     >
                   </li>
                 </ul>
               </div>
             </li>
             <li class="mb-1">
+              
               <button
                 class="btn btn-toggle align-items-center rounded collapsed fs-3"
                 data-bs-toggle="collapse"
                 data-bs-target="#home1-collapse"
                 aria-expanded="true"
               >
+              <span class="material-symbols-outlined">
+account_circle
+</span>
                 Utenti
               </button>
               <div class="collapse " id="home1-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                   <li class="nav-item">
-                    <RouterLink class="nav-link active fs-4" to="/listausers">Lista Utenti</RouterLink>
+                    
+
+                      <RouterLink class="nav-link active fs-4" to="/listausers"><span class="material-symbols-outlined">
+person_search
+</span> Lista Utenti</RouterLink>
+                    
+                    
                   </li>
                   <li class="nav-item">
                     <RouterLink class="nav-link active fs-4" to="/users/edit/0"
-                      >Nuovo Utente</RouterLink
+                      ><span class="material-symbols-outlined">
+person_add
+</span> Nuovo Utente</RouterLink
                     >
                   </li>
                 </ul>

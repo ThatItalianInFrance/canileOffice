@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { getUserToken } from '/utils'
 
 const router = useRouter()
 const route = useRoute()
@@ -96,15 +97,7 @@ let saveCane = async function () {
 <style scoped>
 
 .bgbody {
-  background: hsla(0, 0%, 100%, 1);
-
-background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 91%, 1) 59%, hsla(0, 0%, 80%, 1) 91%);
-
-background: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 91%, 1) 59%, hsla(0, 0%, 80%, 1) 91%);
-
-background: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 1) 0%, hsla(0, 0%, 91%, 1) 59%, hsla(0, 0%, 80%, 1) 91%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFFFFF", endColorstr="#E8E8E8", GradientType=1 );
+  background: #ecebff
 }
 .bgtest {
   background: hsla(141, 54%, 86%, 1);
@@ -151,7 +144,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
 </style>
 
 <template>
-  <main class="bgbody">
+  <main class="bgbody vh-100">
     <div class="container-fluid my-5">
       <div class="row my-3">
         <div class="col-auto">
@@ -235,39 +228,42 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
         </div>
 
         <!-- accordion -->
-        <div class="accordion col-auto" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
+        <div class="col-auto ">
+
+
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne"
                 aria-expanded="true"
                 aria-controls="collapseOne"
-              >
+                >
                 <span>dati anagrafici</span>
               </button>
             </h2>
             <div
-              id="collapseOne"
-              class="accordion-collapse collapse show"
-              data-bs-parent="#accordionExample"
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            data-bs-parent="#accordionExample"
             >
-              <div class="accordion-body bgtest">
+            <div class="accordion-body bgtest">
                 <form>
-                  <div class="mb-3 container">
+                  <div class=" container p-1">
                     <div class="row">
-                      <div class="col-auto">
+                      <div class="col-4">
                         <label for="birth" class="col-form-label fw-bold">
-                          <span>Nascita: {{ new Date(cane.birth).toLocaleDateString() }}</span>
+                          Nascita:
                         </label>
                       </div>
-                      <div class="col-auto">
+                      <div class="col-8">
                         <input type="date" class="form-control" id="birth" v-model="cane.birth" />
                       </div>
                     </div>
-                    <div class="container">
+                    <div class="container p-1">
                       <div class="row">
                         <div class="col-4">
                           <label for="razza" class="col-form-label fw-bold">razza</label>
@@ -277,82 +273,87 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-4">
-                        <label for="taglia" class="col-form-label fw-bold">taglia</label>
-                      </div>
-                      <div class="col-8">
-                        <input
+                    <div class="container p-1">
+                      <div class="row">
+                        <div class="col-4">
+                          <label for="taglia" class="col-form-label fw-bold">taglia</label>
+                        </div>
+                        <div class="col-8">
+                          <input
                           type="text"
                           class="form-control"
                           id="carattere"
                           v-model="cane.taglia"
-                        />
+                          />
+                        </div>
                       </div>
                     </div>
-
-                    <div class="row">
-                      <div class="col-4">
-                        <label for="sesso" class="col-form-label fw-bold">sesso</label>
+                    <div class="container p-1">
+                      <div class="row">
+                        <div class="col-4">
+                          <label for="sesso" class="col-form-label fw-bold">sesso</label>
                       </div>
-
+                      
                       <div class="col-8">
                         <input
-                          type="text"
-                          class="form-control"
-                          id="carattere"
-                          v-model="cane.sesso"
+                        type="text"
+                        class="form-control"
+                        id="carattere"
+                        v-model="cane.sesso"
                         />
                       </div>
                     </div>
-
+                  </div>
+                  
                     <div class="row">
                       <div class="col-4"></div>
-
+                      
                       <div class="col-4"></div>
                     </div>
-
-                    <div class="row">
+                    <div class="container p-1">
+                      <div class="row">
                       <div class="col-4">
                         <label for="mantello" class="col-form-label fw-bold">mantello</label>
                       </div>
 
                       <div class="col-8">
                         <input
-                          type="text"
-                          class="form-control"
-                          id="carattere"
-                          v-model="cane.mantello"
+                        type="text"
+                        class="form-control"
+                        id="carattere"
+                        v-model="cane.mantello"
                         />
                       </div>
                     </div>
-
+                  </div>
+                  <div class="container p-1">
                     <div class="row">
                       <div class="col-4">
                         <label for="chip" class="form-label fw-bold">chip</label>
                       </div>
-
+                      
                       <div class="col-8">
                         <input type="text" class="form-control" id="chip" v-model="cane.chip" />
                       </div>
                     </div>
                   </div>
-
-                  <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
-                    Salva
-                  </button>
+                  </div>
+                  
+  
                 </form>
               </div>
             </div>
           </div>
         </div>
+      </div>
+  
+      <!-- accordion -->
+      
+      <div class="col-auto">
         <!-- accordion -->
-
-        <div class="col-6">
-          <!-- accordion -->
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
                 <button
                   class="accordion-button"
                   type="button"
@@ -361,21 +362,22 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                   aria-expanded="true"
                   aria-controls="collapseTwo"
                 >
-                  <h3>dati sanitari</h3>
+  
+                  <span>dati sanitari</span>
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header"></h2>
 
-                  <div class="accordion-body">
+                  <div class="accordion-body bgtest">
                     <form>
-                      <div class="container">
+                      <div class="container p-1">
                         <div class="row">
-                          <div class="col">
-                            <label for="sterilizzazione" class="form-label">sterilizzazione</label>
+                          <div class="col-4">
+                            <label for="sterilizzazione" class="col-form-label fw-bold">sterilizzazione</label>
                           </div>
-                          <div class="col">
+                          <div class="col-8">
                             <input
                               type="text"
                               class="form-control"
@@ -385,12 +387,12 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                           </div>
                         </div>
                       </div>
-                      <div class="container">
+                      <div class="container p-1">
                         <div class="row">
-                          <div class="col">
-                            <label for="terapia" class="form-label">terapia</label>
+                          <div class="col-4">
+                            <label for="terapia" class="col-form-label fw-bold">terapia</label>
                           </div>
-                          <div class="col">
+                          <div class="col-8">
                             <input
                               type="text"
                               class="form-control"
@@ -400,12 +402,12 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                           </div>
                         </div>
                       </div>
-                      <div class="container">
+                      <div class="container p-1">
                         <div class="row">
-                          <div class="col">
-                            <label for="patologie" class="form-label">patologie</label>
+                          <div class="col-4">
+                            <label for="patologie" class="col-form-label fw-bold">patologie</label>
                           </div>
-                          <div class="col">
+                          <div class="col-8">
                             <input
                               type="text"
                               class="form-control"
@@ -415,12 +417,12 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                           </div>
                         </div>
                       </div>
-                      <div class="container">
+                      <div class="container p-1">
                         <div class="row">
-                          <div class="col">
-                            <label for="alive" class="form-label">alive</label>
+                          <div class="col-4">
+                            <label for="alive" class="col-form-label fw-bold">alive</label>
                           </div>
-                          <div class="col">
+                          <div class="col-8">
                             <input
                               type="text"
                               class="form-control"

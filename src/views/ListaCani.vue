@@ -2,6 +2,7 @@
 // REMEBER TO IMPORT REF
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { getUserToken } from '/utils'
 
 // let check = JSON.parse(localStorage.getItem('user'))
 // console.log(check.token)
@@ -16,10 +17,10 @@ let loadProducts = function () {
     method: 'GET',
     // withCredentials: true,
     // credentials: 'include',
-    // headers: {
-    //   Authorization: `Bearer ${check.token}`,
-    //   'Content-Type': 'application/json'
-    // }
+    headers: {
+      Authorization: `Bearer ${getUserToken()}`,
+      'Content-Type': 'application/json'
+    }
   }) // par défaut, fetch() fait une requête GET
     .then(function (response) {
       return response.json()
