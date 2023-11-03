@@ -5,6 +5,7 @@ import ListaUsers from '../views/ListaUsers.vue'
 import CaniEdit from '../views/CaniEdit.vue'
 import UsersEdit from '../views/UsersEdit.vue'
 import LoginView from '../views/LoginView.vue'
+import ListaBox from '../views/ListaBox.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: '/listausers',
       name: 'listausers',
       component: ListaUsers
+    },
+    {
+      path: '/listabox',
+      name: 'listabox',
+      component: ListaBox
     },
     {
       path: '/about',

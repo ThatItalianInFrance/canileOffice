@@ -95,7 +95,14 @@ person_add
               </button>
               <div class="collapse" id="dashboard-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li class="nav-item"><RouterLink to="/about" class="fs-5">mappa</RouterLink></li>
+                  <li class="nav-item"><RouterLink to="/about" class="nav-link active fs-4">mappa</RouterLink></li>
+                  <li class="nav-item">
+                    <RouterLink class="nav-link active fs-4" to="/listabox"
+                      ><span class="material-symbols-outlined">
+pet_supplies
+</span>Lista Box</RouterLink
+                    >
+                  </li>
                   <li><a href="#" class="link-dark rounded">Overview</a></li>
                   <li><a href="#" class="link-dark rounded">Weekly</a></li>
                   <li><a href="#" class="link-dark rounded">Monthly</a></li>

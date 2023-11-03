@@ -182,7 +182,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                 <div class="container p-1">
                   <div class="row">
                     <div class="col-4">
-                      <label for="nome" class="col-form-label fw-bold">Mi chiamo:</label>
+                      <label for="nome" class="col-form-label fw-bold">My name</label>
                     </div>
                     <div class="col-8">
                       <input type="text" class="form-control" id="nome" v-model="cane.nome" />
@@ -192,7 +192,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                 <div class="container p-1">
                   <div class="row">
                     <div class="col-4">
-                      <label for="carattere" class="col-form-label fw-bold">Carattere</label>
+                      <label for="carattere" class="col-form-label fw-bold">character</label>
                     </div>
                     <div class="col-8">
                       <input type="text" class="form-control" id="nome" v-model="cane.carattere" />
@@ -202,7 +202,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                 <div class="container p-1">
                   <div class="row">
                     <div class="col-4">
-                      <label for="morsicatore" class="col-form-label fw-bold">Morsicatore</label>
+                      <label for="morsicatore" class="col-form-label fw-bold">Bites</label>
                     </div>
                     <div class="col-8">
                       <input
@@ -242,7 +242,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                 aria-expanded="true"
                 aria-controls="collapseOne"
                 >
-                <span>dati anagrafici</span>
+                <span>Personal data</span>
               </button>
             </h2>
             <div
@@ -256,7 +256,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                     <div class="row">
                       <div class="col-4">
                         <label for="birth" class="col-form-label fw-bold">
-                          Nascita:
+                          Birth:
                         </label>
                       </div>
                       <div class="col-8">
@@ -266,7 +266,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                     <div class="container p-1">
                       <div class="row">
                         <div class="col-4">
-                          <label for="razza" class="col-form-label fw-bold">razza</label>
+                          <label for="razza" class="col-form-label fw-bold">Kind</label>
                         </div>
                         <div class="col-8">
                           <input type="text" class="form-control" id="razza" v-model="cane.razza" />
@@ -276,7 +276,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                     <div class="container p-1">
                       <div class="row">
                         <div class="col-4">
-                          <label for="taglia" class="col-form-label fw-bold">taglia</label>
+                          <label for="taglia" class="col-form-label fw-bold">Size</label>
                         </div>
                         <div class="col-8">
                           <input
@@ -291,7 +291,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                     <div class="container p-1">
                       <div class="row">
                         <div class="col-4">
-                          <label for="sesso" class="col-form-label fw-bold">sesso</label>
+                          <label for="sesso" class="col-form-label fw-bold">Sex</label>
                       </div>
                       
                       <div class="col-8">
@@ -313,7 +313,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                     <div class="container p-1">
                       <div class="row">
                       <div class="col-4">
-                        <label for="mantello" class="col-form-label fw-bold">mantello</label>
+                        <label for="mantello" class="col-form-label fw-bold">Coat</label>
                       </div>
 
                       <div class="col-8">
@@ -329,7 +329,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                   <div class="container p-1">
                     <div class="row">
                       <div class="col-4">
-                        <label for="chip" class="form-label fw-bold">chip</label>
+                        <label for="chip" class="form-label fw-bold">Chip</label>
                       </div>
                       
                       <div class="col-8">
@@ -363,7 +363,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                   aria-controls="collapseTwo"
                 >
   
-                  <span>dati sanitari</span>
+                  <span>Health data</span>
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
@@ -375,7 +375,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                       <div class="container p-1">
                         <div class="row">
                           <div class="col-4">
-                            <label for="sterilizzazione" class="col-form-label fw-bold">sterilizzazione</label>
+                            <label for="sterilizzazione" class="col-form-label fw-bold">Neutering</label>
                           </div>
                           <div class="col-8">
                             <input
@@ -390,7 +390,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                       <div class="container p-1">
                         <div class="row">
                           <div class="col-4">
-                            <label for="terapia" class="col-form-label fw-bold">terapia</label>
+                            <label for="terapia" class="col-form-label fw-bold">Therapy</label>
                           </div>
                           <div class="col-8">
                             <input
@@ -405,7 +405,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                       <div class="container p-1">
                         <div class="row">
                           <div class="col-4">
-                            <label for="patologie" class="col-form-label fw-bold">patologie</label>
+                            <label for="patologie" class="col-form-label fw-bold">Pathologies</label>
                           </div>
                           <div class="col-8">
                             <input
@@ -420,7 +420,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                       <div class="container p-1">
                         <div class="row">
                           <div class="col-4">
-                            <label for="alive" class="col-form-label fw-bold">alive</label>
+                            <label for="alive" class="col-form-label fw-bold">Alive</label>
                           </div>
                           <div class="col-8">
                             <input
@@ -434,7 +434,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                       </div>
 
                       <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
-                        Salva
+                        Save
                       </button>
                     </form>
                   </div>
@@ -458,7 +458,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                   aria-expanded="true"
                   aria-controls="CollapseSix"
                 >
-                  <h3>dati Canile</h3>
+                  <h3>Shelter data</h3>
                 </button>
               </h2>
               <div
