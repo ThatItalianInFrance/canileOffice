@@ -1,14 +1,29 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import SideBar from './components/SideBar.vue'
+import NavBar from './components/NavBar.vue'
 // import HelloWorld from './components/HelloWorld.vue'
 
 // console.log(import.meta.env)
-
 </script>
 
 <template>
-  <SideBar />
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <NavBar />
+      </div>
+    </div>
+    <div class="">
+      
+      <div class="row">
+        <div class="col-3"><SideBar /></div>
+        <div class="col-9"><RouterView /></div>
+        
+      </div>
+    </div>
+  </div>
+
   <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
@@ -21,9 +36,6 @@ import SideBar from './components/SideBar.vue'
       </nav>
     </div>
   </header> -->
-
-  <RouterView />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

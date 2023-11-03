@@ -23,9 +23,9 @@ a,
     /* place-items: center; */
   }
 
-  #app {
+  /* #app {
     display: grid;
     grid-template-columns: 1fr 10fr; 
 
-  }
+  } */
 }
