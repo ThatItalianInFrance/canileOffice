@@ -8,7 +8,7 @@ import NavBar from './components/NavBar.vue'
 </script>
 
 <template>
-  <div class="container">
+  <div class="">
     <div class="row">
       <div class="col-12">
         <NavBar />
@@ -17,8 +17,8 @@ import NavBar from './components/NavBar.vue'
     <div class="">
       
       <div class="row">
-        <div class="col-3"><SideBar /></div>
-        <div class="col-9"><RouterView /></div>
+        <div class="col-2"><SideBar /></div>
+        <div class="col-10"><RouterView /></div>
         
       </div>
     </div>

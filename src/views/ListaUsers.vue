@@ -63,5 +63,11 @@ console.log(products.value)
     </table>
 
   </main>
+
+  <section>
+    
+  </section>
+
+
 </template>
 <script></script>
