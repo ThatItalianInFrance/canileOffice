@@ -91,7 +91,7 @@
           <div class="collapse" id="dashboard-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li class="nav-item">
-                <RouterLink to="/about" class="nav-link active "><span class="material-symbols-outlined"> edit_calendar
+                <RouterLink to="/planning" class="nav-link active "><span class="material-symbols-outlined"> edit_calendar
                   </span>Planning
                   setup</RouterLink>
               </li>
