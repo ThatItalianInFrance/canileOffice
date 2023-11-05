@@ -1,4 +1,5 @@
 <script setup>
+import OccupItem from './OccupItem.vue'
 import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
 import ToolingIcon from './icons/IconTooling.vue'
@@ -16,10 +17,7 @@ import SupportIcon from './icons/IconSupport.vue'
     <div class="container my-5">
       <div class="row">
         <div class="col-6">
-          <div class="card p-3">
-            <h5>Dogs in shelter:</h5>
-            <small>36</small>
-          </div>
+          <OccupItem />
         </div>
         <div class="col-6">
           <div class="card p-3">
