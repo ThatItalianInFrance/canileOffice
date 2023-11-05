@@ -1,5 +1,6 @@
 <script setup>
 import OccupItem from './OccupItem.vue'
+import RemindersItem from './RemindersItem.vue'
 import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
 import ToolingIcon from './icons/IconTooling.vue'
@@ -29,13 +30,10 @@ import SupportIcon from './icons/IconSupport.vue'
       </div>
       <div class="row my-3">
         <div class="col-12">
-          <div class="card p-3">
-            <h5>Reminders</h5>
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-          </div>
+          
+            <RemindersItem />
+
+          
         </div>
       </div>
     </div>

@@ -1,7 +1,5 @@
 <style scoped>
-.bgprimary {
-  background: #ddfcf3;
-}
+
 /* * {
   border: solid red 1px;
 } */
@@ -11,8 +9,8 @@
 }
 </style>
 
-<template class="vh-100">
-  <div class="bgprimary">
+<template class="">
+  <div class="vh-100 bg-body-tertiary">
     <div class="flex-shrink-0 p-3" style="width: 280px">
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
