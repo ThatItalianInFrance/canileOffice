@@ -145,8 +145,8 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
 
 <template>
   <main class="bgbody vh-100">
-    <div class="container-fluid my-5">
-      <div class="row my-3">
+    <div class="container-fluid">
+      <div class="row ">
         <div class="col-auto">
           <form>
             <div class="mb-3 container rounded bgtest" style="">

@@ -16,9 +16,9 @@ import NavBar from './components/NavBar.vue'
     </div>
     <div class="">
       
-      <div class="row">
-        <div class="col-2"><SideBar /></div>
-        <div class="col-10"><RouterView /></div>
+      <div class="row m-0">
+        <div class="col-2 p-0"><SideBar /></div>
+        <div class="col-10 p-0"><RouterView /></div>
         
       </div>
     </div>

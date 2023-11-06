@@ -8,9 +8,9 @@ import { getUserToken } from '/utils'
 // console.log(check.token)
 
 // ref must be used for responsive data - use .value to assign or read
-let products = ref([])
+let dogs = ref([])
 
-let loadProducts = function () {
+let loadDogs = function () {
   // check = JSON.parse(localStorage.getItem('user'))
   // console.log('ciccio' + check.token)
   fetch(`${import.meta.env.VITE_SERVER}/office/cani`, {
@@ -25,46 +25,85 @@ let loadProducts = function () {
     .then(function (response) {
       return response.json()
     })
-    .then(function (cani) {
-      products.value = cani.data
-      console.log(products.value)
+    .then(function (foo) {
+      dogs.value = foo.data
+      console.log(dogs.value)
       // console.log(cani)
     })
 }
 
-loadProducts()
-console.log(products.value)
+loadDogs()
+console.log(dogs.value)
 </script>
 
 <template>
   <main class="container-fluid my-4">
-    <h3>Lista Cani</h3>
-
-    <table class="table">
-      <thead>
+    <h3>Dogs list</h3>
+    <p>Overview of registered dogs</p>
+    <table class="table table-hover">
+      <thead class="thead-dark">
         <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Morsicatore</th>
-          <th scope="col">Taglia</th>
-          <th scope="col">Sesso</th>
-          <th scope="col">Mantello</th>
+          <th scope="col">Name</th>
+          <th scope="col">Size</th>
+          <th scope="col">Character</th>
+          <th scope="col">Age / birth</th>
+          <th scope="col">Date Added</th>
         </tr>
       </thead>
-      <tbody class="table-group-divider">
-        <tr v-for="product in products" :key="product.id">
-          <th scope="row">{{ product.id }}</th>
-          <td> <router-link :to="{ path: '/cani/edit/' + product.id }">{{ product.nome }}</router-link>
-          </td>
-          <td>{{ product.morsicatore }}</td>
-          <td>{{ product.taglia }}</td>
-          <td>{{ product.sesso }}</td>
-          <td>{{ product.mantello }}</td>
+      <tbody>
+        <tr v-for="dog in dogs" :key="dog.id">
+          <td><router-link :to="{ path: '/cani/edit/' + dog.id }">{{ dog.nome }}</router-link></td>
+          <td>{{ dog.email }}</td>
+          <td>Administrator</td>
+          <td class="status-active">Active</td>
+          <td>2023-08-01</td>
         </tr>
-
+        <tr>
+          <td>John Smith</td>
+          <td>john.smith@example.com</td>
+          <td>User</td>
+          <td class="status-pending">Pending</td>
+          <td>2023-07-15</td>
+        </tr>
+        <tr>
+          <td>Emily Johnson</td>
+          <td>emily.johnson@example.com</td>
+          <td>Editor</td>
+          <td class="status-inactive">Inactive</td>
+          <td>2023-06-20</td>
+        </tr>
+        <!-- Additional rows as needed -->
       </tbody>
     </table>
 
+
+
   </main>
 </template>
-<script></script>
+<style scoped>
+/* Custom styles for the user list table */
+.table-hover tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.thead-dark th {
+  background-color: #343a40;
+  color: #fff;
+}
+
+/* Define or redefine status classes as needed */
+.status-active {
+  font-weight: bold;
+  color: #5cb85c; /* Bootstrap 'success' color */
+}
+
+.status-pending {
+  font-weight: bold;
+  color: #f0ad4e; /* Bootstrap 'warning' color */
+}
+
+.status-inactive {
+  font-weight: bold;
+  color: #d9534f; /* Bootstrap 'danger' color */
+}
+</style>
