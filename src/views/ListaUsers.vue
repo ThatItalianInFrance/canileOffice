@@ -61,7 +61,7 @@ console.log(users.value)
       </thead>
       <tbody>
         <tr v-for="user in users" :key="user.id">
-          <td>{{ user.username }}</td>
+          <td><router-link :to="{ path: '/users/edit/' + user.id }">{{ user.username }}</router-link></td>
           <td>{{ user.email }}</td>
           <td>Administrator</td>
           <td class="status-active">Active</td>
