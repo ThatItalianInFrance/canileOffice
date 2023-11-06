@@ -94,16 +94,18 @@ console.log(dogs.value)
 /* Define or redefine status classes as needed */
 .status-active {
   font-weight: bold;
-  color: #5cb85c; /* Bootstrap 'success' color */
+  color: #5cb85c;
+  /* Bootstrap 'success' color */
 }
 
 .status-pending {
   font-weight: bold;
-  color: #f0ad4e; /* Bootstrap 'warning' color */
+  color: #f0ad4e;
+  /* Bootstrap 'warning' color */
 }
 
 .status-inactive {
   font-weight: bold;
-  color: #d9534f; /* Bootstrap 'danger' color */
-}
-</style>
+  color: #d9534f;
+  /* Bootstrap 'danger' color */
+}</style>
