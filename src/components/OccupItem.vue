@@ -17,7 +17,8 @@
         </div>
         <div class="container">
           <div class="row">
-            <p class="greeting">{{ greeting }}</p>
+            <h4 class="greeting fw-bold">{{ greeting }}</h4>
+            <p class="small">comes handy with a pie!</p>
           </div>
           <div class="row">
             <div class="col-6">
@@ -38,7 +39,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const greeting = ref('Shelter occupancy component!')
+const greeting = ref('Shelter occupancy component')
 const numberOfDogs = ref(0) // Initialize with 0
 
 // Assuming getUserToken is defined and accessible
