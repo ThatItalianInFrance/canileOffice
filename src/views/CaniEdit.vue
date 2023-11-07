@@ -2,6 +2,22 @@
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getUserToken } from '/utils'
+import { onMounted, nextTick } from 'vue'
+import html2pdf from 'html2pdf.js'
+
+// var opt = {
+//   margin: 1,
+//   filename: 'myfile.pdf',
+//   image: { type: 'jpeg', quality: 0.98 },
+//   html2canvas: { scale: 1 },
+//   jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+// }
+
+// mounted() {
+//   console.log("mounted");
+//   // If you want to generate PDF as soon as the component mounts
+//   this.printToPdf();
+// }
 
 const router = useRouter()
 const route = useRoute()
@@ -18,9 +34,11 @@ function onChangeImage(evt) {
       const newImage = document.createElement('img')
       newImage.src = base64Image
       newImage.style = 'max-height: 500px; max-width:500px'
-      // document.getElementById('thumbnail').src = getImageUrl(cane.id)
+      // document.getElementById('thumbnail').src = getImageUrl(dog.id)
       document.getElementById('thumbnail').src = base64Image
+      // document.getElementById('thumbnail').innerHTML = newImage.innerHTML
       document.getElementById('thumbnail').innerHTML = newImage.outerHTML
+      // document.getElementById('thumbpdf').innerHTML = newImage.outerHTML
 
       console.log(base64Image)
       // console.log(fileReader.readAsDataURL(imageFile));
@@ -93,22 +111,156 @@ let saveCane = async function () {
   // router.push({ path: '/listacani' })
 }
 
+// let printToPdf = function () {
+
+//   // Ensure this is called when the DOM is fully loaded, e.g., in mounted() or after a specific event
+//   // const element = document.getElementById('element-to-print')
+//   const element = document.getElementsByTagName('body')
+//   if (element && element.offsetHeight > 0) {
+//     console.log('Element is ready to print', element)
+//     html2pdf(element)
+//   } else {
+//     console.log('Element is not ready to print. Height is 0 or element does not exist', element)
+//     // Optionally, retry after some time or after certain conditions are met
+//   }
+// }
+
+// let printToPdf = function () {
+//   // Wait for Vue to finish updating the DOM
+//   this.$nextTick(() => {
+//     // In Vue 3, you can access the body using the `document.body` directly
+//     let element = document.body;
+//     if (element) {
+//       console.log('The whole document body is ready to print', element);
+//       // Pass the entire body element and options to html2pdf
+//       html2pdf().set(opt).from(element).save();
+//     } else {
+//       console.log('The document body is not ready to print');
+//       // Optionally, handle the situation when the body isn't available
+//     }
+//   });
+// };
+
+// let printToPdf = async function () {
+//   // document.getElementById('thumbnail').innerHTML = document.getElementById('thumbpdf').innerHTML
+//   const newImage = document.createElement('img')
+//       newImage.src = document.getElementById('thumbnail').src
+//       newImage.style = 'max-height: 500px; max-width:500px'
+//       // document.getElementById('thumbnail').src = getImageUrl(dog.id)
+//       document.querySelectorAll('img').src = base64Image
+//       // document.getElementById('thumbnail').innerHTML = newImage.innerHTML
+//       document.querySelectorAll('img').innerHTML = newImage.outerHTML
+ 
+//   await nextTick() // Wait for the next DOM update cycle
+//   const element = document.getElementById('element-to-print')
+
+//   // let element = document.body; // Target the body element to print the whole page
+//   if (element) {
+//     const opt = {
+//   // ... other options ...
+//   html2canvas: {
+//     useCORS: true,
+//     // ... other html2canvas options ...
+//   },
+//   // ... other options ...
+// };
+//     console.log('The whole document body is ready to print', element)
+//     html2pdf()
+//       .set(opt)
+//       .from(element)
+//       .toPdf()
+//       .get('pdf')
+//       .then(function (pdf) {
+//         window.open(pdf.output('bloburl')) // Open the PDF in a new window/tab
+//       })
+//   } else {
+//     console.log('The document body is not ready to print')
+//   }
+// }
+const opt = {
+  // ... other options ...
+  html2canvas: {
+    useCORS: true,
+    // ... other html2canvas options ...
+  },
+  // ... other options ...
+};
+
+
+let printToPdf = async function () {
+  await nextTick(); // Wait for the next DOM update cycle
+  
+
+
+  const element = document.getElementById('element-to-print');
+  if (element) {
+    console.log('Element is ready to print', element);
+    html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
+      window.open(pdf.output('bloburl')); // Open the PDF in a new window/tab
+    });
+  } else {
+    console.log('Element is not ready to print');
+  }
+};
+
+// let printToPdf = async function () {
+//   await nextTick(); // Wait for the next DOM update cycle
+//   const element = document.body; // Target the whole body
+
+//   // Function to check if all images are loaded
+//   const allImagesLoaded = Array.from(document.images).every((img) => img.complete);
+
+//   if (element && allImagesLoaded) {
+//     console.log('The whole document body is ready to print', element);
+
+//     // Set html2pdf options, including html2canvas options
+//     const options = {
+//       ...opt,
+//       html2canvas: {
+//         ...opt.html2canvas,
+//         // useCORS: true // Important if you have images from other domains
+//       }
+//     };
+
+//     // Generate the PDF
+//     html2pdf().set(options).from(element).toPdf().get('pdf').then(function (pdf) {
+//       window.open(pdf.output('bloburl')); // Open the PDF in a new window/tab
+//     });
+//   } else {
+//     console.log('The document body is not ready to print or images are not loaded');
+//     // Optionally, implement a retry mechanism or a user notification
+//   }
+// };
 </script>
 <style scoped>
-
 .bgbody {
-  background: #ecebff
+  background: #ecebff;
 }
 .bgtest {
   background: hsla(141, 54%, 86%, 1);
 
-background: linear-gradient(90deg, hsla(141, 54%, 86%, 1) 0%, hsla(333, 73%, 85%, 1) 50%, hsla(211, 58%, 79%, 1) 100%);
+  background: linear-gradient(
+    90deg,
+    hsla(141, 54%, 86%, 1) 0%,
+    hsla(333, 73%, 85%, 1) 50%,
+    hsla(211, 58%, 79%, 1) 100%
+  );
 
-background: -moz-linear-gradient(90deg, hsla(141, 54%, 86%, 1) 0%, hsla(333, 73%, 85%, 1) 50%, hsla(211, 58%, 79%, 1) 100%);
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(141, 54%, 86%, 1) 0%,
+    hsla(333, 73%, 85%, 1) 50%,
+    hsla(211, 58%, 79%, 1) 100%
+  );
 
-background: -webkit-linear-gradient(90deg, hsla(141, 54%, 86%, 1) 0%, hsla(333, 73%, 85%, 1) 50%, hsla(211, 58%, 79%, 1) 100%);
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(141, 54%, 86%, 1) 0%,
+    hsla(333, 73%, 85%, 1) 50%,
+    hsla(211, 58%, 79%, 1) 100%
+  );
 
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1 );
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1 );
 }
 /* * {
   border: solid red 1px;
@@ -122,13 +274,9 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
   bottom: 0px; /* Adjust the distance from the bottom as needed */
   right: 0%; /* Position it in the middle horizontally */
   transform: translateX(-50%); /* Center horizontally */
- 
 }
 
-
-
 .image-container {
-  
   width: 300px; /* Adjust the size as needed */
   height: 300px; /* Same as width */
   overflow: hidden;
@@ -136,7 +284,6 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
 }
 
 .circular-image {
-  
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -144,9 +291,37 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
 </style>
 
 <template>
+  <div class="container">
+    <div class="card" id="element-to-print">
+      Dog Details Card
+      <p>{{ cane.nome }}</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            col6
+          </div>
+          <div class="col-6">
+col6
+          </div>
+        </div>
+      </div>
+      <img
+        v-if="cane.hasImg"
+        id="thumbnail"
+        :src="getImageUrl(cane.id)"
+        class="img circular-image"
+        width=""
+        style=""
+      />
+    </div>
+  </div>
+
   <main class="bgbody vh-100">
     <div class="container-fluid">
-      <div class="row ">
+      <button type="button" class="btn btn-primary mt-3" @click.prevent="printToPdf()">
+        print
+      </button>
+      <div class="row">
         <div class="col-auto">
           <form>
             <div class="mb-3 container rounded bgtest" style="">
@@ -154,7 +329,6 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
               <div class="p-2">
                 <div class="container">
                   <div class="posrel">
-                    
                     <div class="image-container shadow m-auto mb-3" width="">
                       <img
                         v-if="cane.hasImg"
@@ -164,19 +338,23 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                         width=""
                         style=""
                       />
-                      
                     </div>
-                  
+
                     <label for="image" class="camera-icon-label">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z"/></svg>
-                        <input
+                      <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
+                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                          d="M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z"
+                        />
+                      </svg>
+                      <input
                         type="file"
                         class="col-form-control d-none"
                         id="image"
                         @change="onChangeImage"
-                        />
-                      </label>
-                      <!-- <img src="https://placedog.net/500/500" alt="" /> -->
+                      />
+                    </label>
+                    <!-- <img src="https://placedog.net/500/500" alt="" /> -->
                   </div>
                 </div>
                 <div class="container p-1">
@@ -216,10 +394,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                 </div>
                 <div class="container p-1">
                   <div class="row">
-                    
-                    <div class="col-4">
-                     
-                    </div>
+                    <div class="col-4"></div>
                   </div>
                 </div>
               </div>
@@ -228,132 +403,131 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
         </div>
 
         <!-- accordion -->
-        <div class="col-auto ">
-
-
-  <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button
-        class="accordion-button"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseOne"
-                aria-expanded="true"
-                aria-controls="collapseOne"
+        <div class="col-auto">
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
                 >
-                <span>Personal data</span>
-              </button>
-            </h2>
-            <div
-            id="collapseOne"
-            class="accordion-collapse collapse show"
-            data-bs-parent="#accordionExample"
-            >
-            <div class="accordion-body bgtest">
-                <form>
-                  <div class=" container p-1">
-                    <div class="row">
-                      <div class="col-4">
-                        <label for="birth" class="col-form-label fw-bold">
-                          Birth:
-                        </label>
-                      </div>
-                      <div class="col-8">
-                        <input type="date" class="form-control" id="birth" v-model="cane.birth" />
-                      </div>
-                    </div>
+                  <span>Personal data</span>
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body bgtest">
+                  <form>
                     <div class="container p-1">
                       <div class="row">
                         <div class="col-4">
-                          <label for="razza" class="col-form-label fw-bold">Kind</label>
+                          <label for="birth" class="col-form-label fw-bold"> Birth: </label>
                         </div>
                         <div class="col-8">
-                          <input type="text" class="form-control" id="razza" v-model="cane.razza" />
+                          <input type="date" class="form-control" id="birth" v-model="cane.birth" />
                         </div>
                       </div>
-                    </div>
-                    <div class="container p-1">
-                      <div class="row">
-                        <div class="col-4">
-                          <label for="taglia" class="col-form-label fw-bold">Size</label>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="razza" class="col-form-label fw-bold">Kind</label>
+                          </div>
+                          <div class="col-8">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="razza"
+                              v-model="cane.razza"
+                            />
+                          </div>
                         </div>
-                        <div class="col-8">
-                          <input
-                          type="text"
-                          class="form-control"
-                          id="carattere"
-                          v-model="cane.taglia"
-                          />
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="taglia" class="col-form-label fw-bold">Size</label>
+                          </div>
+                          <div class="col-8">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="carattere"
+                              v-model="cane.taglia"
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="container p-1">
-                      <div class="row">
-                        <div class="col-4">
-                          <label for="sesso" class="col-form-label fw-bold">Sex</label>
-                      </div>
-                      
-                      <div class="col-8">
-                        <input
-                        type="text"
-                        class="form-control"
-                        id="carattere"
-                        v-model="cane.sesso"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  
-                    <div class="row">
-                      <div class="col-4"></div>
-                      
-                      <div class="col-4"></div>
-                    </div>
-                    <div class="container p-1">
-                      <div class="row">
-                      <div class="col-4">
-                        <label for="mantello" class="col-form-label fw-bold">Coat</label>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="sesso" class="col-form-label fw-bold">Sex</label>
+                          </div>
+
+                          <div class="col-8">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="carattere"
+                              v-model="cane.sesso"
+                            />
+                          </div>
+                        </div>
                       </div>
 
-                      <div class="col-8">
-                        <input
-                        type="text"
-                        class="form-control"
-                        id="carattere"
-                        v-model="cane.mantello"
-                        />
+                      <div class="row">
+                        <div class="col-4"></div>
+
+                        <div class="col-4"></div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="mantello" class="col-form-label fw-bold">Coat</label>
+                          </div>
+
+                          <div class="col-8">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="carattere"
+                              v-model="cane.mantello"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="chip" class="form-label fw-bold">Chip</label>
+                          </div>
+
+                          <div class="col-8">
+                            <input type="text" class="form-control" id="chip" v-model="cane.chip" />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="container p-1">
-                    <div class="row">
-                      <div class="col-4">
-                        <label for="chip" class="form-label fw-bold">Chip</label>
-                      </div>
-                      
-                      <div class="col-8">
-                        <input type="text" class="form-control" id="chip" v-model="cane.chip" />
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-                  
-  
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-  
-      <!-- accordion -->
-      
-      <div class="col-auto">
+
         <!-- accordion -->
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
+
+        <div class="col-auto">
+          <!-- accordion -->
+          <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
                 <button
                   class="accordion-button"
                   type="button"
@@ -362,7 +536,6 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                   aria-expanded="true"
                   aria-controls="collapseTwo"
                 >
-  
                   <span>Health data</span>
                 </button>
               </h2>
@@ -375,7 +548,9 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                       <div class="container p-1">
                         <div class="row">
                           <div class="col-4">
-                            <label for="sterilizzazione" class="col-form-label fw-bold">Neutering</label>
+                            <label for="sterilizzazione" class="col-form-label fw-bold"
+                              >Neutering</label
+                            >
                           </div>
                           <div class="col-8">
                             <input
@@ -405,7 +580,9 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
                       <div class="container p-1">
                         <div class="row">
                           <div class="col-4">
-                            <label for="patologie" class="col-form-label fw-bold">Pathologies</label>
+                            <label for="patologie" class="col-form-label fw-bold"
+                              >Pathologies</label
+                            >
                           </div>
                           <div class="col-8">
                             <input
@@ -435,6 +612,13 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
 
                       <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
                         Save
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-3"
+                        @click.prevent="printToPdf()"
+                      >
+                        print
                       </button>
                     </form>
                   </div>
@@ -504,3 +688,4 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", en
     </div>
   </main>
 </template>
+<script></script>
