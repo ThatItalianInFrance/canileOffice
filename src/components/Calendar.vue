@@ -4,6 +4,7 @@ import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import listPlugin from '@fullcalendar/list'
 import { INITIAL_EVENTS, createEventId } from '../utils/event-utils'
 
 export default defineComponent({
@@ -16,12 +17,18 @@ export default defineComponent({
     plugins: [
      dayGridPlugin,
      timeGridPlugin,
-     interactionPlugin // needed for dateClick
+     interactionPlugin,
+     listPlugin// needed for dateClick
     ],
     headerToolbar: {
-     left: 'prev,next today',
-     center: 'title',
-     right: 'dayGridMonth,timeGridWeek,timeGridDay'
+     // left: 'prev today next',
+
+     // center: 'title',
+     // right: 'dayGridMonth, timeGridWeek, timeGridDay, list'
+     left: 'title',
+     center: 'dayGridMonth, timeGridWeek, timeGridDay, list',
+
+     right: 'prev today next'
     },
     initialView: 'dayGridMonth',
     initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
