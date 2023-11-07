@@ -44,34 +44,38 @@ console.log(dogs.value)
       <thead class="thead-dark">
         <tr>
           <th scope="col">Name</th>
+          <th scope="col">Chip</th>
+          <th scope="col">Biter</th>
+          <th scope="col">Breed</th>
           <th scope="col">Size</th>
+          <th scope="col">Sex</th>
           <th scope="col">Character</th>
           <th scope="col">Age / birth</th>
-          <th scope="col">Date Added</th>
+          <th scope="col">Health Issues</th>
+          <th scope="col">Alive</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="dog in dogs" :key="dog.id">
           <td><router-link :to="{ path: '/cani/edit/' + dog.id }">{{ dog.nome }}</router-link></td>
-          <td>{{ dog.email }}</td>
-          <td>Administrator</td>
-          <td class="status-active">Active</td>
-          <td>2023-08-01</td>
+          
+          <td>{{ dog.chip }}</td>
+          <td :class="dog.morsicatore === 'yes' ? 'status-inactive' : 'status-active'">
+            {{ dog.morsicatore }}
+</td>
+
+
+
+          <td>{{ dog.razza }}</td>
+          <td>{{ dog.taglia }}</td>
+          <td>{{ dog.sesso }}</td>
+          <td>{{ dog.carattere }}</td>
+          <td>{{ dog.birth }}</td>
+          <td>{{ dog.patologie }}</td>
+          <td class="status-active">{{ dog.alive }}</td>
+          
         </tr>
-        <tr>
-          <td>John Smith</td>
-          <td>john.smith@example.com</td>
-          <td>User</td>
-          <td class="status-pending">Pending</td>
-          <td>2023-07-15</td>
-        </tr>
-        <tr>
-          <td>Emily Johnson</td>
-          <td>emily.johnson@example.com</td>
-          <td>Editor</td>
-          <td class="status-inactive">Inactive</td>
-          <td>2023-06-20</td>
-        </tr>
+
         <!-- Additional rows as needed -->
       </tbody>
     </table>

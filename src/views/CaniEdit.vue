@@ -160,7 +160,19 @@ let printToPdf = async function () {
     hsla(333, 73%, 85%, 1) 50%,
     hsla(211, 58%, 79%, 1) 100%
   );
+  background: linear-gradient(
+    90deg,
+    hsla(141, 54%, 86%, 1) 0%,
+    hsla(333, 73%, 85%, 1) 50%,
+    hsla(211, 58%, 79%, 1) 100%
+  );
 
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(141, 54%, 86%, 1) 0%,
+    hsla(333, 73%, 85%, 1) 50%,
+    hsla(211, 58%, 79%, 1) 100%
+  );
   background: -moz-linear-gradient(
     90deg,
     hsla(141, 54%, 86%, 1) 0%,
@@ -174,7 +186,14 @@ let printToPdf = async function () {
     hsla(333, 73%, 85%, 1) 50%,
     hsla(211, 58%, 79%, 1) 100%
   );
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(141, 54%, 86%, 1) 0%,
+    hsla(333, 73%, 85%, 1) 50%,
+    hsla(211, 58%, 79%, 1) 100%
+  );
 
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1 );
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1 );
 }
 /* * {
@@ -206,6 +225,40 @@ let printToPdf = async function () {
 </style>
 
 <template>
+  <section id="new_card">
+    <div class="container-fluid my-3">
+      <div class="card">
+        <div class="row">
+          <div class="col-4 m-auto my-4">
+            <div class="card shadow p-4">
+
+              <div class="image-container shadow m-auto mb-3" width="">
+                <img
+                v-if="cane.hasImg"
+                id="thumbnail"
+                :src="getImageUrl(cane.id)"
+                class="img circular-image"
+                width=""
+                style=""
+                />
+            </div>
+            <div class="text-center">
+
+              <h1 class="m-auto">{{ cane.nome }}</h1>
+              <small class="small">I'm born on</small>
+              <h5 class="m-auto">{{ cane.birth }}</h5>
+              <small> My character is </small>
+              <h4 class="m-auto">{{ cane.carattere }}</h4>
+              <p v-if="cane.morsicatore === 'yes'">I can bite and show aggressiveness</p>
+              <p v-else>I don't usually bite unless provoked</p>
+            </div>
+          </div>
+          </div>
+          <div class="col-6"></div>
+        </div>
+      </div>
+    </div>
+  </section>
   <main class="bgbody vh-100">
     <div class="container-fluid">
       <button type="button" class="btn btn-primary mt-3" @click="printToPdf()">print</button>
