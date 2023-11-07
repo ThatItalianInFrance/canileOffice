@@ -36,10 +36,10 @@ function onChangeImage(evt) {
       newImage.style = 'max-height: 500px; max-width:500px'
       // document.getElementById('thumbnail').src = getImageUrl(dog.id)
       document.getElementById('thumbnail').src = base64Image
+      document.getElementById('thumbpdf').src = base64Image
       // document.getElementById('thumbnail').innerHTML = newImage.innerHTML
-      document.getElementById('thumbnail').innerHTML = newImage.outerHTML
+      document.getElementById('thumbpdf').innerHTML = newImage.outerHTML
       // document.getElementById('thumbpdf').innerHTML = newImage.outerHTML
-
       console.log(base64Image)
       // console.log(fileReader.readAsDataURL(imageFile));
     }
@@ -111,126 +111,41 @@ let saveCane = async function () {
   // router.push({ path: '/listacani' })
 }
 
-// let printToPdf = function () {
-
-//   // Ensure this is called when the DOM is fully loaded, e.g., in mounted() or after a specific event
-//   // const element = document.getElementById('element-to-print')
-//   const element = document.getElementsByTagName('body')
-//   if (element && element.offsetHeight > 0) {
-//     console.log('Element is ready to print', element)
-//     html2pdf(element)
-//   } else {
-//     console.log('Element is not ready to print. Height is 0 or element does not exist', element)
-//     // Optionally, retry after some time or after certain conditions are met
-//   }
-// }
-
-// let printToPdf = function () {
-//   // Wait for Vue to finish updating the DOM
-//   this.$nextTick(() => {
-//     // In Vue 3, you can access the body using the `document.body` directly
-//     let element = document.body;
-//     if (element) {
-//       console.log('The whole document body is ready to print', element);
-//       // Pass the entire body element and options to html2pdf
-//       html2pdf().set(opt).from(element).save();
-//     } else {
-//       console.log('The document body is not ready to print');
-//       // Optionally, handle the situation when the body isn't available
-//     }
-//   });
-// };
-
-// let printToPdf = async function () {
-//   // document.getElementById('thumbnail').innerHTML = document.getElementById('thumbpdf').innerHTML
-//   const newImage = document.createElement('img')
-//       newImage.src = document.getElementById('thumbnail').src
-//       newImage.style = 'max-height: 500px; max-width:500px'
-//       // document.getElementById('thumbnail').src = getImageUrl(dog.id)
-//       document.querySelectorAll('img').src = base64Image
-//       // document.getElementById('thumbnail').innerHTML = newImage.innerHTML
-//       document.querySelectorAll('img').innerHTML = newImage.outerHTML
- 
-//   await nextTick() // Wait for the next DOM update cycle
-//   const element = document.getElementById('element-to-print')
-
-//   // let element = document.body; // Target the body element to print the whole page
-//   if (element) {
-//     const opt = {
-//   // ... other options ...
-//   html2canvas: {
-//     useCORS: true,
-//     // ... other html2canvas options ...
-//   },
-//   // ... other options ...
-// };
-//     console.log('The whole document body is ready to print', element)
-//     html2pdf()
-//       .set(opt)
-//       .from(element)
-//       .toPdf()
-//       .get('pdf')
-//       .then(function (pdf) {
-//         window.open(pdf.output('bloburl')) // Open the PDF in a new window/tab
-//       })
-//   } else {
-//     console.log('The document body is not ready to print')
-//   }
-// }
 const opt = {
   // ... other options ...
   html2canvas: {
     useCORS: true,
+    // allowTaint: false,
+    proxy: 'http://localhost:8000/'
     // ... other html2canvas options ...
-  },
+  }
   // ... other options ...
-};
-
+}
 
 let printToPdf = async function () {
   await nextTick(); // Wait for the next DOM update cycle
-  
+  base64Image = document.getElementById('thumbnail').src
+  const newImage = document.createElement('img')
+  newImage.src = base64Image
+  newImage.style = 'max-height: 500px; max-width:500px'
+  document.getElementById('thumbnail').innerHTML = newImage.outerHTML
 
-
-  const element = document.getElementById('element-to-print');
+  const element = document.getElementById('element-to-print')
   if (element) {
-    console.log('Element is ready to print', element);
-    html2pdf().set(opt).from(element).toPdf().get('pdf').then(function (pdf) {
-      window.open(pdf.output('bloburl')); // Open the PDF in a new window/tab
-    });
+    console.log('Element is ready to print', element)
+    html2pdf()
+      .set(opt)
+      .from(element)
+      .toPdf()
+      .get('pdf')
+      .then(function (pdf) {
+        window.open(pdf.output('bloburl')) // Open the PDF in a new window/tab
+      })
   } else {
-    console.log('Element is not ready to print');
+    console.log('Element is not ready to print')
   }
-};
+}
 
-// let printToPdf = async function () {
-//   await nextTick(); // Wait for the next DOM update cycle
-//   const element = document.body; // Target the whole body
-
-//   // Function to check if all images are loaded
-//   const allImagesLoaded = Array.from(document.images).every((img) => img.complete);
-
-//   if (element && allImagesLoaded) {
-//     console.log('The whole document body is ready to print', element);
-
-//     // Set html2pdf options, including html2canvas options
-//     const options = {
-//       ...opt,
-//       html2canvas: {
-//         ...opt.html2canvas,
-//         // useCORS: true // Important if you have images from other domains
-//       }
-//     };
-
-//     // Generate the PDF
-//     html2pdf().set(options).from(element).toPdf().get('pdf').then(function (pdf) {
-//       window.open(pdf.output('bloburl')); // Open the PDF in a new window/tab
-//     });
-//   } else {
-//     console.log('The document body is not ready to print or images are not loaded');
-//     // Optionally, implement a retry mechanism or a user notification
-//   }
-// };
 </script>
 <style scoped>
 .bgbody {
@@ -291,36 +206,9 @@ let printToPdf = async function () {
 </style>
 
 <template>
-  <div class="container">
-    <div class="card" id="element-to-print">
-      Dog Details Card
-      <p>{{ cane.nome }}</p>
-      <div class="container">
-        <div class="row">
-          <div class="col-6">
-            col6
-          </div>
-          <div class="col-6">
-col6
-          </div>
-        </div>
-      </div>
-      <img
-        v-if="cane.hasImg"
-        id="thumbnail"
-        :src="getImageUrl(cane.id)"
-        class="img circular-image"
-        width=""
-        style=""
-      />
-    </div>
-  </div>
-
   <main class="bgbody vh-100">
     <div class="container-fluid">
-      <button type="button" class="btn btn-primary mt-3" @click.prevent="printToPdf()">
-        print
-      </button>
+      <button type="button" class="btn btn-primary mt-3" @click="printToPdf()">print</button>
       <div class="row">
         <div class="col-auto">
           <form>
@@ -613,13 +501,7 @@ col6
                       <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
                         Save
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary mt-3"
-                        @click.prevent="printToPdf()"
-                      >
-                        print
-                      </button>
+
                     </form>
                   </div>
                 </div>
@@ -687,5 +569,81 @@ col6
       </div>
     </div>
   </main>
+  <div class="container ">
+    <div class="card p-5" id="element-to-print">
+      <h1 class="fw-bold">Dog Details Card</h1>
+      <div class="container">
+        <br />
+        <div class="row">
+          <div class="col-6">
+            <!-- Left column for dog details -->
+            <div class="image-container shadow mb-3" width="">
+              <img
+                
+                id="thumbpdf"
+                :src="getImageUrl(cane.id)"
+                class="img circular-image"
+                width=""
+                style=""
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Name:</label>
+              <p id="dogName">{{ cane.nome }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Character:</label>
+              <p id="dogChar">{{ cane.carattere }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Breed:</label>
+              <p id="dogBreed">{{ cane.razza }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Age:</label>
+              <p id="dogAge">{{ cane.birth }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Sex:</label>
+              <p id="dogSex">{{ cane.sesso }}</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <!-- Right column for additional details -->
+            <div class=" shadow mb-3" width="">
+                <img
+                  v-if="cane.hasImg"
+                  id="thumbnail"
+                  src=https://placehold.co/300
+                  class=""
+                  width=""
+                  style=""
+                />
+              </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Color:</label>
+              <p id="dogColor">{{ cane.mantello }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Microchip Number:</label>
+              <p id="dogMicrochip">{{ cane.chip }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Health issues:</label>
+              <p id="dogMicrochip">{{ cane.patologie }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Neutered</label>
+              <p id="dogVaccinations">{{ cane.sterilizzazione }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Additional Notes:</label>
+              <p id="dogNotes">[Additional Notes or Medical History]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script></script>
