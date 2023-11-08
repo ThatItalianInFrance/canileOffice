@@ -3,7 +3,6 @@
 import { ref, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import { getUserToken } from '/utils'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // let check = JSON.parse(localStorage.getItem('user'))
