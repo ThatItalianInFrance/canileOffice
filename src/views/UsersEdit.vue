@@ -6,16 +6,16 @@ const router = useRouter()
 const route = useRoute()
 let id = route.params.id
 
-let base64Image = ''
+let base64Image = ref()
 function onChangeImage(evt) {
   const selectedfile = evt.target.files
   if (selectedfile.length > 0) {
     const [imageFile] = selectedfile
     const fileReader = new FileReader()
     fileReader.onload = () => {
-      base64Image = fileReader.result
+      base64Image.value = fileReader.result
       const newImage = document.createElement('img')
-      newImage.src = base64Image
+      newImage.src = base64Image.value
       newImage.style = 'max-height: 500px; max-width:500px'
       document.getElementById('thumbnail').innerHTML = newImage.outerHTML
 
@@ -39,18 +39,6 @@ let user = ref({
   morsicatore: ''
 })
 
-// function format(date) {
-//   if (!(date instanceof Date)) {
-//     throw new Error('Invalid "date" argument. You must pass a date instance')
-//   }
-
-//   const year = date.getFullYear()
-//   const month = String(date.getMonth() + 1).padStart(2, '0')
-//   const day = String(date.getDate()).padStart(2, '0')
-//   console.log(`${year}-${month}-${day}`);
-//   return `${year}-${month}-${day}`
-// }
-
 let loadUser = async function (id) {
   if (id == 0) {
     console.log('id 0')
@@ -66,7 +54,7 @@ function getImageUrl(id) {
 }
 
 let saveUser = async function () {
-  if (base64Image != '') user.value.image = base64Image
+  if (base64Image.value != '') user.value.image = base64Image
   if (id == 0) {
     await fetch(`${import.meta.env.VITE_SERVER}/office/user`, {
       method: 'POST',
@@ -93,55 +81,125 @@ let saveUser = async function () {
 
 <template>
   <main>
-    <div class="container">
-      <div class="row my-3">
-        <div class="col-lg-6">
-          <h1>Scheda user</h1>
-          <form>
-            <button type="button" class="btn btn-primary mt-3" @click.prevent="saveUser">
-              Enregistrer
-            </button>
-            <div class="mb-3">
-              <label for="id" class="form-label">Id user</label>
-              <input type="text" class="form-control" id="id" v-model="user.id" />
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="card shadow">
+            <div class="card-body">
+              <h1 class="card-title text-center mb-4">Edit User</h1>
+              <div class="row">
+                <div class="col-6">
+                  <form @submit.prevent="saveUser">
+                    <div class="mb-3">
+                      <label for="username" class="form-label">User Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        v-model="user.username"
+                        placeholder="Enter user name"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        v-model="user.email"
+                        placeholder="Enter email"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="tipo" class="form-label">role</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="tipo"
+                        v-model="user.tipo"
+                        placeholder="Enter type"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        v-model="user.password"
+                        placeholder="Enter password"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="image" class="form-label">Profile Image (.jpg only)</label>
+                      <input type="file" class="form-control" id="image" @change="onChangeImage" />
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-6">
+                  <div class="mx-auto my-5">
+                    <div id="thumbnail" class="text-center">
+                      <img
+                        v-if="base64Image"
+                        :src="base64Image"
+                        style="max-height: 500px; max-width: 500px"
+                        class="img-thumbnail"
+                      />
+                      <img
+                        v-else
+                        src="https://placehold.co/200"
+                        alt="Placeholder"
+                        style="max-height: 500px; max-width: 500px"
+                        class="img-thumbnail rounded-circle"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="username" class="form-label">Nome user</label>
-              <input type="text" class="form-control" id="username" v-model="user.username" />
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">email</label>
-              <input type="text" class="form-control" id="email" v-model="user.email" />
-            </div>
-
-            <div class="mb-3">
-              <label for="tipo" class="form-label">tipo</label>
-              <input type="text" class="form-control" id="tipo" v-model="user.tipo" />
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">password</label>
-              <input type="text" class="form-control" id="password" v-model="user.password" />
-            </div>
-
-
-            <div class="mb-3">
-              <label for="image" class="form-label">Image (.jpg seulement)</label>
-              <input type="file" class="form-control" id="image" @change="onChangeImage" />
-            </div>
-          </form>
-        </div>
-        <div class="col-lg-6 my-5">
-          <div id="thumbnail"></div>
-          <td>
-            <img
-              v-if="user.hasImg"
-              :src="getImageUrl(user)"
-              style="max-height: 500px; max-width: 500px"
-            />
-          </td>
-          <!-- <img src="https://placedog.net/500/500" alt="" /> -->
+            <div class="card-footer text-muted text-center">User ID: {{ user.id }}</div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 </template>
+
+<style scoped>
+/* Additional custom styles if needed */
+.card {
+  background: #fff;
+  border-radius: 10px;
+}
+
+.form-control {
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #004085;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.card-footer {
+  font-size: 0.8rem;
+}
+
+/* To make the image preview rounded */
+#thumbnail img {
+  max-height: 300px;
+  max-width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+</style>

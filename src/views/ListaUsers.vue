@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router'
 // console.log(check.token)
 
 // ref must be used for responsive data - use .value to assign or read
-let products = ref([])
+let users = ref([])
 
 let loadProducts = function () {
   // check = JSON.parse(localStorage.getItem('user'))
@@ -24,50 +24,99 @@ let loadProducts = function () {
     .then(function (response) {
       return response.json()
     })
-    .then(function (users) {
-      products.value = users.data
-      console.log(products.value)
+    .then(function (foo) {
+      users.value = foo.data
+      console.log(users.value)
       // console.log(cani)
     })
 }
 
 loadProducts()
-console.log(products.value)
+console.log(users.value)
 </script>
 
 <template>
-  <main class="container-fluid my-4">
-    <h3>Lista Utenti</h3>
-
-    <table class="table">
-      <thead>
+ 
+  <div class="card p-4 shadow">
+    <div class="d-flex justify-content-between">
+      <div class="">
+        <h3 class="fw-bold">User List</h3>
+        <p>Overview of registered users</p>
+      </div>
+      <div class="my-auto">
+        <button class="btn btn-outline-secondary mx-2" type="button">...</button>
+        <button class="btn btn-outline-secondary">All users</button>
+      </div>
+    </div>
+    
+    <table class="table table-hover">
+      <thead class="thead-dark">
         <tr>
-          <th scope="col">Id</th>
-          <th scope="col">User name</th>
-          <th scope="col">email</th>
-          <th scope="col">tipo</th>
-       
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th scope="col">Status</th>
+          <th scope="col">Date Added</th>
         </tr>
       </thead>
-      <tbody class="table-group-divider">
-        <tr v-for="product in products" :key="product.id">
-          <th scope="row">{{ product.id }}</th>
-          <td> <router-link :to="{ path: '/users/edit/' + product.id }">{{ product.username }}</router-link>
-          </td>
-          <td>{{ product.email }}</td>
-          <td>{{ product.tipo }}</td>
-
+      <tbody>
+        <tr v-for="user in users" :key="user.id">
+          <td><router-link :to="{ path: '/users/edit/' + user.id }">{{ user.username }}</router-link></td>
+          <td>{{ user.email }}</td>
+          <td>Administrator</td>
+          <td class="status-active">Active</td>
+          <td>2023-08-01</td>
         </tr>
-
+        <tr>
+          <td>John Smith</td>
+          <td>john.smith@example.com</td>
+          <td>User</td>
+          <td class="status-pending">Pending</td>
+          <td>2023-07-15</td>
+        </tr>
+        <tr>
+          <td>Emily Johnson</td>
+          <td>emily.johnson@example.com</td>
+          <td>Editor</td>
+          <td class="status-inactive">Inactive</td>
+          <td>2023-06-20</td>
+        </tr>
+        <!-- Additional rows as needed -->
       </tbody>
     </table>
+  </div>
 
-  </main>
 
-  <section>
-    
-  </section>
+
+
 
 
 </template>
 <script></script>
+<style scoped>
+/* Custom styles for the user list table */
+.table-hover tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.thead-dark th {
+  background-color: #343a40;
+  color: #fff;
+}
+
+/* Define or redefine status classes as needed */
+.status-active {
+  font-weight: bold;
+  color: #5cb85c; /* Bootstrap 'success' color */
+}
+
+.status-pending {
+  font-weight: bold;
+  color: #f0ad4e; /* Bootstrap 'warning' color */
+}
+
+.status-inactive {
+  font-weight: bold;
+  color: #d9534f; /* Bootstrap 'danger' color */
+}
+</style>

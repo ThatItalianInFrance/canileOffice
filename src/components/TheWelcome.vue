@@ -1,4 +1,6 @@
 <script setup>
+import OccupItem from './OccupItem.vue'
+import RemindersItem from './RemindersItem.vue'
 import WelcomeItem from './WelcomeItem.vue'
 import DocumentationIcon from './icons/IconDocumentation.vue'
 import ToolingIcon from './icons/IconTooling.vue'
@@ -8,11 +10,34 @@ import SupportIcon from './icons/IconSupport.vue'
 </script>
 
 <template>
-
   <WelcomeItem>
     <template #icon>
       <DocumentationIcon />
     </template>
+
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-6">
+          <OccupItem />
+        </div>
+        <div class="col-6">
+          <div class="card p-3">
+            <h5>Food in stock:</h5>
+            <small>100</small>
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row my-3">
+        <div class="col-12">
+          
+            <RemindersItem />
+
+          
+        </div>
+      </div>
+    </div>
+
     <template #heading>Documentation</template>
 
     Vue’s
