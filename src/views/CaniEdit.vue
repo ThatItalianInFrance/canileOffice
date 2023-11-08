@@ -1,23 +1,8 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getUserToken } from '/utils'
-import { onMounted, nextTick } from 'vue'
+// import { getUserToken } from '/utils'
 import html2pdf from 'html2pdf.js'
-
-// var opt = {
-//   margin: 1,
-//   filename: 'myfile.pdf',
-//   image: { type: 'jpeg', quality: 0.98 },
-//   html2canvas: { scale: 1 },
-//   jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-// }
-
-// mounted() {
-//   console.log("mounted");
-//   // If you want to generate PDF as soon as the component mounts
-//   this.printToPdf();
-// }
 
 const router = useRouter()
 const route = useRoute()
@@ -35,10 +20,10 @@ function onChangeImage(evt) {
       newImage.src = base64Image
       newImage.style = 'max-height: 500px; max-width:500px'
       // document.getElementById('thumbnail').src = getImageUrl(dog.id)
-      document.getElementById('thumbnail').src = base64Image
       document.getElementById('thumbpdf').src = base64Image
+      document.getElementById('thumbnail').src = base64Image
       // document.getElementById('thumbnail').innerHTML = newImage.innerHTML
-      document.getElementById('thumbpdf').innerHTML = newImage.outerHTML
+      // document.getElementById('thumbpdf').innerHTML = newImage.outerHTML
       // document.getElementById('thumbpdf').innerHTML = newImage.outerHTML
       console.log(base64Image)
       // console.log(fileReader.readAsDataURL(imageFile));
@@ -59,18 +44,7 @@ let cane = ref({
   image: '',
   morsicatore: ''
 })
-
-// function format(date) {
-//   if (!(date instanceof Date)) {
-//     throw new Error('Invalid "date" argument. You must pass a date instance')
-//   }
-
-//   const year = date.getFullYear()
-//   const month = String(date.getMonth() + 1).padStart(2, '0')
-//   const day = String(date.getDate()).padStart(2, '0')
-//   console.log(`${year}-${month}-${day}`);
-//   return `${year}-${month}-${day}`
-// }
+let kind = ref({})
 
 let loadCane = async function (id) {
   if (id == 0) {
@@ -81,6 +55,20 @@ let loadCane = async function (id) {
   let json = await response.json()
   cane.value = json.data
 }
+
+let loadKind = async function (id) {
+  if (id == 0) {
+    console.log('id 0')
+    return
+  }
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/kind/`) // par défaut, fetch() fait une requête GET
+  let json = await response.json()
+  console.log(json.data)
+  kind.value = json.data
+  console.log(kind.value)
+}
+loadKind(id)
+console.log(kind)
 loadCane(id)
 function getImageUrl(id) {
   return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
@@ -116,19 +104,22 @@ const opt = {
   html2canvas: {
     useCORS: true,
     // allowTaint: false,
-    proxy: 'http://localhost:8000/'
+    // proxy: 'http://localhost:8000/'
     // ... other html2canvas options ...
   }
   // ... other options ...
 }
 
 let printToPdf = async function () {
-  await nextTick(); // Wait for the next DOM update cycle
-  base64Image = document.getElementById('thumbnail').src
-  const newImage = document.createElement('img')
-  newImage.src = base64Image
-  newImage.style = 'max-height: 500px; max-width:500px'
-  document.getElementById('thumbnail').innerHTML = newImage.outerHTML
+  await nextTick() // Wait for the next DOM update cycle
+  let img;
+  // update URLs to load cached cross-originated images
+  for (img of document.getElementsByClassName('image-to-replace')) {
+    img.style.backgroundImage = img.style.backgroundImage.replace(
+      '?placeholder=',
+      '?withheaders=yes'
+    )
+  }
 
   const element = document.getElementById('element-to-print')
   if (element) {
@@ -145,7 +136,6 @@ let printToPdf = async function () {
     console.log('Element is not ready to print')
   }
 }
-
 </script>
 <style scoped>
 .bgbody {
@@ -225,40 +215,6 @@ let printToPdf = async function () {
 </style>
 
 <template>
-  <section id="new_card">
-    <div class="container-fluid my-3">
-      <div class="card">
-        <div class="row">
-          <div class="col-4 m-auto my-4">
-            <div class="card shadow p-4">
-
-              <div class="image-container shadow m-auto mb-3" width="">
-                <img
-                v-if="cane.hasImg"
-                id="thumbnail"
-                :src="getImageUrl(cane.id)"
-                class="img circular-image"
-                width=""
-                style=""
-                />
-            </div>
-            <div class="text-center">
-
-              <h1 class="m-auto">{{ cane.nome }}</h1>
-              <small class="small">I'm born on</small>
-              <h5 class="m-auto">{{ cane.birth }}</h5>
-              <small> My character is </small>
-              <h4 class="m-auto">{{ cane.carattere }}</h4>
-              <p v-if="cane.morsicatore === 'yes'">I can bite and show aggressiveness</p>
-              <p v-else>I don't usually bite unless provoked</p>
-            </div>
-          </div>
-          </div>
-          <div class="col-6"></div>
-        </div>
-      </div>
-    </div>
-  </section>
   <main class="bgbody vh-100">
     <div class="container-fluid">
       <button type="button" class="btn btn-primary mt-3" @click="printToPdf()">print</button>
@@ -275,7 +231,7 @@ let printToPdf = async function () {
                         v-if="cane.hasImg"
                         id="thumbnail"
                         :src="getImageUrl(cane.id)"
-                        class="img circular-image"
+                        class="img circular-image image-to-download"
                         width=""
                         style=""
                       />
@@ -345,26 +301,13 @@ let printToPdf = async function () {
 
         <!-- accordion -->
         <div class="col-auto">
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  <span>Personal data</span>
-                </button>
+          <div class="" id="accordionExample">
+            <div class="item">
+              <h2 class="header">
+                <span>Personal data</span>
               </h2>
-              <div
-                id="collapseOne"
-                class="accordion-collapse collapse show"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="accordion-body bgtest">
+              <div>
+                <div class="">
                   <form>
                     <div class="container p-1">
                       <div class="row">
@@ -381,12 +324,11 @@ let printToPdf = async function () {
                             <label for="razza" class="col-form-label fw-bold">Kind</label>
                           </div>
                           <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="razza"
-                              v-model="cane.razza"
-                            />
+                            <select class="form-control" name="kind" v-model="cane.kind">
+                              <option v-for="item in kind" :key="item.id" :value="item.id">
+                                {{ item.kind }}
+                              </option>
+                            </select>
                           </div>
                         </div>
                       </div>
@@ -412,12 +354,30 @@ let printToPdf = async function () {
                           </div>
 
                           <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="carattere"
-                              v-model="cane.sesso"
-                            />
+                            <div class="d-flex mt-2">
+                              <div class="form-check mx-2 my-auto">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="sesso"
+                                  id="maleRadio"
+                                  value="Male"
+                                  v-model="cane.sesso"
+                                />
+                                <label class="form-check-label" for="maleRadio"> Male </label>
+                              </div>
+                              <div class="form-check form-check mx-2 my-auto">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="sesso"
+                                  id="femaleRadio"
+                                  value="Female"
+                                  v-model="cane.sesso"
+                                />
+                                <label class="form-check-label" for="femaleRadio"> Female </label>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -554,7 +514,6 @@ let printToPdf = async function () {
                       <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
                         Save
                       </button>
-
                     </form>
                   </div>
                 </div>
@@ -631,14 +590,18 @@ let printToPdf = async function () {
           <div class="col-6">
             <!-- Left column for dog details -->
             <div class="image-container shadow mb-3" width="">
-              <img
-                
-                id="thumbpdf"
-                :src="getImageUrl(cane.id)"
-                class="img circular-image"
-                width=""
-                style=""
-              />
+              <div
+                class="image-to-replace "
+                style="background-image:'http://localhost:8000/1.jpg?placeholder='"
+              >
+                <img
+                  alt=""
+                  style=""
+                  :src="getImageUrl(cane.id)"
+                  
+                  id = "thumbpdf"
+                />
+              </div>
             </div>
             <div class="mb-3">
               <label class="form-label" style="font-weight: bold">Name:</label>
@@ -663,16 +626,16 @@ let printToPdf = async function () {
           </div>
           <div class="col-6">
             <!-- Right column for additional details -->
-            <div class=" shadow mb-3" width="">
-                <img
-                  v-if="cane.hasImg"
-                  id="thumbnail"
-                  src=https://placehold.co/300
-                  class=""
-                  width=""
-                  style=""
-                />
-              </div>
+            <div class="shadow mb-3" width="">
+              <img
+                v-if="cane.hasImg"
+                id="thumbnail"
+                src="https://placehold.co/300"
+                class=""
+                width=""
+                style=""
+              />
+            </div>
             <div class="mb-3">
               <label class="form-label" style="font-weight: bold">Color:</label>
               <p id="dogColor">{{ cane.mantello }}</p>
@@ -697,6 +660,38 @@ let printToPdf = async function () {
         </div>
       </div>
     </div>
+    <section id="new_card">
+      <div class="container-fluid my-3">
+        <div class="card">
+          <div class="row">
+            <div class="col-4 m-auto my-4">
+              <div class="card shadow p-4">
+                <div class="image-container shadow m-auto mb-3" width="">
+                  <img
+                    v-if="cane.hasImg"
+                    id="thumbnail"
+                    :src="getImageUrl(cane.id)"
+                    class="img circular-image"
+                    width=""
+                    style=""
+                  />
+                </div>
+                <div class="text-center">
+                  <h1 class="m-auto">{{ cane.nome }}</h1>
+                  <small class="small">I'm born on</small>
+                  <h5 class="m-auto">{{ cane.birth }}</h5>
+                  <small> My character is </small>
+                  <h4 class="m-auto">{{ cane.carattere }}</h4>
+                  <p v-if="cane.morsicatore === 'yes'">I can bite and show aggressiveness</p>
+                  <p v-else>I don't usually bite unless provoked</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6"></div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 <script></script>
