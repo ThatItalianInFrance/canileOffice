@@ -46,6 +46,8 @@ let cane = ref({
 })
 let kind = ref({})
 
+let shelter = ref({})
+
 let loadCane = async function (id) {
   if (id == 0) {
     console.log('id 0')
@@ -67,6 +69,21 @@ let loadKind = async function (id) {
   kind.value = json.data
   console.log(kind.value)
 }
+
+let loadBoxCani = async function (id) {
+  if (id == 0) {
+    console.log('id 0')
+    return
+  }
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`) // par défaut, fetch() fait une requête GET
+  let json = await response.json()
+  console.log(json.data)
+  shelter.value = json.data
+  console.log(kind.value)
+}
+
+loadBoxCani(id)
+console.log(shelter)
 loadKind(id)
 console.log(kind)
 loadCane(id)
@@ -555,7 +572,20 @@ let printToPdf = async function () {
                       type="date"
                       class="form-control"
                       id="neutering"
-                      v-model="cane.birth"
+                      v-model="shelter.date_in"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <label for="birth" class="col-form-label fw-bold"> Entry date </label>
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="neutering"
+                      v-model="shelter.date_in"
                     />
                   </div>
                 </div>
