@@ -299,7 +299,7 @@ let printToPdf = async function () {
           </form>
         </div>
 
-        <!-- accordion -->
+
         <div class="col-auto">
           <div class="" id="accordionExample">
             <div class="item">
@@ -343,6 +343,140 @@ let printToPdf = async function () {
                               class="form-control"
                               id="carattere"
                               v-model="cane.taglia"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="sesso" class="col-form-label fw-bold">Sex</label>
+                          </div>
+
+                          <div class="col-8">
+                            <div class="d-flex mt-2">
+                              <div class="form-check mx-2 my-auto">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="sesso"
+                                  id="maleRadio"
+                                  value="Male"
+                                  v-model="cane.sesso"
+                                />
+                                <label class="form-check-label" for="maleRadio"> Male </label>
+                              </div>
+                              <div class="form-check form-check mx-2 my-auto">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="sesso"
+                                  id="femaleRadio"
+                                  value="Female"
+                                  v-model="cane.sesso"
+                                />
+                                <label class="form-check-label" for="femaleRadio"> Female </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-4"></div>
+
+                        <div class="col-4"></div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="mantello" class="col-form-label fw-bold">Coat</label>
+                          </div>
+
+                          <div class="col-8">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="carattere"
+                              v-model="cane.mantello"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="chip" class="form-label fw-bold">Chip</label>
+                          </div>
+
+                          <div class="col-8">
+                            <input type="text" class="form-control" id="chip" v-model="cane.chip" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- HEaLTH data  -->
+        <div class="col-auto">
+          <div class="" id="accordionExample">
+            <div class="item"> 
+              <h2 class="header">
+                <span>Health Data</span>
+              </h2>
+              <div>
+                <div class="">
+                  <form>
+                    <div class="container p-1">
+                      <div class="row">
+                        <div class="col-4">
+                          <label for="birth" class="col-form-label fw-bold"> Neutering: </label>
+                        </div>
+                        <div class="col-8">
+                          <input type="text" class="form-control" id="neutering" v-model="cane.sterilizzazione" />
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="therapy" class="col-form-label fw-bold">Therapy</label>
+                          </div>
+                          <div class="col-8">
+                            <input type="text" class="form-control" id="neutering" v-model="cane.terapia" />
+                          
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="taglia" class="col-form-label fw-bold">Pathologies</label>
+                          </div>
+                          <div class="col-8">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="patologie"
+                              v-model="cane.patologie"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="taglia" class="col-form-label fw-bold">Food</label>
+                          </div>
+                          <div class="col-8">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="food"
+                              v-model="cane.kind"
                             />
                           </div>
                         </div>
