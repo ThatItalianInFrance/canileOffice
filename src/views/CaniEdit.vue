@@ -102,7 +102,7 @@ let saveCane = async function () {
 const opt = {
   // ... other options ...
   html2canvas: {
-    useCORS: true,
+    useCORS: true
     // allowTaint: false,
     // proxy: 'http://localhost:8000/'
     // ... other html2canvas options ...
@@ -112,7 +112,7 @@ const opt = {
 
 let printToPdf = async function () {
   await nextTick() // Wait for the next DOM update cycle
-  let img;
+  let img
   // update URLs to load cached cross-originated images
   for (img of document.getElementsByClassName('image-to-replace')) {
     img.style.backgroundImage = img.style.backgroundImage.replace(
@@ -217,7 +217,8 @@ let printToPdf = async function () {
 <template>
   <main class="bgbody vh-100">
     <div class="container-fluid">
-      <button type="button" class="btn btn-primary mt-3" @click="printToPdf()">print</button>
+      <button type="button" class="btn btn-primary mt-3" @click="printToPdf()">Print</button>
+      <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">Save</button>
       <div class="row">
         <div class="col-auto">
           <form>
@@ -298,7 +299,6 @@ let printToPdf = async function () {
             </div>
           </form>
         </div>
-
 
         <div class="col-auto">
           <div class="" id="accordionExample">
@@ -421,10 +421,10 @@ let printToPdf = async function () {
             </div>
           </div>
         </div>
-<!-- HEaLTH data  -->
+        <!-- HEaLTH data  -->
         <div class="col-auto">
           <div class="" id="accordionExample">
-            <div class="item"> 
+            <div class="item">
               <h2 class="header">
                 <span>Health Data</span>
               </h2>
@@ -437,7 +437,12 @@ let printToPdf = async function () {
                           <label for="birth" class="col-form-label fw-bold"> Neutering: </label>
                         </div>
                         <div class="col-8">
-                          <input type="text" class="form-control" id="neutering" v-model="cane.sterilizzazione" />
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="neutering"
+                            v-model="cane.sterilizzazione"
+                          />
                         </div>
                       </div>
                       <div class="container p-1">
@@ -446,8 +451,12 @@ let printToPdf = async function () {
                             <label for="therapy" class="col-form-label fw-bold">Therapy</label>
                           </div>
                           <div class="col-8">
-                            <input type="text" class="form-control" id="neutering" v-model="cane.terapia" />
-                          
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="neutering"
+                              v-model="cane.terapia"
+                            />
                           </div>
                         </div>
                       </div>
@@ -476,7 +485,7 @@ let printToPdf = async function () {
                               type="text"
                               class="form-control"
                               id="food"
-                              v-model="cane.kind"
+                              placeholder="link to food table"
                             />
                           </div>
                         </div>
@@ -484,7 +493,7 @@ let printToPdf = async function () {
                       <div class="container p-1">
                         <div class="row">
                           <div class="col-4">
-                            <label for="sesso" class="col-form-label fw-bold">Sex</label>
+                            <label for="sesso" class="col-form-label fw-bold">Alive</label>
                           </div>
 
                           <div class="col-8">
@@ -495,10 +504,10 @@ let printToPdf = async function () {
                                   type="radio"
                                   name="sesso"
                                   id="maleRadio"
-                                  value="Male"
-                                  v-model="cane.sesso"
+                                  value="Yes"
+                                  v-model="cane.alive"
                                 />
-                                <label class="form-check-label" for="maleRadio"> Male </label>
+                                <label class="form-check-label" for="maleRadio"> Yes </label>
                               </div>
                               <div class="form-check form-check mx-2 my-auto">
                                 <input
@@ -506,10 +515,10 @@ let printToPdf = async function () {
                                   type="radio"
                                   name="sesso"
                                   id="femaleRadio"
-                                  value="Female"
-                                  v-model="cane.sesso"
+                                  value="No"
+                                  v-model="cane.alive"
                                 />
-                                <label class="form-check-label" for="femaleRadio"> Female </label>
+                                <label class="form-check-label" for="femaleRadio"> No </label>
                               </div>
                             </div>
                           </div>
@@ -521,33 +530,6 @@ let printToPdf = async function () {
 
                         <div class="col-4"></div>
                       </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="mantello" class="col-form-label fw-bold">Coat</label>
-                          </div>
-
-                          <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="carattere"
-                              v-model="cane.mantello"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="chip" class="form-label fw-bold">Chip</label>
-                          </div>
-
-                          <div class="col-8">
-                            <input type="text" class="form-control" id="chip" v-model="cane.chip" />
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </form>
                 </div>
@@ -556,166 +538,42 @@ let printToPdf = async function () {
           </div>
         </div>
 
-        <!-- accordion -->
-
         <div class="col-auto">
           <!-- accordion -->
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseTwo"
-                  aria-expanded="true"
-                  aria-controls="collapseTwo"
-                >
-                  <span>Health data</span>
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header"></h2>
-
-                  <div class="accordion-body bgtest">
-                    <form>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="sterilizzazione" class="col-form-label fw-bold"
-                              >Neutering</label
-                            >
-                          </div>
-                          <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="carattere"
-                              v-model="cane.sterilizzazione"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="terapia" class="col-form-label fw-bold">Therapy</label>
-                          </div>
-                          <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="terapia"
-                              v-model="cane.terapia"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="patologie" class="col-form-label fw-bold"
-                              >Pathologies</label
-                            >
-                          </div>
-                          <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="patologie"
-                              v-model="cane.patologie"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="alive" class="col-form-label fw-bold">Alive</label>
-                          </div>
-                          <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="alive"
-                              v-model="cane.alive"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">
-                        Save
-                      </button>
-                    </form>
+          <div class="" id="">
+            <div class="">
+              <h2>Shelter data</h2>
+            </div>
+            <form>
+              <div class="container p-1">
+                <div class="row">
+                  <div class="col-4">
+                    <label for="birth" class="col-form-label fw-bold"> Entry date </label>
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="neutering"
+                      v-model="cane.birth"
+                    />
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
-          <!-- accordion -->
-        </div>
-
-        <div class="col-auto">
-          <!-- accordion -->
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#CollapseSix"
-                  aria-expanded="true"
-                  aria-controls="CollapseSix"
-                >
-                  <h3>Shelter data</h3>
-                </button>
-              </h2>
-              <div
-                id="CollapseSix"
-                class="accordion-collapse collapse show"
-                data-bs-parent="#accordionExample"
-              ></div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#CollapseEight"
-                  aria-expanded="false"
-                  aria-controls="CollapseEight"
-                >
-                  Accordion Item #3
-                </button>
-              </h2>
-              <div
-                id="CollapseEight"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default,
-                  until the collapse plugin adds the appropriate classes that we use to style each
-                  element. These classes control the overall appearance, as well as the showing and
-                  hiding via CSS transitions. You can modify any of this with custom CSS or
-                  overriding our default variables. It's also worth noting that just about any HTML
-                  can go within the <code>.accordion-body</code>, though the transition does limit
-                  overflow.
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- accordion -->
         </div>
       </div>
     </div>
   </main>
-  <div class="container ">
+
+
+<!-- PDF PRINT  -->
+<!-- PDF PRINT  -->
+<!-- PDF PRINT  -->
+<!-- PDF PRINT  -->
+
+  <div class="container d-none">
     <div class="card p-5" id="element-to-print">
       <h1 class="fw-bold">Dog Details Card</h1>
       <div class="container">
@@ -725,16 +583,10 @@ let printToPdf = async function () {
             <!-- Left column for dog details -->
             <div class="image-container shadow mb-3" width="">
               <div
-                class="image-to-replace "
-                style="background-image:'http://localhost:8000/1.jpg?placeholder='"
+                class="image-to-replace"
+                style="background-image: 'http://localhost:8000/1.jpg?placeholder='"
               >
-                <img
-                  alt=""
-                  style=""
-                  :src="getImageUrl(cane.id)"
-                  
-                  id = "thumbpdf"
-                />
+                <img alt="" style="" :src="getImageUrl(cane.id)" id="thumbpdf" />
               </div>
             </div>
             <div class="mb-3">
