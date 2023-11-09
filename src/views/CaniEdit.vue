@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { getUserToken } from '/utils'
+// import { getUserToken } from '/utils'
+import html2pdf from 'html2pdf.js'
 
 const router = useRouter()
 const route = useRoute()
@@ -18,10 +19,12 @@ function onChangeImage(evt) {
       const newImage = document.createElement('img')
       newImage.src = base64Image
       newImage.style = 'max-height: 500px; max-width:500px'
-      // document.getElementById('thumbnail').src = getImageUrl(cane.id)
+      // document.getElementById('thumbnail').src = getImageUrl(dog.id)
+      document.getElementById('thumbpdf').src = base64Image
       document.getElementById('thumbnail').src = base64Image
-      document.getElementById('thumbnail').innerHTML = newImage.outerHTML
-
+      // document.getElementById('thumbnail').innerHTML = newImage.innerHTML
+      // document.getElementById('thumbpdf').innerHTML = newImage.outerHTML
+      // document.getElementById('thumbpdf').innerHTML = newImage.outerHTML
       console.log(base64Image)
       // console.log(fileReader.readAsDataURL(imageFile));
     }
@@ -41,18 +44,7 @@ let cane = ref({
   image: '',
   morsicatore: ''
 })
-
-// function format(date) {
-//   if (!(date instanceof Date)) {
-//     throw new Error('Invalid "date" argument. You must pass a date instance')
-//   }
-
-//   const year = date.getFullYear()
-//   const month = String(date.getMonth() + 1).padStart(2, '0')
-//   const day = String(date.getDate()).padStart(2, '0')
-//   console.log(`${year}-${month}-${day}`);
-//   return `${year}-${month}-${day}`
-// }
+let kind = ref({})
 
 let loadCane = async function (id) {
   if (id == 0) {
@@ -63,6 +55,20 @@ let loadCane = async function (id) {
   let json = await response.json()
   cane.value = json.data
 }
+
+let loadKind = async function (id) {
+  if (id == 0) {
+    console.log('id 0')
+    return
+  }
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/kind/`) // par défaut, fetch() fait une requête GET
+  let json = await response.json()
+  console.log(json.data)
+  kind.value = json.data
+  console.log(kind.value)
+}
+loadKind(id)
+console.log(kind)
 loadCane(id)
 function getImageUrl(id) {
   return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
@@ -92,6 +98,44 @@ let saveCane = async function () {
   }
   // router.push({ path: '/listacani' })
 }
+
+const opt = {
+  // ... other options ...
+  html2canvas: {
+    useCORS: true,
+    // allowTaint: false,
+    // proxy: 'http://localhost:8000/'
+    // ... other html2canvas options ...
+  }
+  // ... other options ...
+}
+
+let printToPdf = async function () {
+  await nextTick() // Wait for the next DOM update cycle
+  let img;
+  // update URLs to load cached cross-originated images
+  for (img of document.getElementsByClassName('image-to-replace')) {
+    img.style.backgroundImage = img.style.backgroundImage.replace(
+      '?placeholder=',
+      '?withheaders=yes'
+    )
+  }
+
+  const element = document.getElementById('element-to-print')
+  if (element) {
+    console.log('Element is ready to print', element)
+    html2pdf()
+      .set(opt)
+      .from(element)
+      .toPdf()
+      .get('pdf')
+      .then(function (pdf) {
+        window.open(pdf.output('bloburl')) // Open the PDF in a new window/tab
+      })
+  } else {
+    console.log('Element is not ready to print')
+  }
+}
 </script>
 <style scoped>
 .bgbody {
@@ -106,7 +150,19 @@ let saveCane = async function () {
     hsla(333, 73%, 85%, 1) 50%,
     hsla(211, 58%, 79%, 1) 100%
   );
+  background: linear-gradient(
+    90deg,
+    hsla(141, 54%, 86%, 1) 0%,
+    hsla(333, 73%, 85%, 1) 50%,
+    hsla(211, 58%, 79%, 1) 100%
+  );
 
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(141, 54%, 86%, 1) 0%,
+    hsla(333, 73%, 85%, 1) 50%,
+    hsla(211, 58%, 79%, 1) 100%
+  );
   background: -moz-linear-gradient(
     90deg,
     hsla(141, 54%, 86%, 1) 0%,
@@ -120,7 +176,14 @@ let saveCane = async function () {
     hsla(333, 73%, 85%, 1) 50%,
     hsla(211, 58%, 79%, 1) 100%
   );
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(141, 54%, 86%, 1) 0%,
+    hsla(333, 73%, 85%, 1) 50%,
+    hsla(211, 58%, 79%, 1) 100%
+  );
 
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1 );
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1 );
 }
 /* * {
@@ -138,8 +201,8 @@ let saveCane = async function () {
 }
 
 .image-container {
-  width: 250px; /* Adjust the size as needed */
-  height: 250px; /* Same as width */
+  width: 300px; /* Adjust the size as needed */
+  height: 300px; /* Same as width */
   overflow: hidden;
   border-radius: 50%;
 }
@@ -152,42 +215,9 @@ let saveCane = async function () {
 </style>
 
 <template>
-  <section id="new_card">
-    <div class="container-fluid my-3">
-      <div class="card">
-        <div class="row">
-          <div class="col-4 m-auto my-4">
-            <div class="card shadow p-4">
-
-              <div class="image-container shadow m-auto mb-3" width="">
-                <img
-                v-if="cane.hasImg"
-                id="thumbnail"
-                :src="getImageUrl(cane.id)"
-                class="img circular-image"
-                width=""
-                style=""
-                />
-            </div>
-            <div class="text-center">
-
-              <h1 class="m-auto">{{ cane.nome }}</h1>
-              <small class="small">I'm born on</small>
-              <h5 class="m-auto">{{ cane.birth }}</h5>
-              <small> My character is </small>
-              <h4 class="m-auto">{{ cane.carattere }}</h4>
-              <p v-if="cane.morsicatore === 'yes'">I can bite and show aggressiveness</p>
-              <p v-else>I don't usually bite unless provoked</p>
-            </div>
-          </div>
-          </div>
-          <div class="col-6"></div>
-        </div>
-      </div>
-    </div>
-  </section>
   <main class="bgbody vh-100">
     <div class="container-fluid">
+      <button type="button" class="btn btn-primary mt-3" @click="printToPdf()">print</button>
       <div class="row">
         <div class="col-auto">
           <form>
@@ -201,7 +231,7 @@ let saveCane = async function () {
                         v-if="cane.hasImg"
                         id="thumbnail"
                         :src="getImageUrl(cane.id)"
-                        class="img circular-image"
+                        class="img circular-image image-to-download"
                         width=""
                         style=""
                       />
@@ -269,28 +299,15 @@ let saveCane = async function () {
           </form>
         </div>
 
-        <!-- accordion -->
+
         <div class="col-auto">
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  <span>Personal data</span>
-                </button>
+          <div class="" id="accordionExample">
+            <div class="item">
+              <h2 class="header">
+                <span>Personal data</span>
               </h2>
-              <div
-                id="collapseOne"
-                class="accordion-collapse collapse show"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="accordion-body bgtest">
+              <div>
+                <div class="">
                   <form>
                     <div class="container p-1">
                       <div class="row">
@@ -307,12 +324,11 @@ let saveCane = async function () {
                             <label for="razza" class="col-form-label fw-bold">Kind</label>
                           </div>
                           <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="razza"
-                              v-model="cane.razza"
-                            />
+                            <select class="form-control" name="kind" v-model="cane.kind">
+                              <option v-for="item in kind" :key="item.id" :value="item.id">
+                                {{ item.kind }}
+                              </option>
+                            </select>
                           </div>
                         </div>
                       </div>
@@ -338,12 +354,164 @@ let saveCane = async function () {
                           </div>
 
                           <div class="col-8">
+                            <div class="d-flex mt-2">
+                              <div class="form-check mx-2 my-auto">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="sesso"
+                                  id="maleRadio"
+                                  value="Male"
+                                  v-model="cane.sesso"
+                                />
+                                <label class="form-check-label" for="maleRadio"> Male </label>
+                              </div>
+                              <div class="form-check form-check mx-2 my-auto">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="sesso"
+                                  id="femaleRadio"
+                                  value="Female"
+                                  v-model="cane.sesso"
+                                />
+                                <label class="form-check-label" for="femaleRadio"> Female </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-4"></div>
+
+                        <div class="col-4"></div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="mantello" class="col-form-label fw-bold">Coat</label>
+                          </div>
+
+                          <div class="col-8">
                             <input
                               type="text"
                               class="form-control"
                               id="carattere"
-                              v-model="cane.sesso"
+                              v-model="cane.mantello"
                             />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="chip" class="form-label fw-bold">Chip</label>
+                          </div>
+
+                          <div class="col-8">
+                            <input type="text" class="form-control" id="chip" v-model="cane.chip" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- HEaLTH data  -->
+        <div class="col-auto">
+          <div class="" id="accordionExample">
+            <div class="item"> 
+              <h2 class="header">
+                <span>Health Data</span>
+              </h2>
+              <div>
+                <div class="">
+                  <form>
+                    <div class="container p-1">
+                      <div class="row">
+                        <div class="col-4">
+                          <label for="birth" class="col-form-label fw-bold"> Neutering: </label>
+                        </div>
+                        <div class="col-8">
+                          <input type="text" class="form-control" id="neutering" v-model="cane.sterilizzazione" />
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="therapy" class="col-form-label fw-bold">Therapy</label>
+                          </div>
+                          <div class="col-8">
+                            <input type="text" class="form-control" id="neutering" v-model="cane.terapia" />
+                          
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="taglia" class="col-form-label fw-bold">Pathologies</label>
+                          </div>
+                          <div class="col-8">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="patologie"
+                              v-model="cane.patologie"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="taglia" class="col-form-label fw-bold">Food</label>
+                          </div>
+                          <div class="col-8">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="food"
+                              v-model="cane.kind"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container p-1">
+                        <div class="row">
+                          <div class="col-4">
+                            <label for="sesso" class="col-form-label fw-bold">Sex</label>
+                          </div>
+
+                          <div class="col-8">
+                            <div class="d-flex mt-2">
+                              <div class="form-check mx-2 my-auto">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="sesso"
+                                  id="maleRadio"
+                                  value="Male"
+                                  v-model="cane.sesso"
+                                />
+                                <label class="form-check-label" for="maleRadio"> Male </label>
+                              </div>
+                              <div class="form-check form-check mx-2 my-auto">
+                                <input
+                                  class="form-check-input"
+                                  type="radio"
+                                  name="sesso"
+                                  id="femaleRadio"
+                                  value="Female"
+                                  v-model="cane.sesso"
+                                />
+                                <label class="form-check-label" for="femaleRadio"> Female </label>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -547,4 +715,117 @@ let saveCane = async function () {
       </div>
     </div>
   </main>
+  <div class="container ">
+    <div class="card p-5" id="element-to-print">
+      <h1 class="fw-bold">Dog Details Card</h1>
+      <div class="container">
+        <br />
+        <div class="row">
+          <div class="col-6">
+            <!-- Left column for dog details -->
+            <div class="image-container shadow mb-3" width="">
+              <div
+                class="image-to-replace "
+                style="background-image:'http://localhost:8000/1.jpg?placeholder='"
+              >
+                <img
+                  alt=""
+                  style=""
+                  :src="getImageUrl(cane.id)"
+                  
+                  id = "thumbpdf"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Name:</label>
+              <p id="dogName">{{ cane.nome }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Character:</label>
+              <p id="dogChar">{{ cane.carattere }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Breed:</label>
+              <p id="dogBreed">{{ cane.razza }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Age:</label>
+              <p id="dogAge">{{ cane.birth }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Sex:</label>
+              <p id="dogSex">{{ cane.sesso }}</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <!-- Right column for additional details -->
+            <div class="shadow mb-3" width="">
+              <img
+                v-if="cane.hasImg"
+                id="thumbnail"
+                src="https://placehold.co/300"
+                class=""
+                width=""
+                style=""
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Color:</label>
+              <p id="dogColor">{{ cane.mantello }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Microchip Number:</label>
+              <p id="dogMicrochip">{{ cane.chip }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Health issues:</label>
+              <p id="dogMicrochip">{{ cane.patologie }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Neutered</label>
+              <p id="dogVaccinations">{{ cane.sterilizzazione }}</p>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" style="font-weight: bold">Additional Notes:</label>
+              <p id="dogNotes">[Additional Notes or Medical History]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section id="new_card">
+      <div class="container-fluid my-3">
+        <div class="card">
+          <div class="row">
+            <div class="col-4 m-auto my-4">
+              <div class="card shadow p-4">
+                <div class="image-container shadow m-auto mb-3" width="">
+                  <img
+                    v-if="cane.hasImg"
+                    id="thumbnail"
+                    :src="getImageUrl(cane.id)"
+                    class="img circular-image"
+                    width=""
+                    style=""
+                  />
+                </div>
+                <div class="text-center">
+                  <h1 class="m-auto">{{ cane.nome }}</h1>
+                  <small class="small">I'm born on</small>
+                  <h5 class="m-auto">{{ cane.birth }}</h5>
+                  <small> My character is </small>
+                  <h4 class="m-auto">{{ cane.carattere }}</h4>
+                  <p v-if="cane.morsicatore === 'yes'">I can bite and show aggressiveness</p>
+                  <p v-else>I don't usually bite unless provoked</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
+<script></script>
