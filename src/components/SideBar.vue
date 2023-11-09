@@ -25,12 +25,12 @@
         <li class="mb-1">
 
           <button class="d-flex btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-            data-bs-target="#home-collapse" aria-expanded="true">
+            data-bs-target="#dogs-collapse" aria-expanded="true">
             <span class="material-symbols-outlined"> pets </span>
             <div class="px-2">Dogs</div>
           </button>
 
-          <div class="collapse" id="home-collapse">
+          <div class="collapse" id="dogs-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li class="nav-item">
                 <RouterLink class="nav-link active" to="/listacani"><span class="material-symbols-outlined"> lists
@@ -96,12 +96,12 @@
         <li class="mb-1">
 
           <button class="btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse"
-            data-bs-target="#dashboard-collapse" aria-expanded="false">
+            data-bs-target="#planning-collapse" aria-expanded="false">
 
             <span class="material-symbols-outlined"> calendar_month </span>
             Planning
           </button>
-          <div class="collapse" id="dashboard-collapse">
+          <div class="collapse" id="planning-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li class="nav-item">
 
@@ -117,13 +117,13 @@
           <button class="d-flex btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
             data-bs-target="#food-collapse" aria-expanded="true">
             <span class="material-symbols-outlined"> inventory_2 </span>
-            <div class="px-2">Stock</div>
+            <div class="px-2">Food</div>
           </button>
           <div class="collapse" id="food-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li class="nav-item">
                 <RouterLink class="nav-link active" to="/food"><span class="material-symbols-outlined"> food_bank
-                  </span> Food</RouterLink>
+                  </span> Food list</RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink class="nav-link active" to="/food/edit/0"><span class="material-symbols-outlined"> food_bank
@@ -135,7 +135,8 @@
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse"
             data-bs-target="#home-collapse" aria-expanded="true">
-            Home
+              <span class="material-symbols-outlined"> home </span>
+              <div class="px-2">Home</div>
           </button>
           <div class="collapse show" id="home-collapse" style="">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
