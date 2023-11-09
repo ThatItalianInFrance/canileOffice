@@ -1,5 +1,4 @@
 <style scoped>
-
 .bgprimary {
   background: #ddfcf3;
 }
@@ -24,28 +23,22 @@
     <div class="flex-shrink-0 p-3" style="width: 280px">
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
-          
-            <button
-              class="d-flex btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              <span class="material-symbols-outlined"> pets </span>
-              <div class="px-2">Dogs</div>
-            </button>
-          
+
+          <button class="d-flex btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#home-collapse" aria-expanded="true">
+            <span class="material-symbols-outlined"> pets </span>
+            <div class="px-2">Dogs</div>
+          </button>
+
           <div class="collapse" id="home-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li class="nav-item">
-                <RouterLink class="nav-link active" to="/listacani"
-                  ><span class="material-symbols-outlined"> lists </span>Dog List</RouterLink
-                >
+                <RouterLink class="nav-link active" to="/listacani"><span class="material-symbols-outlined"> lists
+                  </span>Dog List</RouterLink>
               </li>
               <li class="nav-item">
-                <RouterLink class="nav-link active" to="/cani/edit/0"
-                  ><span class="material-symbols-outlined"> pet_supplies </span>New dog</RouterLink
-                >
+                <RouterLink class="nav-link active" to="/cani/edit/0"><span class="material-symbols-outlined">
+                    pet_supplies </span>New dog</RouterLink>
 
               </li>
             </ul>
@@ -53,12 +46,8 @@
         </li>
         <li class="mb-1">
 
-          <button
-            class="btn btn-toggle align-items-center rounded collapsed"
-            data-bs-toggle="collapse"
-            data-bs-target="#home1-collapse"
-            aria-expanded="true"
-          >
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#home1-collapse" aria-expanded="true">
 
             <span class="material-symbols-outlined"> account_circle </span>
             Users
@@ -120,6 +109,25 @@
                   </span>Planning
                   setup</RouterLink>
 
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="d-flex btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+            data-bs-target="#food-collapse" aria-expanded="true">
+            <span class="material-symbols-outlined"> inventory_2 </span>
+            <div class="px-2">Stock</div>
+          </button>
+          <div class="collapse" id="food-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li class="nav-item">
+                <RouterLink class="nav-link active" to="/food"><span class="material-symbols-outlined"> food_bank
+                  </span> Food</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link active" to="/food/edit/0"><span class="material-symbols-outlined"> food_bank
+                  </span> New food</RouterLink>
               </li>
             </ul>
           </div>

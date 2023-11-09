@@ -7,6 +7,8 @@ import UsersEdit from '../views/UsersEdit.vue'
 import LoginView from '../views/LoginView.vue'
 import ListaBox from '../views/ListaBox.vue'
 import Planning from '../components/Planning.vue'
+import ListaFood from '../views/ListaFood.vue'
+import FoodEdit from '../views/FoodEdit.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +52,16 @@ const router = createRouter({
       path: '/planning',
       name: 'planning',
       component: Planning
+    },
+    {
+      path: '/food',
+      name: 'food',
+      component: ListaFood
+    },
+    {
+      path: '/food/edit/:id',
+      name: 'foodedit',
+      component: FoodEdit
     },
     {
       path: '/about',
