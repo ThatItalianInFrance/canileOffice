@@ -49,12 +49,12 @@ console.log(dogs.value)
     <h3>Dogs list</h3>
     <p>Overview of registered dogs</p>
     <div class="input-group mb-3">
-      <input v-model="searchTerm" placeholder="Enter dog name..." class="form-control">
       <div class="input-group-append">
         <span class="input-group-text">
           <i class="bi bi-search"></i><!-- Assuming you're using Bootstrap Icons -->
         </span>
       </div>
+      <input v-model="searchTerm" placeholder="Enter dog name..." class="form-control">
     </div>
     <table class="table table-hover">
       <thead class="thead-dark">
