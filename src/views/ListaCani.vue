@@ -8,7 +8,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 // let check = JSON.parse(localStorage.getItem('user'))
 // console.log(check.token)
 
-// ref must be used for responsive data - use .value to assign or read
+// ref must be used for responsive data - use .value to assign or read 
 let dogs = ref([])
 let searchTerm = ref('')
 
