@@ -50,7 +50,9 @@ let shelter = ref({})
 
 let box = ref({})
 
-let idcaneValue; 
+let stalli = ref({})
+
+let idcaneValue
 
 let loadCane = async function (id) {
   if (id == 0) {
@@ -87,20 +89,18 @@ let loadBoxCani = async function (id) {
   }
   shelter.value = json.data
   console.log(shelter.value)
-  idcaneValue = shelter.value.idbox;
+  idcaneValue = shelter.value.idbox
   loadBox(idcaneValue)
-  
-  console.log(idcaneValue);
+
+  console.log(idcaneValue)
 }
 
-
 let loadBox = async function (idcaneValue) {
-
   if (id == 0) {
     console.log('id 0')
     return
   }
-  console.log(idcaneValue);
+  console.log(idcaneValue)
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/${idcaneValue}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   console.log(json.data)
@@ -111,21 +111,40 @@ let loadBox = async function (idcaneValue) {
   console.log(box.value)
 }
 
+let loadStalli = async function (id) {
+  if (id == 0) {
+    console.log('id 0')
+    return
+  }
+  console.log(idcaneValue)
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/stalli/`) // par défaut, fetch() fait une requête GET
+  let json = await response.json()
+  console.log(json.data)
+  if (!json.data) {
+    json.data = {}
+  }
+  stalli.value = json.data
+  console.log(stalli.value)
+}
+
 loadBoxCani(id)
 console.log(shelter)
 
-
 loadKind(id)
 console.log(kind)
+
+loadStalli(id)
+console.log(stalli)
+
 // loadBox(id)
 // console.log(box)
-console.log(idcaneValue);
+console.log(idcaneValue)
 loadCane(id)
 function getImageUrl(id) {
   return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
 }
 
-let saveCane = async function () { 
+let saveCane = async function () {
   if (base64Image != '') cane.value.image = base64Image
   if (id == 0) {
     await fetch(`${import.meta.env.VITE_SERVER}/office/cane`, {
@@ -159,7 +178,7 @@ let saveCane = async function () {
         // 'Authorization': `Bearer ${check.token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(cane.value)
+      body: JSON.stringify(shelter.value)
     })
     // console.log(image.value);
   }
@@ -618,17 +637,12 @@ let printToPdf = async function () {
                     <label for="birth" class="col-form-label fw-bold">Shelter section</label>
                   </div>
                   <div class="col-8">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="neutering"
-                      v-model="box"
-                    />
-                    <select class="form-control" name="box" >
-                              <option v-for="item in box" :key="item.id" :value="box.id">
-                                {{ box.blocco }} - {{ box.numero }}
-                              </option>
-                            </select>
+                    
+                    <select class="form-control" name="box" v-model="shelter.idbox">
+                      <option v-for="item in stalli" :key="item.id" :value="item.id" :model="shelter.idbox">
+                        {{ item.blocco }} - {{ item.numero }}
+                      </option>
+                    </select>
                   </div>
                 </div>
                 <div class="row">
@@ -639,8 +653,21 @@ let printToPdf = async function () {
                     <input
                       type="date"
                       class="form-control"
-                      id="neutering"
+                      id="date_in"
                       v-model="shelter.date_in"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <label for="birth" class="col-form-label fw-bold"> Exit date </label>
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="date_out"
+                      v-model="shelter.date_out"
                     />
                   </div>
                 </div>
@@ -652,11 +679,10 @@ let printToPdf = async function () {
     </div>
   </main>
 
-
-<!-- PDF PRINT  -->
-<!-- PDF PRINT  -->
-<!-- PDF PRINT  -->
-<!-- PDF PRINT  -->
+  <!-- PDF PRINT  -->
+  <!-- PDF PRINT  -->
+  <!-- PDF PRINT  -->
+  <!-- PDF PRINT  -->
 
   <div class="container d-none">
     <div class="card p-5" id="element-to-print">
