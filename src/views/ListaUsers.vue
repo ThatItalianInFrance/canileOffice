@@ -1,15 +1,18 @@
 <script setup>
 // REMEBER TO IMPORT REF
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { RouterLink } from 'vue-router'
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 // let check = JSON.parse(localStorage.getItem('user'))
 // console.log(check.token)
 
 // ref must be used for responsive data - use .value to assign or read
 let users = ref([])
+let searchTerm = ref('')
 
-let loadProducts = function () {
+let loadUsers = function (searchTerm) {
   // check = JSON.parse(localStorage.getItem('user'))
   // console.log('ciccio' + check.token)
   fetch(`${import.meta.env.VITE_SERVER}/office/users`, {
@@ -26,12 +29,17 @@ let loadProducts = function () {
     })
     .then(function (foo) {
       users.value = foo.data
+      users.value = users.value.filter(user => user.username.toLowerCase().includes(searchTerm.toLowerCase()));
       console.log(users.value)
       // console.log(cani)
     })
 }
 
-loadProducts()
+watch(searchTerm, (newSearchTerm, oldSearchTerm) => {
+  loadUsers(searchTerm.value);
+})
+
+loadUsers()
 console.log(users.value)
 </script>
 
@@ -47,6 +55,14 @@ console.log(users.value)
         <button class="btn btn-outline-secondary mx-2" type="button">...</button>
         <button class="btn btn-outline-secondary">All users</button>
       </div>
+    </div>
+      <div class="input-group mb-3">
+     <div class="input-group-append">
+      <span class="input-group-text">
+       <i class="bi bi-search"></i><!-- Assuming you're using Bootstrap Icons -->
+      </span>
+     </div>
+     <input v-model="searchTerm" placeholder="Enter food name..." class="form-control">
     </div>
     
     <table class="table table-hover">

@@ -117,7 +117,7 @@
           <button class="d-flex btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
             data-bs-target="#food-collapse" aria-expanded="true">
             <span class="material-symbols-outlined"> inventory_2 </span>
-            <div class="px-2">Food</div>
+            <div class="px-2">Stock</div>
           </button>
           <div class="collapse" id="food-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">

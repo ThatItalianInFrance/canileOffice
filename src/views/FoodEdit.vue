@@ -5,7 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 
-let titleForm = ref([''])
+let addOrEdit = ref(['']); // If != 0 - Edit item, else - Add item
 let id = route.params.id;
 
 let base64Image = ref()
@@ -43,7 +43,7 @@ let initFields = function(id){
  food.value.description = "";
  food.value.hasImg = false;
 
- titleForm.value = id;
+ addOrEdit.value = id;
 }
 
 let loadFood = async function (id) {
@@ -108,7 +108,7 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
         <span class="material-symbols-outlined">arrow_back</span> Food list
       </RouterLink>
       <div class="card-body">
-       <h1 class="card-title text-center mb-4">{{ titleForm != "0" ? "Edit" : "Add"}} Food</h1>
+       <h1 class="card-title text-center mb-4">{{ addOrEdit != "0" ? "Edit" : "New"}} Food</h1>
        <div class="row">
         <div class="col-6">
          <form @submit.prevent="saveFood(route.params.id)">
@@ -125,7 +125,7 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
            <input type="textarea" class="form-control" id="description" v-model="food.description" placeholder="Enter description" />
           </div>
           <div class="text-center">
-           <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+           <button type="submit" class="btn btn-primary mt-3">{{ addOrEdit != "0" ? "Save Changes" : "Add food" }}</button>
           </div>
          </form>
         </div>
@@ -136,8 +136,8 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
               v-if="food.hasImg"
               id="thumbnail"
               :src="getImageUrl(id)"
-              class="img circular-image image-to-download"
-              width=""
+              class="img circular-image image-to-download imageSelect"
+              max-width=""
               style=""
             />
            <img v-else src="https://placehold.co/200" alt="Placeholder" style="max-height: 500px; max-width: 500px"
@@ -161,10 +161,10 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
         </div>
        </div>
       </div>
-      <div class="card-footer text-muted text-center">
+      <div v-if="addOrEdit != '0'" class="card-footer text-muted text-center">
       <RouterLink class="nav-link active btn btn-primary button" to="/food/edit/0">
-          <span class="material-symbols-outlined">add</span> New food
-        </RouterLink>
+        <span class="material-symbols-outlined">add</span> New food
+      </RouterLink>
       </div>
      </div>
     </div>
@@ -178,6 +178,7 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
 .card {
  background: #fff;
  border-radius: 10px;
+ overflow: hidden;
 }
 
 .form-control {

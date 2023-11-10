@@ -12,7 +12,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 let dogs = ref([])
 let searchTerm = ref('')
 
-let loadDogs = function (searchTerm) {
+let loadFood = function (searchTerm) {
  // check = JSON.parse(localStorage.getItem('user'))
  // console.log('ciccio' + check.token)
  fetch(`${import.meta.env.VITE_SERVER}/office/food`, {
@@ -37,10 +37,11 @@ let loadDogs = function (searchTerm) {
 }
 
 watch(searchTerm, (newSearchTerm, oldSearchTerm) => {
- loadDogs(searchTerm.value);
+ loadFood(searchTerm.value);
+ console.log();
 })
 
-loadDogs()
+loadFood()
 console.log(dogs.value)
 </script>
 
