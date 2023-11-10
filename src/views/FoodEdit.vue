@@ -104,8 +104,8 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
     <div class="col-lg-8 mx-auto">
 
      <div class="card shadow">
-      <RouterLink class="nav-link active btn btn-primary" to="/food">
-        <span class="material-symbols-outlined"> arrow_back</span> Food list
+      <RouterLink class="nav-link active btn btn-primary button" to="/food" style="width: 130px;">
+        <span class="material-symbols-outlined">arrow_back</span> Food list
       </RouterLink>
       <div class="card-body">
        <h1 class="card-title text-center mb-4">{{ titleForm != "0" ? "Edit" : "Add"}} Food</h1>
@@ -161,7 +161,11 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
         </div>
        </div>
       </div>
-      <div class="card-footer text-muted text-center">Food ID: {{ food.id }}</div>
+      <div class="card-footer text-muted text-center">
+      <RouterLink class="nav-link active btn btn-primary button" to="/food/edit/0">
+          <span class="material-symbols-outlined">add</span> New food
+        </RouterLink>
+      </div>
      </div>
     </div>
    </div>
@@ -202,5 +206,9 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
  max-width: 300px;
  border-radius: 15px;
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button{
+display: flex; justify-content: center; align-items: center;
 }
 </style>
