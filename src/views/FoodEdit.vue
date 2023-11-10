@@ -43,7 +43,6 @@ let initFields = function(id){
  food.value.name = "";
  food.value.type = "";
  food.value.description = "";
- 
  titleForm.value = id;
 }
 
