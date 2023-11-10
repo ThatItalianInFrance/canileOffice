@@ -48,6 +48,10 @@ let kind = ref({})
 
 let shelter = ref({})
 
+let box = ref({})
+
+let idcaneValue; 
+
 let loadCane = async function (id) {
   if (id == 0) {
     console.log('id 0')
@@ -78,20 +82,50 @@ let loadBoxCani = async function (id) {
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   console.log(json.data)
+  if (!json.data) {
+    json.data = {}
+  }
   shelter.value = json.data
   console.log(shelter.value)
+  idcaneValue = shelter.value.idbox;
+  loadBox(idcaneValue)
+  
+  console.log(idcaneValue);
+}
+
+
+let loadBox = async function (idcaneValue) {
+
+  if (id == 0) {
+    console.log('id 0')
+    return
+  }
+  console.log(idcaneValue);
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/${idcaneValue}`) // par défaut, fetch() fait une requête GET
+  let json = await response.json()
+  console.log(json.data)
+  if (!json.data) {
+    json.data = {}
+  }
+  box.value = json.data
+  console.log(box.value)
 }
 
 loadBoxCani(id)
 console.log(shelter)
+
+
 loadKind(id)
 console.log(kind)
+// loadBox(id)
+// console.log(box)
+console.log(idcaneValue);
 loadCane(id)
 function getImageUrl(id) {
   return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
 }
 
-let saveCane = async function () {
+let saveCane = async function () { 
   if (base64Image != '') cane.value.image = base64Image
   if (id == 0) {
     await fetch(`${import.meta.env.VITE_SERVER}/office/cane`, {
@@ -102,8 +136,24 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
+    await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
+      method: 'POST',
+      headers: {
+        // 'Authorization': `Bearer ${check.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(shelter.value)
+    })
   } else {
     await fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`, {
+      method: 'PUT',
+      headers: {
+        // 'Authorization': `Bearer ${check.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cane.value)
+    })
+    await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
       method: 'PUT',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
@@ -565,15 +615,20 @@ let printToPdf = async function () {
               <div class="container p-1">
                 <div class="row">
                   <div class="col-4">
-                    <label for="birth" class="col-form-label fw-bold"> Entry date </label>
+                    <label for="birth" class="col-form-label fw-bold">Shelter section</label>
                   </div>
                   <div class="col-8">
                     <input
-                      type="date"
+                      type="text"
                       class="form-control"
                       id="neutering"
-                      v-model="shelter.date_in"
+                      v-model="box"
                     />
+                    <select class="form-control" name="box" >
+                              <option v-for="item in box" :key="item.id" :value="box.id">
+                                {{ box.blocco }} - {{ box.numero }}
+                              </option>
+                            </select>
                   </div>
                 </div>
                 <div class="row">
