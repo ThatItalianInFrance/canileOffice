@@ -5,9 +5,6 @@ import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 
-// let id = ref(['']);
-// let id = ref('')
-
 let titleForm = ref([''])
 let id = route.params.id;
 
@@ -32,7 +29,6 @@ function onChangeImage(evt) {
  }
 }
 
-
 let food = ref({
  id: 0,
  name: '',
@@ -41,16 +37,18 @@ let food = ref({
 })
 
 let initFields = function(id){
+ food.value.id = 0;
  food.value.name = "";
  food.value.type = "";
  food.value.description = "";
- 
+ food.value.hasImg = false;
+
  titleForm.value = id;
 }
 
 let loadFood = async function (id) {
-  initFields(id)
-  
+ initFields(id);
+
  if (id == 0) {
   console.log('id 0')
   return
@@ -60,12 +58,13 @@ let loadFood = async function (id) {
  food.value = json.data
 }
 loadFood(id)
-function getImageUrl(id) {
- return `${import.meta.env.VITE_SERVER}/food/${id}.jpg`
+
+function  getImageUrl(idImg) {
+  const timestamp = new Date().getTime();
+  return `${import.meta.env.VITE_SERVER}/food/${idImg}.jpg?timestamp=${timestamp}`;
 }
 
-let saveFood = async function () {
- console.log("SaveFood func");
+let saveFood = async function (id) {
  if (base64Image.value != '') food.value.image = base64Image
  console.log("food.value.image", food.value.image);
  if (id == 0) {
@@ -103,12 +102,16 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
   <div class="container mt-5">
    <div class="row">
     <div class="col-lg-8 mx-auto">
+
      <div class="card shadow">
+      <RouterLink class="nav-link active btn btn-primary" to="/food">
+        <span class="material-symbols-outlined"> arrow_back</span> Food list
+      </RouterLink>
       <div class="card-body">
        <h1 class="card-title text-center mb-4">{{ titleForm != "0" ? "Edit" : "Add"}} Food</h1>
        <div class="row">
         <div class="col-6">
-         <form @submit.prevent="saveFood">
+         <form @submit.prevent="saveFood(route.params.id)">
           <div class="mb-3">
            <label for="foodname" class="form-label">Food Name</label>
            <input type="text" class="form-control" id="foodname" v-model="food.name" placeholder="Enter food name" />
@@ -129,14 +132,14 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
         <div class="col-6">
          <div class="mx-auto my-5">
           <div id="thumbnail" class="text-center">
-   <img
-                          v-if="food.hasImg"
-                          id="thumbnail"
-                          :src="getImageUrl(food.id)"
-                          class="img circular-image image-to-download"
-                          width=""
-                          style=""
-                        />
+            <img
+              v-if="food.hasImg"
+              id="thumbnail"
+              :src="getImageUrl(id)"
+              class="img circular-image image-to-download"
+              width=""
+              style=""
+            />
            <img v-else src="https://placehold.co/200" alt="Placeholder" style="max-height: 500px; max-width: 500px"
             class="img-thumbnail rounded-circle" />
           </div>
