@@ -1,10 +1,9 @@
 <script setup>
 import { ref, nextTick } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 // import { getUserToken } from '/utils'
 import html2pdf from 'html2pdf.js'
 
-const router = useRouter()
 const route = useRoute()
 let id = route.params.id
 
@@ -25,8 +24,6 @@ function onChangeImage(evt) {
       // document.getElementById('thumbnail').innerHTML = newImage.innerHTML
       // document.getElementById('thumbpdf').innerHTML = newImage.outerHTML
       // document.getElementById('thumbpdf').innerHTML = newImage.outerHTML
-      console.log(base64Image)
-      // console.log(fileReader.readAsDataURL(imageFile));
     }
     fileReader.readAsDataURL(imageFile)
   }
@@ -50,7 +47,6 @@ let shelter = ref({})
 
 let loadCane = async function (id) {
   if (id == 0) {
-    console.log('id 0')
     return
   }
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`) // par défaut, fetch() fait une requête GET
@@ -60,32 +56,24 @@ let loadCane = async function (id) {
 
 let loadKind = async function (id) {
   if (id == 0) {
-    console.log('id 0')
     return
   }
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/kind/`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
-  console.log(json.data)
   kind.value = json.data
-  console.log(kind.value)
 }
 
 let loadBoxCani = async function (id) {
   if (id == 0) {
-    console.log('id 0')
     return
   }
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
-  console.log(json.data)
   shelter.value = json.data
-  console.log(shelter.value)
 }
 
 loadBoxCani(id)
-console.log(shelter)
 loadKind(id)
-console.log(kind)
 loadCane(id)
 function getImageUrl(id) {
   return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
@@ -111,20 +99,16 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
-    // console.log(image.value);
   }
   // router.push({ path: '/listacani' })
 }
 
 const opt = {
-  // ... other options ...
   html2canvas: {
     useCORS: true
     // allowTaint: false,
     // proxy: 'http://localhost:8000/'
-    // ... other html2canvas options ...
   }
-  // ... other options ...
 }
 
 let printToPdf = async function () {
@@ -154,524 +138,284 @@ let printToPdf = async function () {
   }
 }
 </script>
-<style scoped>
-.bgbody {
-  background: #ecebff;
-}
-.bgtest {
-  background: hsla(141, 54%, 86%, 1);
-
-  background: linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
-  background: linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
-
-  background: -moz-linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
-  background: -moz-linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
-
-  background: -webkit-linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
-
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1 );
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1 );
-}
-/* * {
-  border: solid red 1px;
-} */
-.posrel {
-  position: relative;
-}
-
-.camera-icon-label {
-  position: absolute;
-  bottom: 0px; /* Adjust the distance from the bottom as needed */
-  right: 0%; /* Position it in the middle horizontally */
-  transform: translateX(-50%); /* Center horizontally */
-}
-
-.image-container {
-  width: 300px; /* Adjust the size as needed */
-  height: 300px; /* Same as width */
-  overflow: hidden;
-  border-radius: 50%;
-}
-
-.circular-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-</style>
 
 <template>
-  <main class="bgbody vh-100">
-    <div class="container-fluid">
-      <button type="button" class="btn btn-primary mt-3" @click="printToPdf()">Print</button>
-      <button type="button" class="btn btn-primary mt-3" @click.prevent="saveCane">Save</button>
+  <div class="card bgbody shadow">
+    <div class="card-body">
+      <div class="row mb-2">
+        <div class="col d-flex justify-content-end">
+          <button type="button" class="btn btn-secondary me-2" @click="printToPdf()">Print</button>
+          <button type="button" class="btn btn-primary" @click.prevent="saveCane">Save</button>
+        </div>
+      </div>
       <div class="row">
-        <div class="col-auto">
-          <form>
-            <div class="mb-3 container rounded bgtest" style="">
-              <h1>{{ cane.nome }}</h1>
-              <div class="p-2">
-                <div class="container">
-                  <div class="posrel">
-                    <div class="image-container shadow m-auto mb-3" width="">
-                      <img
-                        v-if="cane.hasImg"
-                        id="thumbnail"
-                        :src="getImageUrl(cane.id)"
-                        class="img circular-image image-to-download"
-                        width=""
-                        style=""
-                      />
-                    </div>
+        <div class="col-md-3">
+          <div class="rounded bgtest p-3" style="">
+            <h1>{{ cane.nome }}</h1>
+            <div class="position-relative">
+              <div class="image-container m-auto mb-3" width="">
+                <img v-if="cane.hasImg" id="thumbnail" :src="getImageUrl(cane.id)"
+                  class="img-fluid circular-image image-to-download shadow" width="" style="" />
+              </div>
 
-                    <label for="image" class="camera-icon-label">
-                      <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
-                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z"
-                        />
-                      </svg>
-                      <input
-                        type="file"
-                        class="col-form-control d-none"
-                        id="image"
-                        @change="onChangeImage"
-                      />
-                    </label>
-                    <!-- <img src="https://placedog.net/500/500" alt="" /> -->
-                  </div>
-                </div>
-                <div class="container p-1">
-                  <div class="row">
-                    <div class="col-4">
-                      <label for="nome" class="col-form-label fw-bold">My name</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" class="form-control" id="nome" v-model="cane.nome" />
-                    </div>
-                  </div>
-                </div>
-                <div class="container p-1">
-                  <div class="row">
-                    <div class="col-4">
-                      <label for="carattere" class="col-form-label fw-bold">character</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" class="form-control" id="nome" v-model="cane.carattere" />
-                    </div>
-                  </div>
-                </div>
-                <div class="container p-1">
-                  <div class="row">
-                    <div class="col-4">
-                      <label for="morsicatore" class="col-form-label fw-bold">Bites</label>
-                    </div>
-                    <div class="col-8">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="nome"
-                        v-model="cane.morsicatore"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="container p-1">
-                  <div class="row">
-                    <div class="col-4"></div>
-                  </div>
-                </div>
+              <label for="image" class="camera-icon-label">
+                <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z" />
+                </svg>
+                <input type="file" class="col-form-control d-none" id="image" @change="onChangeImage" />
+              </label>
+              <!-- <img src="https://placedog.net/500/500" alt="" /> -->
+            </div>
+            <div class="row mb-1">
+              <div class="col-4">
+                <label for="nome" class="col-form-label fw-bold">Name</label>
+              </div>
+              <div class="col-8">
+                <input type="text" class="form-control" id="nome" v-model="cane.nome" />
               </div>
             </div>
-          </form>
+            <div class="row mb-1">
+              <div class="col-4">
+                <label for="carattere" class="col-form-label fw-bold">character</label>
+              </div>
+              <div class="col-8">
+                <input type="text" class="form-control" id="nome" v-model="cane.carattere" />
+              </div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-4">
+                <label for="morsicatore" class="col-form-label fw-bold">Bites</label>
+              </div>
+              <div class="col-8">
+                <input type="text" class="form-control" id="nome" v-model="cane.morsicatore" />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="col-auto">
+        <div class="col-md-3">
           <div class="" id="accordionExample">
             <div class="item">
               <h2 class="header">
                 <span>Personal data</span>
               </h2>
-              <div>
-                <div class="">
-                  <form>
-                    <div class="container p-1">
-                      <div class="row">
-                        <div class="col-4">
-                          <label for="birth" class="col-form-label fw-bold"> Birth: </label>
-                        </div>
-                        <div class="col-8">
-                          <input type="date" class="form-control" id="birth" v-model="cane.birth" />
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="razza" class="col-form-label fw-bold">Kind</label>
-                          </div>
-                          <div class="col-8">
-                            <select class="form-control" name="kind" v-model="cane.kind">
-                              <option v-for="item in kind" :key="item.id" :value="item.id">
-                                {{ item.kind }}
-                              </option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="taglia" class="col-form-label fw-bold">Size</label>
-                          </div>
-                          <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="carattere"
-                              v-model="cane.taglia"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="sesso" class="col-form-label fw-bold">Sex</label>
-                          </div>
-
-                          <div class="col-8">
-                            <div class="d-flex mt-2">
-                              <div class="form-check mx-2 my-auto">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="sesso"
-                                  id="maleRadio"
-                                  value="Male"
-                                  v-model="cane.sesso"
-                                />
-                                <label class="form-check-label" for="maleRadio"> Male </label>
-                              </div>
-                              <div class="form-check form-check mx-2 my-auto">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="sesso"
-                                  id="femaleRadio"
-                                  value="Female"
-                                  v-model="cane.sesso"
-                                />
-                                <label class="form-check-label" for="femaleRadio"> Female </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-4"></div>
-
-                        <div class="col-4"></div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="mantello" class="col-form-label fw-bold">Coat</label>
-                          </div>
-
-                          <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="carattere"
-                              v-model="cane.mantello"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="chip" class="form-label fw-bold">Chip</label>
-                          </div>
-
-                          <div class="col-8">
-                            <input type="text" class="form-control" id="chip" v-model="cane.chip" />
-                          </div>
-                        </div>
-                      </div>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="birth" class="col-form-label fw-bold">Birth: </label>
+                </div>
+                <div class="col-8">
+                  <input type="date" class="form-control" id="birth" v-model="cane.birth" />
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="razza" class="col-form-label fw-bold">Kind</label>
+                </div>
+                <div class="col-8">
+                  <select class="form-control" name="kind" v-model="cane.kind">
+                    <option v-for="item in kind" :key="item.id" :value="item.id">
+                      {{ item.kind }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="taglia" class="col-form-label fw-bold">Size</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="carattere" v-model="cane.taglia" />
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="sesso" class="col-form-label fw-bold">Sex</label>
+                </div>
+                <div class="col-8">
+                  <div class="d-flex mt-2">
+                    <div class="form-check mx-2 my-auto">
+                      <input class="form-check-input" type="radio" name="sesso" id="maleRadio" value="Male"
+                        v-model="cane.sesso" />
+                      <label class="form-check-label" for="maleRadio"> Male </label>
                     </div>
-                  </form>
+                    <div class="form-check form-check mx-2 my-auto">
+                      <input class="form-check-input" type="radio" name="sesso" id="femaleRadio" value="Female"
+                        v-model="cane.sesso" />
+                      <label class="form-check-label" for="femaleRadio"> Female </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="mantello" class="col-form-label fw-bold">Coat</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="carattere" v-model="cane.mantello" />
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="chip" class="form-label fw-bold">Chip</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="chip" v-model="cane.chip" />
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <!-- HEaLTH data  -->
-        <div class="col-auto">
+        <div class="col-md-3">
           <div class="" id="accordionExample">
             <div class="item">
               <h2 class="header">
                 <span>Health Data</span>
               </h2>
-              <div>
-                <div class="">
-                  <form>
-                    <div class="container p-1">
-                      <div class="row">
-                        <div class="col-4">
-                          <label for="birth" class="col-form-label fw-bold"> Neutering: </label>
-                        </div>
-                        <div class="col-8">
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="neutering"
-                            v-model="cane.sterilizzazione"
-                          />
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="therapy" class="col-form-label fw-bold">Therapy</label>
-                          </div>
-                          <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="neutering"
-                              v-model="cane.terapia"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="taglia" class="col-form-label fw-bold">Pathologies</label>
-                          </div>
-                          <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="patologie"
-                              v-model="cane.patologie"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="taglia" class="col-form-label fw-bold">Food</label>
-                          </div>
-                          <div class="col-8">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="food"
-                              placeholder="link to food table"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="container p-1">
-                        <div class="row">
-                          <div class="col-4">
-                            <label for="sesso" class="col-form-label fw-bold">Alive</label>
-                          </div>
-
-                          <div class="col-8">
-                            <div class="d-flex mt-2">
-                              <div class="form-check mx-2 my-auto">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="sesso"
-                                  id="maleRadio"
-                                  value="Yes"
-                                  v-model="cane.alive"
-                                />
-                                <label class="form-check-label" for="maleRadio"> Yes </label>
-                              </div>
-                              <div class="form-check form-check mx-2 my-auto">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="sesso"
-                                  id="femaleRadio"
-                                  value="No"
-                                  v-model="cane.alive"
-                                />
-                                <label class="form-check-label" for="femaleRadio"> No </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-4"></div>
-
-                        <div class="col-4"></div>
-                      </div>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="neutering" class="col-form-label fw-bold">Neutering</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="neutering" v-model="cane.sterilizzazione" />
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="therapy" class="col-form-label fw-bold">Therapy</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="neutering" v-model="cane.terapia" />
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="taglia" class="col-form-label fw-bold">Pathologies</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="patologie" v-model="cane.patologie" />
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="taglia" class="col-form-label fw-bold">Food</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="food" placeholder="link to food table" />
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="sesso" class="col-form-label fw-bold">Alive</label>
+                </div>
+                <div class="col-8">
+                  <div class="d-flex mt-2">
+                    <div class="form-check mx-2 my-auto">
+                      <input class="form-check-input" type="radio" name="sesso" id="maleRadio" value="Yes"
+                        v-model="cane.alive" />
+                      <label class="form-check-label" for="maleRadio"> Yes </label>
                     </div>
-                  </form>
+                    <div class="form-check form-check mx-2 my-auto">
+                      <input class="form-check-input" type="radio" name="sesso" id="femaleRadio" value="No"
+                        v-model="cane.alive" />
+                      <label class="form-check-label" for="femaleRadio"> No </label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-auto">
-          <!-- accordion -->
+        <div class="col-md-3">
           <div class="" id="">
             <div class="">
               <h2>Shelter data</h2>
             </div>
-            <form>
-              <div class="container p-1">
-                <div class="row">
-                  <div class="col-4">
-                    <label for="birth" class="col-form-label fw-bold"> Entry date </label>
-                  </div>
-                  <div class="col-8">
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="neutering"
-                      v-model="shelter.date_in"
-                    />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-4">
-                    <label for="birth" class="col-form-label fw-bold"> Entry date </label>
-                  </div>
-                  <div class="col-8">
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="neutering"
-                      v-model="shelter.date_in"
-                    />
-                  </div>
-                </div>
+            <div class="row mb-1">
+              <div class="col-5">
+                <label for="date_in" class="col-form-label fw-bold">Entry date </label>
               </div>
-            </form>
+              <div class="col-7">
+                <input type="date" class="form-control" id="date_in" v-model="shelter.date_in" />
+              </div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-5">
+                <label for="date_in" class="col-form-label fw-bold">Entry date </label>
+              </div>
+              <div class="col-7">
+                <input type="date" class="form-control" id="date_in" v-model="shelter.date_in" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
 
-<!-- PDF PRINT  -->
-<!-- PDF PRINT  -->
-<!-- PDF PRINT  -->
-<!-- PDF PRINT  -->
 
-  <div class="container d-none">
+  <div class="container-fluid d-none">
     <div class="card p-5" id="element-to-print">
       <h1 class="fw-bold">Dog Details Card</h1>
-      <div class="container">
-        <br />
-        <div class="row">
-          <div class="col-6">
-            <!-- Left column for dog details -->
-            <div class="image-container shadow mb-3" width="">
-              <div
-                class="image-to-replace"
-                style="background-image: 'http://localhost:8000/1.jpg?placeholder='"
-              >
-                <img alt="" style="" :src="getImageUrl(cane.id)" id="thumbpdf" />
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" style="font-weight: bold">Name:</label>
-              <p id="dogName">{{ cane.nome }}</p>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" style="font-weight: bold">Character:</label>
-              <p id="dogChar">{{ cane.carattere }}</p>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" style="font-weight: bold">Breed:</label>
-              <p id="dogBreed">{{ cane.razza }}</p>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" style="font-weight: bold">Age:</label>
-              <p id="dogAge">{{ cane.birth }}</p>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" style="font-weight: bold">Sex:</label>
-              <p id="dogSex">{{ cane.sesso }}</p>
+      <div class="row">
+        <div class="col-6">
+          <!-- Left column for dog details -->
+          <div class="image-container shadow mb-3" width="">
+            <div class="image-to-replace" style="background-image: 'http://localhost:8000/1.jpg?placeholder='">
+              <img alt="" style="" :src="getImageUrl(cane.id)" id="thumbpdf" />
             </div>
           </div>
-          <div class="col-6">
-            <!-- Right column for additional details -->
-            <div class="shadow mb-3" width="">
-              <img
-                v-if="cane.hasImg"
-                id="thumbnail"
-                src="https://placehold.co/300"
-                class=""
-                width=""
-                style=""
-              />
-            </div>
-            <div class="mb-3">
-              <label class="form-label" style="font-weight: bold">Color:</label>
-              <p id="dogColor">{{ cane.mantello }}</p>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" style="font-weight: bold">Microchip Number:</label>
-              <p id="dogMicrochip">{{ cane.chip }}</p>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" style="font-weight: bold">Health issues:</label>
-              <p id="dogMicrochip">{{ cane.patologie }}</p>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" style="font-weight: bold">Neutered</label>
-              <p id="dogVaccinations">{{ cane.sterilizzazione }}</p>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" style="font-weight: bold">Additional Notes:</label>
-              <p id="dogNotes">[Additional Notes or Medical History]</p>
-            </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: bold">Name:</label>
+            <p id="dogName">{{ cane.nome }}</p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: bold">Character:</label>
+            <p id="dogChar">{{ cane.carattere }}</p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: bold">Breed:</label>
+            <p id="dogBreed">{{ cane.razza }}</p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: bold">Age:</label>
+            <p id="dogAge">{{ cane.birth }}</p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: bold">Sex:</label>
+            <p id="dogSex">{{ cane.sesso }}</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <!-- Right column for additional details -->
+          <div class="shadow mb-3" width="">
+            <img v-if="cane.hasImg" id="thumbnail" src="https://placehold.co/300" class="" width="" style="" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: bold">Color:</label>
+            <p id="dogColor">{{ cane.mantello }}</p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: bold">Microchip Number:</label>
+            <p id="dogMicrochip">{{ cane.chip }}</p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: bold">Health issues:</label>
+            <p id="dogMicrochip">{{ cane.patologie }}</p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: bold">Neutered</label>
+            <p id="dogVaccinations">{{ cane.sterilizzazione }}</p>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style="font-weight: bold">Additional Notes:</label>
+            <p id="dogNotes">[Additional Notes or Medical History]</p>
           </div>
         </div>
       </div>
@@ -683,14 +427,8 @@ let printToPdf = async function () {
             <div class="col-4 m-auto my-4">
               <div class="card shadow p-4">
                 <div class="image-container shadow m-auto mb-3" width="">
-                  <img
-                    v-if="cane.hasImg"
-                    id="thumbnail"
-                    :src="getImageUrl(cane.id)"
-                    class="img circular-image"
-                    width=""
-                    style=""
-                  />
+                  <img v-if="cane.hasImg" id="thumbnail" :src="getImageUrl(cane.id)" class="img circular-image"
+                    width="" style="" />
                 </div>
                 <div class="text-center">
                   <h1 class="m-auto">{{ cane.nome }}</h1>
@@ -710,4 +448,72 @@ let printToPdf = async function () {
     </section>
   </div>
 </template>
-<script></script>
+
+<style scoped>
+.bgbody {
+  background: #ecebff;
+}
+
+.bgtest {
+  background: hsla(141, 54%, 86%, 1);
+
+  background: linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
+  background: linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
+
+  background: -moz-linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
+  background: -moz-linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
+
+  background: -webkit-linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
+  background: -webkit-linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
+
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1);
+  filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1);
+}
+
+/* * {
+  border: solid red 1px;
+} */
+
+.camera-icon-label {
+  position: absolute;
+  bottom: 0px;
+  /* Adjust the distance from the bottom as needed */
+  right: 0%;
+  /* Position it in the middle horizontally */
+  transform: translateX(-50%);
+  /* Center horizontally */
+}
+
+/* .image-container {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 50%;
+} */
+
+.circular-image {
+  width: 100%;
+  /* height: 100%; */
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+</style>

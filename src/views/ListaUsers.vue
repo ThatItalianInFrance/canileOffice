@@ -1,10 +1,6 @@
 <script setup>
-// REMEBER TO IMPORT REF
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-
-// let check = JSON.parse(localStorage.getItem('user'))
-// console.log(check.token)
 
 // ref must be used for responsive data - use .value to assign or read
 let users = ref([])
@@ -27,72 +23,66 @@ let loadProducts = function () {
     .then(function (foo) {
       users.value = foo.data
       console.log(users.value)
-      // console.log(cani)
     })
 }
 
 loadProducts()
-console.log(users.value)
 </script>
 
 <template>
- 
-  <div class="card p-4 shadow">
-    <div class="d-flex justify-content-between">
-      <div class="">
-        <h3 class="fw-bold">User List</h3>
-        <p>Overview of registered users</p>
-      </div>
-      <div class="my-auto">
-        <button class="btn btn-outline-secondary mx-2" type="button">...</button>
-        <button class="btn btn-outline-secondary">All users</button>
+  <main>
+    <div class="card shadow">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <div class="">
+            <h3 class="fw-bold">User List</h3>
+            <p>Overview of registered users</p>
+          </div>
+          <div class="my-auto">
+            <button class="btn btn-outline-secondary mx-2" type="button">...</button>
+            <button class="btn btn-outline-secondary">All users</button>
+          </div>
+        </div>
+
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Status</th>
+              <th scope="col">Date Added</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="user in users" :key="user.id">
+              <td><router-link :to="{ path: '/users/edit/' + user.id }">{{ user.username }}</router-link></td>
+              <td>{{ user.email }}</td>
+              <td>Administrator</td>
+              <td class="status-active">Active</td>
+              <td>2023-08-01</td>
+            </tr>
+            <tr>
+              <td>John Smith</td>
+              <td>john.smith@example.com</td>
+              <td>User</td>
+              <td class="status-pending">Pending</td>
+              <td>2023-07-15</td>
+            </tr>
+            <tr>
+              <td>Emily Johnson</td>
+              <td>emily.johnson@example.com</td>
+              <td>Editor</td>
+              <td class="status-inactive">Inactive</td>
+              <td>2023-06-20</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    
-    <table class="table table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Role</th>
-          <th scope="col">Status</th>
-          <th scope="col">Date Added</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="user in users" :key="user.id">
-          <td><router-link :to="{ path: '/users/edit/' + user.id }">{{ user.username }}</router-link></td>
-          <td>{{ user.email }}</td>
-          <td>Administrator</td>
-          <td class="status-active">Active</td>
-          <td>2023-08-01</td>
-        </tr>
-        <tr>
-          <td>John Smith</td>
-          <td>john.smith@example.com</td>
-          <td>User</td>
-          <td class="status-pending">Pending</td>
-          <td>2023-07-15</td>
-        </tr>
-        <tr>
-          <td>Emily Johnson</td>
-          <td>emily.johnson@example.com</td>
-          <td>Editor</td>
-          <td class="status-inactive">Inactive</td>
-          <td>2023-06-20</td>
-        </tr>
-        <!-- Additional rows as needed -->
-      </tbody>
-    </table>
-  </div>
-
-
-
-
-
-
+  </main>
 </template>
-<script></script>
+
 <style scoped>
 /* Custom styles for the user list table */
 .table-hover tbody tr:hover {
@@ -107,16 +97,19 @@ console.log(users.value)
 /* Define or redefine status classes as needed */
 .status-active {
   font-weight: bold;
-  color: #5cb85c; /* Bootstrap 'success' color */
+  color: #5cb85c;
+  /* Bootstrap 'success' color */
 }
 
 .status-pending {
   font-weight: bold;
-  color: #f0ad4e; /* Bootstrap 'warning' color */
+  color: #f0ad4e;
+  /* Bootstrap 'warning' color */
 }
 
 .status-inactive {
   font-weight: bold;
-  color: #d9534f; /* Bootstrap 'danger' color */
+  color: #d9534f;
+  /* Bootstrap 'danger' color */
 }
 </style>
