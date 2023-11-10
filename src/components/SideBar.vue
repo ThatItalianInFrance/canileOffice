@@ -61,7 +61,6 @@
         <div class="collapse" id="structure-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li class="nav-item">
-
               <RouterLink to="/about" class="nav-link active "><span class="material-symbols-outlined">
                   travel_explore
                 </span>Map</RouterLink>
@@ -76,11 +75,10 @@
         </div>
       </li>
       <li class="mb-1">
-
         <button class="btn btn-toggle align-items-center rounded collapsed " data-bs-toggle="collapse"
           data-bs-target="#dashboard-collapse" aria-expanded="false">
 
-          <span class="material-symbols-outlined"> calendar_month </span>
+          <span class="material-symbols-outlined">calendar_month</span>
           Planning
         </button>
         <div class="collapse" id="dashboard-collapse">

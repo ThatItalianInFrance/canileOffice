@@ -1,16 +1,22 @@
 <script>
-import Calendar from './Calendar.vue';
+import CalendarView from './CalendarView.vue';
 export default {
     // name: 'planning',
     components: {
-        Calendar,
+        CalendarView,
     }
 }
 </script>
 
 <template>
-    <h1>Planning</h1>
-    <Calendar />
+    <main>
+        <div class="card shadow">
+            <div class="card-body">
+                <h1>Planning</h1>
+                <CalendarView />
+            </div>
+        </div>
+    </main>
 </template>
 
 <style>
