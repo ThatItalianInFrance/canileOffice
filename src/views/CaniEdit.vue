@@ -79,7 +79,7 @@ let loadBoxCani = async function (id) {
   let json = await response.json()
   console.log(json.data)
   shelter.value = json.data
-  console.log(kind.value)
+  console.log(shelter.value)
 }
 
 loadBoxCani(id)
