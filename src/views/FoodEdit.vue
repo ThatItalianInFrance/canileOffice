@@ -14,6 +14,7 @@ let id = route.params.id;
 let base64Image = ref()
 function onChangeImage(evt) {
  const selectedfile = evt.target.files
+ console.log("selectedfile", selectedfile);
  if (selectedfile.length > 0) {
   const [imageFile] = selectedfile
   const fileReader = new FileReader()
@@ -24,7 +25,7 @@ function onChangeImage(evt) {
    newImage.style = 'max-height: 500px; max-width:500px'
    document.getElementById('thumbnail').innerHTML = newImage.outerHTML
 
-   console.log(base64Image)
+   console.log("base64Image",base64Image)
    // console.log(fileReader.readAsDataURL(imageFile));
   }
   fileReader.readAsDataURL(imageFile)
@@ -66,6 +67,7 @@ function getImageUrl(id) {
 let saveFood = async function () {
  console.log("SaveFood func");
  if (base64Image.value != '') food.value.image = base64Image
+ console.log("food.value.image", food.value.image);
  if (id == 0) {
   console.log("new food");
   await fetch(`${import.meta.env.VITE_SERVER}/office/food`, {
@@ -127,11 +129,31 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
         <div class="col-6">
          <div class="mx-auto my-5">
           <div id="thumbnail" class="text-center">
-           <img v-if="base64Image" :src="base64Image" style="max-height: 500px; max-width: 500px"
-            class="img-thumbnail" />
+   <img
+                          v-if="food.hasImg"
+                          id="thumbnail"
+                          :src="getImageUrl(food.id)"
+                          class="img circular-image image-to-download"
+                          width=""
+                          style=""
+                        />
            <img v-else src="https://placehold.co/200" alt="Placeholder" style="max-height: 500px; max-width: 500px"
             class="img-thumbnail rounded-circle" />
           </div>
+          <label for="image" class="camera-icon-label">
+            <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z"
+              />
+            </svg>
+            <input
+              type="file"
+              class="col-form-control d-none"
+              id="image"
+              @change="onChangeImage"
+            />
+          </label>
          </div>
         </div>
        </div>
