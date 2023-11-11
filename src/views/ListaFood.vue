@@ -35,12 +35,12 @@ let loadDogs = function () {
       // console.log(cani)
     })
 }
-
+loadDogs();
 watch(searchTerm, () => {//newSearchTerm, oldSearchTerm
   loadDogs();
 })
 
-loadFood()
+
 console.log(dogs.value)
 </script>
 

@@ -35,14 +35,7 @@ let food = ref({
   description: ''
 })
 
-let initFields = function(id){
- food.value.id = 0;
- food.value.name = "";
- food.value.type = "";
- food.value.description = "";
- food.value.hasImg = false;
-
- addOrEdit.value = id;
+let titleForm = ref();
 let initFields = function (id) {
   food.value.name = "";
   food.value.type = "";
@@ -119,35 +112,50 @@ let saveFood = async function () {
   }
   router.push({ path: '/food' })
 }
+}
 
 watch(route, (newSearchTerm, oldSearchTerm) => {
-  loadFood(route.params.id)
+  loadFood(id)
 })
-
 </script>
 
 <template>
   <main>
     <div class="card shadow">
       <div class="card-body">
-        <h1 class="card-title text-center mb-4">{{ titleForm != "0" ? "Edit" : "Add" }} Food</h1>
+        <h1 class="card-title text-center mb-4">{{ titleForm != '0' ? 'Edit' : 'Add' }} Food</h1>
         <div class="row">
           <div class="col-6">
             <form @submit.prevent="saveFood">
               <div class="mb-3">
                 <label for="foodname" class="form-label">Food Name</label>
-                <input type="text" class="form-control" id="foodname" v-model="food.name"
-                  placeholder="Enter food name" />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="foodname"
+                  v-model="food.name"
+                  placeholder="Enter food name"
+                />
               </div>
               <div class="mb-3">
                 <label for="type" class="form-label">Type</label>
-                <input type="text" class="form-control" id="type" v-model="food.type"
-                  placeholder="Enter type" />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="type"
+                  v-model="food.type"
+                  placeholder="Enter type"
+                />
               </div>
               <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <input type="textarea" class="form-control" id="description" v-model="food.description"
-                  placeholder="Enter description" />
+                <input
+                  type="textarea"
+                  class="form-control"
+                  id="description"
+                  v-model="food.description"
+                  placeholder="Enter description"
+                />
               </div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
@@ -157,10 +165,19 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
           <div class="col-6">
             <div class="mx-auto my-5">
               <div id="thumbnail" class="text-center">
-                <img v-if="base64Image" :src="base64Image" style="max-height: 500px; max-width: 500px"
-                  class="img-thumbnail" />
-                <img v-else src="https://placehold.co/200" alt="Placeholder"
-                  style="max-height: 500px; max-width: 500px" class="img-thumbnail rounded-circle" />
+                <img
+                  v-if="base64Image"
+                  :src="base64Image"
+                  style="max-height: 500px; max-width: 500px"
+                  class="img-thumbnail"
+                />
+                <img
+                  v-else
+                  src="https://placehold.co/200"
+                  alt="Placeholder"
+                  style="max-height: 500px; max-width: 500px"
+                  class="img-thumbnail rounded-circle"
+                />
               </div>
             </div>
           </div>
@@ -206,7 +223,9 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.button{
-display: flex; justify-content: center; align-items: center;
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
