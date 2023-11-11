@@ -9,7 +9,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 let users = ref([])
 let searchTerm = ref('')
 
-let loadUsers = function (searchTerm) {
+let loadProducts = function (searchTerm) {
   // check = JSON.parse(localStorage.getItem('user'))
   // console.log('ciccio' + check.token)
   fetch(`${import.meta.env.VITE_SERVER}/office/users`, {
