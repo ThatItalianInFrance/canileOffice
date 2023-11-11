@@ -28,6 +28,16 @@ function onChangeImage(evt) {
     fileReader.readAsDataURL(imageFile)
   }
 }
+let dog = ref({})
+dog.value.actions = [
+  { id: 1, actionType: 'Adoption Visit', date: '2023-01-01', time: '12.00', status: 'Completed' },
+  { id: 2, actionType: 'Vet Visit', date: '2023-02-15', time: '12.00', status: 'Pending' },
+  { id: 4, actionType: 'Parasite Check', date: '2023-04-20', time: '12.00', status: 'Pending' },
+  { id: 5, actionType: 'Training Session', date: '2023-05-05', time: '12.00', status: 'Completed' },
+  { id: 6, actionType: 'Walk in the Park', date: '2023-06-15', time: '12.00', status: 'Pending' },
+  { id: 7, actionType: 'Dental Checkup', date: '2023-07-10', time: '12.00', status: 'Completed' }
+  // ... (other actions for Dog 1) ...
+]
 
 let cane = ref({
   id: 0,
@@ -172,7 +182,7 @@ let saveCane = async function () {
       },
       body: JSON.stringify(shelter.value)
     })
-    console.log(image.value)
+    // console.log(image.value)
   }
   // router.push({ path: '/listacani' })
 }
@@ -228,29 +238,17 @@ let printToPdf = async function () {
             <h1>{{ cane.nome }}</h1>
             <div class="position-relative">
               <div class="image-container m-auto mb-3" width="">
-                <img
-                  v-if="cane.hasImg"
-                  id="thumbnail"
-                  :src="getImageUrl(cane.id)"
-                  class="img-fluid circular-image image-to-download shadow"
-                  width=""
-                  style=""
-                />
+                <img v-if="cane.hasImg" id="thumbnail" :src="getImageUrl(cane.id)"
+                  class="img-fluid circular-image image-to-download shadow" width="" style="" />
               </div>
 
               <label for="image" class="camera-icon-label">
                 <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
                   <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                   <path
-                    d="M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z"
-                  />
+                    d="M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z" />
                 </svg>
-                <input
-                  type="file"
-                  class="col-form-control d-none"
-                  id="image"
-                  @change="onChangeImage"
-                />
+                <input type="file" class="col-form-control d-none" id="image" @change="onChangeImage" />
               </label>
               <!-- <img src="https://placedog.net/500/500" alt="" /> -->
             </div>
@@ -285,25 +283,13 @@ let printToPdf = async function () {
               <div class="col-6">
                 <div class="d-flex mt-2">
                   <div class="form-check mx-2 my-auto">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="alive"
-                      id="aliveRadio"
-                      value="Yes"
-                      v-model="cane.alive"
-                    />
+                    <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="Yes"
+                      v-model="cane.alive" />
                     <label class="form-check-label" for="aliveRadio"> Yes </label>
                   </div>
                   <div class="form-check form-check mx-2 my-auto">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="alive"
-                      id="aliveRadio"
-                      value="No"
-                      v-model="cane.alive"
-                    />
+                    <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="No"
+                      v-model="cane.alive" />
                     <label class="form-check-label" for="aliveRadio"> No </label>
                   </div>
                 </div>
@@ -344,12 +330,7 @@ let printToPdf = async function () {
                       <label for="taglia" class="col-form-label fw-bold">Size</label>
                     </div>
                     <div class="col-8">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="carattere"
-                        v-model="cane.taglia"
-                      />
+                      <input type="text" class="form-control" id="carattere" v-model="cane.taglia" />
                     </div>
                   </div>
                   <div class="row mb-1">
@@ -359,24 +340,14 @@ let printToPdf = async function () {
                     <div class="col-8">
                       <div class="d-flex mt-2">
                         <div class="form-check mx-2 my-auto">
-                          <input
-                          type="radio"
-                            class="form-check-input"
-                            name="sesso"
-                            id="maleRadio"
-                            v-model="cane.sesso"
-                          />
+                          <input type="radio" class="form-check-input" name="sesso" id="maleRadio" v-model="cane.sesso"
+                            value="Male" />
                           <label class="form-check-label" for="maleRadio"> Male </label>
                         </div>
-                        
+
                         <div class="form-check form-check mx-2 my-auto">
-                          <input
-                            class="form-check-input"
-                            type="radio"
-                            name="sesso"
-                            id="femaleRadio"
-                            v-model="cane.sesso"
-                          />
+                          <input class="form-check-input" type="radio" name="sesso" id="femaleRadio" v-model="cane.sesso"
+                            value="Female" />
                           <label class="form-check-label" for="femaleRadio"> Female </label>
                         </div>
                       </div>
@@ -388,12 +359,7 @@ let printToPdf = async function () {
                       <label for="mantello" class="col-form-label fw-bold">Coat</label>
                     </div>
                     <div class="col-8">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="carattere"
-                        v-model="cane.mantello"
-                      />
+                      <input type="text" class="form-control" id="carattere" v-model="cane.mantello" />
                     </div>
                   </div>
                   <div class="row mb-1">
@@ -420,12 +386,7 @@ let printToPdf = async function () {
                       <label for="neutering" class="col-form-label fw-bold">Neutering</label>
                     </div>
                     <div class="col-8">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="neutering"
-                        v-model="cane.sterilizzazione"
-                      />
+                      <input type="text" class="form-control" id="neutering" v-model="cane.sterilizzazione" />
                     </div>
                   </div>
                   <div class="row mb-1">
@@ -433,12 +394,7 @@ let printToPdf = async function () {
                       <label for="therapy" class="col-form-label fw-bold">Therapy</label>
                     </div>
                     <div class="col-8">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="neutering"
-                        v-model="cane.terapia"
-                      />
+                      <input type="text" class="form-control" id="neutering" v-model="cane.terapia" />
                     </div>
                   </div>
                   <div class="row mb-1">
@@ -446,12 +402,7 @@ let printToPdf = async function () {
                       <label for="taglia" class="col-form-label fw-bold">Pathologies</label>
                     </div>
                     <div class="col-8">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="patologie"
-                        v-model="cane.patologie"
-                      />
+                      <input type="text" class="form-control" id="patologie" v-model="cane.patologie" />
                     </div>
                   </div>
                   <div class="row mb-1">
@@ -459,12 +410,7 @@ let printToPdf = async function () {
                       <label for="taglia" class="col-form-label fw-bold">Food</label>
                     </div>
                     <div class="col-8">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="food"
-                        placeholder="link to food table"
-                      />
+                      <input type="text" class="form-control" id="food" placeholder="link to food table" />
                     </div>
                   </div>
                   <div class="row mb-1">
@@ -474,25 +420,13 @@ let printToPdf = async function () {
                     <div class="col-8">
                       <div class="d-flex mt-2">
                         <div class="form-check mx-2 my-auto">
-                          <input
-                            class="form-check-input"
-                            type="radio"
-                            name="alive"
-                            id="aliveRadio"
-                            value="Yes"
-                            v-model="cane.alive"
-                          />
+                          <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="Yes"
+                            v-model="cane.alive" />
                           <label class="form-check-label" for="aliveRadio"> Yes </label>
                         </div>
                         <div class="form-check form-check mx-2 my-auto">
-                          <input
-                            class="form-check-input"
-                            type="radio"
-                            name="alive"
-                            id="aliveRadio"
-                            value="No"
-                            v-model="cane.alive"
-                          />
+                          <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="No"
+                            v-model="cane.alive" />
                           <label class="form-check-label" for="aliveRadio"> No </label>
                         </div>
                       </div>
@@ -515,12 +449,7 @@ let printToPdf = async function () {
                       </div>
                       <div class="col-7">
                         <select class="form-control" name="box" v-model="shelter.idbox">
-                          <option
-                            v-for="item in stalli"
-                            :key="item.id"
-                            :value="item.id"
-                            :model="shelter.idbox"
-                          >
+                          <option v-for="item in stalli" :key="item.id" :value="item.id" :model="shelter.idbox">
                             {{ item.blocco }} - {{ item.numero }}
                           </option>
                         </select>
@@ -531,12 +460,7 @@ let printToPdf = async function () {
                         <label for="birth" class="col-form-label fw-bold"> Entry date </label>
                       </div>
                       <div class="col-8">
-                        <input
-                          type="date"
-                          class="form-control"
-                          id="date_in"
-                          v-model="shelter.date_in"
-                        />
+                        <input type="date" class="form-control" id="date_in" v-model="shelter.date_in" />
                       </div>
                     </div>
                     <div class="row mb-1">
@@ -544,12 +468,7 @@ let printToPdf = async function () {
                         <label for="birth" class="col-form-label fw-bold"> Exit date </label>
                       </div>
                       <div class="col-8">
-                        <input
-                          type="date"
-                          class="form-control"
-                          id="date_out"
-                          v-model="shelter.date_out"
-                        />
+                        <input type="date" class="form-control" id="date_out" v-model="shelter.date_out" />
                       </div>
                     </div>
                     <div class="row mb-1">
@@ -557,12 +476,7 @@ let printToPdf = async function () {
                         <label for="owner" class="col-form-label fw-bold">Owner</label>
                       </div>
                       <div class="col-8">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="food"
-                          placeholder="link to User / Charged"
-                        />
+                        <input type="text" class="form-control" id="food" placeholder="link to User / Charged" />
                       </div>
                     </div>
                   </div>
@@ -570,9 +484,39 @@ let printToPdf = async function () {
               </div>
             </div>
           </div>
+          <hr />
           <div class="row my-2">
             <div class="col-12">
-              <div class="card shadow p-2">Dog actions list data</div>
+              <div class="card shadow p-2">
+                <h4 class="header"><span>Actions data</span></h4>
+                <table class="table table-hover">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Action Type</th>
+                      <th scope="col" class="text-center col-2">Date | Time</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="action in dog.actions" :key="action.id">
+                      <td>
+                        <div class="">
+                          <input type="checkbox" name="" id="" class="mx-2" />
+                          {{ action.actionType }}
+                        </div>
+                        </td>
+                          <td>
+                            <small class="mx-2">{{ action.date }} </small>|<small class="mx-2"> {{ action.time }}</small>
+                          </td>
+
+                          <td :class="action.status === 'Completed' ? 'status-completed' : 'status-pending'
+                            ">
+                            {{ action.status }}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
             </div>
           </div>
         </div>
@@ -587,10 +531,7 @@ let printToPdf = async function () {
         <div class="col-6">
           <!-- Left column for dog details -->
           <div class="image-container shadow mb-3" width="">
-            <div
-              class="image-to-replace"
-              style="background-image: 'http://localhost:8000/1.jpg?placeholder='"
-            >
+            <div class="image-to-replace">
               <img alt="" style="" :src="getImageUrl(cane.id)" id="thumbpdf" />
             </div>
           </div>
@@ -618,14 +559,7 @@ let printToPdf = async function () {
         <div class="col-6">
           <!-- Right column for additional details -->
           <div class="shadow mb-3" width="">
-            <img
-              v-if="cane.hasImg"
-              id="thumbnail"
-              src="https://placehold.co/300"
-              class=""
-              width=""
-              style=""
-            />
+            <img v-if="cane.hasImg" id="thumbnail" src="https://placehold.co/300" class="" width="" style="" />
           </div>
           <div class="mb-3">
             <label class="form-label" style="font-weight: bold">Color:</label>
@@ -657,14 +591,8 @@ let printToPdf = async function () {
             <div class="col-4 m-auto my-4">
               <div class="card shadow p-4">
                 <div class="image-container shadow m-auto mb-3" width="">
-                  <img
-                    v-if="cane.hasImg"
-                    id="thumbnail"
-                    :src="getImageUrl(cane.id)"
-                    class="img circular-image"
-                    width=""
-                    style=""
-                  />
+                  <img v-if="cane.hasImg" id="thumbnail" :src="getImageUrl(cane.id)" class="img circular-image" width=""
+                    style="" />
                 </div>
                 <div class="text-center">
                   <h1 class="m-auto">{{ cane.nome }}</h1>
@@ -685,6 +613,12 @@ let printToPdf = async function () {
 </template>
 
 <style scoped>
+.thead-dark th {
+  /* background-color: #343a40;
+  color: #fff; */
+  font-size: 16px;
+}
+
 .bgbody {
   background: #ecebff;
 }
@@ -692,44 +626,32 @@ let printToPdf = async function () {
 .bgtest {
   background: hsla(141, 54%, 86%, 1);
 
-  background: linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
-  background: linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
+  background: linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
+  background: linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
 
-  background: -moz-linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
-  background: -moz-linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
+  background: -moz-linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
+  background: -moz-linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
 
-  background: -webkit-linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    90deg,
-    hsla(141, 54%, 86%, 1) 0%,
-    hsla(333, 73%, 85%, 1) 50%,
-    hsla(211, 58%, 79%, 1) 100%
-  );
+  background: -webkit-linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
+  background: -webkit-linear-gradient(90deg,
+      hsla(141, 54%, 86%, 1) 0%,
+      hsla(333, 73%, 85%, 1) 50%,
+      hsla(211, 58%, 79%, 1) 100%);
 
   filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1);
   filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#CAEFD7", endColorstr="#F5BFD7", GradientType=1);
