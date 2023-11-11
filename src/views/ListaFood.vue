@@ -40,7 +40,7 @@ watch(searchTerm, () => {//newSearchTerm, oldSearchTerm
   loadDogs();
 })
 
-loadDogs()
+loadFood()
 console.log(dogs.value)
 </script>
 

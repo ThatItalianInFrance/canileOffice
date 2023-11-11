@@ -5,10 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 
-// let id = ref(['']);
-// let id = ref('')
-
-let titleForm = ref([''])
+let addOrEdit = ref(['']); // If != 0 - Edit item, else - Add item
 let id = route.params.id;
 
 let base64Image = ref()
@@ -24,13 +21,12 @@ function onChangeImage(evt) {
       newImage.style = 'max-height: 500px; max-width:500px'
       document.getElementById('thumbnail').innerHTML = newImage.outerHTML
 
-      console.log(base64Image)
-      // console.log(fileReader.readAsDataURL(imageFile));
-    }
-    fileReader.readAsDataURL(imageFile)
+   console.log("base64Image",base64Image)
+   // console.log(fileReader.readAsDataURL(imageFile));
   }
+  fileReader.readAsDataURL(imageFile)
+ }
 }
-
 
 let food = ref({
   id: 0,
@@ -39,6 +35,14 @@ let food = ref({
   description: ''
 })
 
+let initFields = function(id){
+ food.value.id = 0;
+ food.value.name = "";
+ food.value.type = "";
+ food.value.description = "";
+ food.value.hasImg = false;
+
+ addOrEdit.value = id;
 let initFields = function (id) {
   food.value.name = "";
   food.value.type = "";
@@ -58,10 +62,37 @@ let loadFood = async function (id) {
   food.value = json.data
 }
 loadFood(id)
-function getImageUrl(id) {
-  return `${import.meta.env.VITE_SERVER}/food/${id}.jpg`
+
+function  getImageUrl(idImg) {
+   const timestamp = new Date().getTime();
+  return `${import.meta.env.VITE_SERVER}/food/${idImg}.jpg?timestamp=${timestamp}`;
 }
 
+let saveFood = async function (id) {
+ if (base64Image.value != '') food.value.image = base64Image
+ console.log("food.value.image", food.value.image);
+ if (id == 0) {
+  console.log("new food");
+  await fetch(`${import.meta.env.VITE_SERVER}/office/food`, {
+   method: 'POST',
+   headers: {
+    // 'Authorization': `Bearer ${check.token}`,
+    'Content-Type': 'application/json'
+   },
+   body: JSON.stringify(food.value)
+  })
+ } else {
+  await fetch(`${import.meta.env.VITE_SERVER}/office/food/${id}`, {
+   method: 'PUT',
+   headers: {
+    // 'Authorization': `Bearer ${check.token}`,
+    'Content-Type': 'application/json'
+   },
+   body: JSON.stringify(food.value)
+  })
+  // console.log(image.value);
+ }
+ router.push({ path: '/food' })
 let saveFood = async function () {
   console.log("SaveFood func");
   if (base64Image.value != '') food.value.image = base64Image
@@ -173,5 +204,9 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
   max-width: 300px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button{
+display: flex; justify-content: center; align-items: center;
 }
 </style>

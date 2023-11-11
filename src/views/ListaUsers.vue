@@ -1,11 +1,18 @@
 <script setup>
-import { ref } from 'vue'
+// REMEBER TO IMPORT REF
+import { ref, watch } from 'vue'
 import { RouterLink } from 'vue-router'
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+// let check = JSON.parse(localStorage.getItem('user'))
+// console.log(check.token)
 
 // ref must be used for responsive data - use .value to assign or read
 let users = ref([])
+let searchTerm = ref('')
 
-let loadProducts = function () {
+let loadUsers = function (searchTerm) {
   // check = JSON.parse(localStorage.getItem('user'))
   // console.log('ciccio' + check.token)
   fetch(`${import.meta.env.VITE_SERVER}/office/users`, {
@@ -22,11 +29,16 @@ let loadProducts = function () {
     })
     .then(function (foo) {
       users.value = foo.data
+      users.value = users.value.filter(user => user.username.toLowerCase().includes(searchTerm.toLowerCase()));
       console.log(users.value)
     })
 }
 
-loadProducts()
+watch(searchTerm, (newSearchTerm, oldSearchTerm) => {
+  loadUsers(searchTerm.value);
+})
+
+loadUsers()
 </script>
 
 <template>
