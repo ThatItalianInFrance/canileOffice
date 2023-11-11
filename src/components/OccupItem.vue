@@ -1,41 +1,3 @@
-<style scoped>
-</style>
-<template>
-  <div class="col-12">
-    <div class="card shadow p-2 py-4 mb-3">
-      <div class="d-flex">
-        <div class="px-3">
-          <pie-chart
-            :data="[
-              ['Empty', 44],
-              ['Occupied', 23]
-            ]"
-            width="170px"
-            height="170px"
-            class=""
-          ></pie-chart>
-        </div>
-        <div class="container">
-          <div class="row">
-            <h4 class="greeting fw-bold">{{ greeting }}</h4>
-            <p class="small">comes handy with a pie!</p>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <h5>Dogs in shelter</h5>
-              <p>{{ numberOfDogs }}</p>
-            </div>
-            <div class="col-6">
-              <h5>Available Slots</h5>
-              <p>100</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -74,3 +36,33 @@ let loadDogs = function () {
 // Call loadDogs on component mount
 onMounted(loadDogs)
 </script>
+
+<template>
+  <div class="col-12">
+    <div class="card shadow p-2 py-4 mb-3">
+      <div class="d-flex">
+        <div class="px-3">
+          <pie-chart :data="[
+            ['Empty', 44],
+            ['Occupied', 23]
+          ]" width="170px" height="170px" class=""></pie-chart>
+        </div>
+        <div class="row">
+          <h4 class="greeting fw-bold">{{ greeting }}</h4>
+          <p class="small">comes handy with a pie!</p>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <h5>Dogs in shelter</h5>
+            <p>{{ numberOfDogs }}</p>
+          </div>
+          <div class="col-6">
+            <h5>Available Slots</h5>
+            <p>100</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+

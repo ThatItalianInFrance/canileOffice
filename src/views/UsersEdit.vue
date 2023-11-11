@@ -49,9 +49,6 @@ let loadUser = async function (id) {
   user.value = json.data
 }
 loadUser(id)
-function getImageUrl(id) {
-  return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
-}
 
 let saveUser = async function () {
   if (base64Image.value != '') user.value.image = base64Image
@@ -80,90 +77,55 @@ let saveUser = async function () {
 </script>
 
 <template>
-  <main>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <div class="card shadow">
-            <div class="card-body">
-              <h1 class="card-title text-center mb-4">Edit User</h1>
-              <div class="row">
-                <div class="col-6">
-                  <form @submit.prevent="saveUser">
-                    <div class="mb-3">
-                      <label for="username" class="form-label">User Name</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="username"
-                        v-model="user.username"
-                        placeholder="Enter user name"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="email" class="form-label">Email</label>
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="email"
-                        v-model="user.email"
-                        placeholder="Enter email"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="tipo" class="form-label">role</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="tipo"
-                        v-model="user.tipo"
-                        placeholder="Enter type"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="password"
-                        v-model="user.password"
-                        placeholder="Enter password"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label for="image" class="form-label">Profile Image (.jpg only)</label>
-                      <input type="file" class="form-control" id="image" @change="onChangeImage" />
-                    </div>
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
-                    </div>
-                  </form>
-                </div>
-                <div class="col-6">
-                  <div class="mx-auto my-5">
-                    <div id="thumbnail" class="text-center">
-                      <img
-                        v-if="base64Image"
-                        :src="base64Image"
-                        style="max-height: 500px; max-width: 500px"
-                        class="img-thumbnail"
-                      />
-                      <img
-                        v-else
-                        src="https://placehold.co/200"
-                        alt="Placeholder"
-                        style="max-height: 500px; max-width: 500px"
-                        class="img-thumbnail rounded-circle"
-                      />
-                    </div>
-                  </div>
-                </div>
+  <main class="d-flex justify-content-center">
+    <div class="card shadow" style="max-width:600px">
+      <div class="card-body">
+        <h1 class="card-title text-center mb-4">Edit User</h1>
+        <div class="row">
+          <div class="col-6">
+            <form @submit.prevent="saveUser">
+              <div class="mb-3">
+                <label for="username" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="username" v-model="user.username"
+                  placeholder="Enter user name" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" v-model="user.email"
+                  placeholder="Enter email" />
+              </div>
+              <div class="mb-3">
+                <label for="tipo" class="form-label">role</label>
+                <input type="text" class="form-control" id="tipo" v-model="user.tipo"
+                  placeholder="Enter type" />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" v-model="user.password"
+                  placeholder="Enter password" />
+              </div>
+              <div class="mb-3">
+                <label for="image" class="form-label">Profile Image (.jpg only)</label>
+                <input type="file" class="form-control" id="image" @change="onChangeImage" />
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-6">
+            <div class="mx-auto my-5">
+              <div id="thumbnail" class="text-center">
+                <img v-if="base64Image" :src="base64Image" style="max-height: 500px; max-width: 500px"
+                  class="img-thumbnail" />
+                <img v-else src="https://placehold.co/200" alt="Placeholder"
+                  style="max-height: 500px; max-width: 500px" class="img-thumbnail rounded-circle" />
               </div>
             </div>
-            <div class="card-footer text-muted text-center">User ID: {{ user.id }}</div>
           </div>
         </div>
       </div>
+      <div class="card-footer text-muted text-center">User ID: {{ user.id }}</div>
     </div>
   </main>
 </template>
