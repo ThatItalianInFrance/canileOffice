@@ -29,6 +29,16 @@ function onChangeImage(evt) {
   }
 }
 let dog = ref({})
+
+dog.value.attachments = [
+  { id: 1, type: 'image', url: getImageUrl(id), name: 'Dog Image 1' },
+  { id: 2, type: 'image', url: 'https://example.com/image2.jpg', name: 'Dog Image 2' },
+  { id: 3, type: 'document', url: 'https://example.com/medical-record.pdf', name: 'Medical Record' },
+  { id: 4, type: 'image', url: 'https://example.com/image3.jpg', name: 'Dog Image 3' },
+  { id: 5, type: 'document', url: 'https://example.com/training-certificate.pdf', name: 'Training Certificate' },
+  // Add more attachments as needed
+];
+
 dog.value.actions = [
   { id: 1, actionType: 'Adoption Visit', date: '2023-01-01', time: '12.00', status: 'Completed' },
   { id: 2, actionType: 'Vet Visit', date: '2023-02-15', time: '12.00', status: 'Pending' },
@@ -235,66 +245,85 @@ let printToPdf = async function () {
       <div class="row">
         <div class="col-md-3">
           <div class="rounded bgtest p-3" style="">
-            <h1>{{ cane.nome }}</h1>
-            <div class="position-relative">
-              <div class="image-container m-auto mb-3" width="">
-                <img v-if="cane.hasImg" id="thumbnail" :src="getImageUrl(cane.id)"
-                  class="img-fluid circular-image image-to-download shadow" width="" style="" />
-              </div>
+            <div class="pb-3">
 
-              <label for="image" class="camera-icon-label">
-                <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
-                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                  <path
-                    d="M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z" />
-                </svg>
-                <input type="file" class="col-form-control d-none" id="image" @change="onChangeImage" />
-              </label>
-              <!-- <img src="https://placedog.net/500/500" alt="" /> -->
-            </div>
-            <div class="row mb-1">
-              <div class="col-4">
-                <label for="nome" class="col-form-label fw-bold">Name</label>
+              <h1>{{ cane.nome }}</h1>
+              <div class="position-relative">
+                <div class="image-container m-auto mb-3" width="">
+                  <img v-if="cane.hasImg" id="thumbnail" :src="getImageUrl(cane.id)"
+                    class="img-fluid circular-image image-to-download shadow" width="" style="" />
+                </div>
+
+                <label for="image" class="camera-icon-label">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
+                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                      d="M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z" />
+                  </svg>
+                  <input type="file" class="col-form-control d-none" id="image" @change="onChangeImage" />
+                </label>
+                <!-- <img src="https://placedog.net/500/500" alt="" /> -->
               </div>
-              <div class="col-8">
-                <input type="text" class="form-control" id="nome" v-model="cane.nome" />
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="nome" class="col-form-label fw-bold">Name</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="nome" v-model="cane.nome" />
+                </div>
               </div>
-            </div>
-            <div class="row mb-1">
-              <div class="col-4">
-                <label for="carattere" class="col-form-label fw-bold">character</label>
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="carattere" class="col-form-label fw-bold">character</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="nome" v-model="cane.carattere" />
+                </div>
               </div>
-              <div class="col-8">
-                <input type="text" class="form-control" id="nome" v-model="cane.carattere" />
+              <div class="row mb-1">
+                <div class="col-4">
+                  <label for="morsicatore" class="col-form-label fw-bold">Bites</label>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control" id="nome" v-model="cane.morsicatore" />
+                </div>
               </div>
-            </div>
-            <div class="row mb-1">
-              <div class="col-4">
-                <label for="morsicatore" class="col-form-label fw-bold">Bites</label>
-              </div>
-              <div class="col-8">
-                <input type="text" class="form-control" id="nome" v-model="cane.morsicatore" />
-              </div>
-            </div>
-            <div class="row mb-1">
-              <div class="col-6">
-                <label for="onHome" class="col-form-label fw-bold">Display on Home</label>
-              </div>
-              <div class="col-6">
-                <div class="d-flex mt-2">
-                  <div class="form-check mx-2 my-auto">
-                    <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="Yes"
-                      v-model="cane.alive" />
-                    <label class="form-check-label" for="aliveRadio"> Yes </label>
-                  </div>
-                  <div class="form-check form-check mx-2 my-auto">
-                    <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="No"
-                      v-model="cane.alive" />
-                    <label class="form-check-label" for="aliveRadio"> No </label>
+              <div class="row mb-1">
+                <div class="col-6">
+                  <label for="onHome" class="col-form-label fw-bold">Display on Home</label>
+                </div>
+                <div class="col-6">
+                  <div class="d-flex mt-2">
+                    <div class="form-check mx-2 my-auto">
+                      <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="Yes"
+                        v-model="cane.onHome" />
+                      <label class="form-check-label" for="aliveRadio"> Yes </label>
+                    </div>
+                    <div class="form-check form-check mx-2 my-auto">
+                      <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="No"
+                        v-model="cane.onHome" />
+                      <label class="form-check-label" for="aliveRadio"> No </label>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <hr class="">
+            <div class="my-3">
+
+              <h4 class="fw-bold">Attachments</h4>
+              <ul class="list-group">
+                <li class="list-group-item my-2" v-for="attachment in dog.attachments" :key="attachment.id">
+                  <img v-if="attachment.type === 'image'" :src="attachment.url" alt="Attachment"
+                    class="img img-thumbnail">
+                  <span v-else-if="attachment.type === 'document'" class="icon-doc">📄</span>
+                  <!-- Add more conditions for other types of attachments -->
+                  <a :href="attachment.url" target="_blank">{{ attachment.name }}</a>
+                </li>
+              </ul>
+            </div>
+
           </div>
         </div>
         <div class="col-md-9">
@@ -484,8 +513,8 @@ let printToPdf = async function () {
               </div>
             </div>
           </div>
-          <hr />
-          <div class="row my-2">
+          <hr class="" />
+          <div class="row my-4">
             <div class="col-12">
               <div class="card shadow p-2">
                 <h4 class="header"><span>Actions data</span></h4>
@@ -504,19 +533,19 @@ let printToPdf = async function () {
                           <input type="checkbox" name="" id="" class="mx-2" />
                           {{ action.actionType }}
                         </div>
-                        </td>
-                          <td>
-                            <small class="mx-2">{{ action.date }} </small>|<small class="mx-2"> {{ action.time }}</small>
-                          </td>
+                      </td>
+                      <td>
+                        <small class="mx-2">{{ action.date }} </small>|<small class="mx-2"> {{ action.time }}</small>
+                      </td>
 
-                          <td :class="action.status === 'Completed' ? 'status-completed' : 'status-pending'
-                            ">
-                            {{ action.status }}
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div>
+                      <td :class="action.status === 'Completed' ? 'status-completed' : 'status-pending'
+                        ">
+                        {{ action.status }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
