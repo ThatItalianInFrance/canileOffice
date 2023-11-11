@@ -2,12 +2,18 @@
 .bgprimary {
   background: #ddfcf3;
 }
+
+.logo {
+  height: 50px;
+}
 </style>
 
 <template>
   <nav class="navbar fixed-top bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Fixed top</a>
+      <a class="navbar-brand" href="/">
+        <img src="http://localhost:8000/logo.png" class="logo">
+      </a>
     </div>
   </nav>
 </template>
