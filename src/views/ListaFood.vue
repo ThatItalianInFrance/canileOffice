@@ -9,7 +9,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 // console.log(check.token)
 
 // ref must be used for responsive data - use .value to assign or read 
-let dogs = ref([])
+let foods = ref([])
 let searchTerm = ref('')
 
 let loadFood = function () {
@@ -28,10 +28,10 @@ let loadFood = function () {
       return response.json()
     })
     .then(function (foo) {
-      dogs.value = foo.data;
-      dogs.value = dogs.value.filter(dog => dog.name.toLowerCase().includes(searchTerm.value.toLowerCase()));
+      foods.value = foo.data;
+      foods.value = foods.value.filter(food => food.name.toLowerCase().includes(searchTerm.value.toLowerCase()));
 
-      console.log(dogs.value)
+      console.log(food.value)
       // console.log(cani)
     })
 }
@@ -41,15 +41,29 @@ watch(searchTerm, () => {//newSearchTerm, oldSearchTerm
 })
 
 loadFood()
-console.log(dogs.value)
+console.log(foods.value)
 </script>
 
 <template>
   <main>
     <div class="card shadow">
       <div class="card-body">
-        <h3>Food list</h3>
-        <p>Overview of registered food</p>
+        <div style="display:flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h3>Food list</h3>
+            <p>Overview of registered food</p>
+          </div>
+          <div>
+            <RouterLink class="nav-link active btn btn-primary button mb-3" style="width: 220px; height:40px"
+              to="/food/edit/0">
+              <span class="material-symbols-outlined">add</span> New food
+            </RouterLink>
+            <RouterLink class="nav-link active btn btn-danger button mb-3" style="width: 220px; height:40px"
+              to="/food/edit/0">
+              <span class="material-symbols-outlined">delete</span> Delete food
+            </RouterLink>
+          </div>
+        </div>
         <div class="input-group mb-3">
           <div class="input-group-append">
             <span class="input-group-text">
@@ -68,11 +82,11 @@ console.log(dogs.value)
             </tr>
           </thead>
           <tbody>
-            <tr v-for="dog in dogs" :key="dog.id">
-              <td>{{ dog.id }}</td>
-              <td><router-link :to="{ path: '/food/edit/' + dog.id }">{{ dog.name }}</router-link></td>
-              <td>{{ dog.type }}</td>
-              <td>{{ dog.description }}</td>
+            <tr v-for="food in foods" :key="food.id">
+              <td>{{ food.id }}</td>
+              <td><router-link :to="{ path: '/food/edit/' + food.id }">{{ food.name }}</router-link></td>
+              <td>{{ food.type }}</td>
+              <td>{{ food.description }}</td>
             </tr>
             <!-- Additional rows as needed -->
           </tbody>
@@ -109,5 +123,11 @@ console.log(dogs.value)
   font-weight: bold;
   color: #d9534f;
   /* Bootstrap 'danger' color */
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
