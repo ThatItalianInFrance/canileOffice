@@ -37,31 +37,35 @@ console.log(products.value)
 </script>
 
 <template>
-  <main class="container-fluid my-4">
-    <h3>Lista Box</h3>
+  <main>
+    <div class="card shadow">
+      <div class="card-body">
+        <h3>Lista Box</h3>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">numero</th>
-          <th scope="col">blocco</th>
-          
-        </tr>
-      </thead>
-      <tbody class="table-group-divider">
-        <tr v-for="product in products" :key="product.id">
-          <th scope="row">{{ product.id }}</th>
-          <td > <router-link class="btn btn-dark" :to="{ path: '/box/edit/' + product.id }">{{ product.numero }}</router-link>
-          </td>
-          <td>{{ product.blocco }}</td>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">numero</th>
+              <th scope="col">blocco</th>
 
-  
-        </tr>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr v-for="product in products" :key="product.id">
+              <th scope="row">{{ product.id }}</th>
+              <td> <router-link class="btn btn-dark" :to="{ path: '/box/edit/' + product.id }">{{ product.numero
+              }}</router-link>
+              </td>
+              <td>{{ product.blocco }}</td>
 
-      </tbody>
-    </table>
 
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
   </main>
 </template>
 <script></script>

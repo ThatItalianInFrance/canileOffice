@@ -3,20 +3,19 @@
   background: #ddfcf3;
 }
 
-/* * {
-  border: solid red 1px;
-} */
+.logo {
+  height: 50px;
+}
 </style>
 
 <template>
-  <div class="container">
-
-    <nav class="navbar fixed-top bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">Fixed top</a>
-      </div>
-    </nav>
-  </div>
+  <nav class="navbar fixed-top bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="http://localhost:8000/logo.png" class="logo">
+      </a>
+    </div>
+  </nav>
 </template>
 
 <script setup>
