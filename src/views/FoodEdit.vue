@@ -92,7 +92,7 @@ let saveFood = async function (id) {
 }
 
 watch(route, (newSearchTerm, oldSearchTerm) => {
-  loadFood(id)
+  loadFood(route.params.id)
 })
 
 </script>
