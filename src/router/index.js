@@ -9,6 +9,9 @@ import ListaBox from '../views/ListaBox.vue'
 import PlanningView from '../components/PlanningView.vue'
 import ListaFood from '../views/ListaFood.vue'
 import FoodEdit from '../views/FoodEdit.vue'
+import NewsList from '../views/NewsList.vue'
+import NewsEdit from '../views/NewsEdit.vue'
+import ShelterView from '../views/ShelterView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,6 +55,21 @@ const router = createRouter({
       path: '/planning',
       name: 'planning',
       component: PlanningView
+    },
+    {
+      path: '/news',
+      name: 'news',
+      component: NewsList
+    },
+    {
+      path: '/shelter/:id',
+      name: 'shelter',
+      component: ShelterView
+    },
+    {
+      path: '/news/:id',
+      name: 'newsedit',
+      component: NewsEdit
     },
     {
       path: '/food',
