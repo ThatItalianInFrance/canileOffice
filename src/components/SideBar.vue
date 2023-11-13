@@ -116,8 +116,13 @@
         </div>
       </li>
       <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
-          data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+        <RouterLink to="/news" class="nav-link active "><span class="material-symbols-outlined">
+            News
+          </span>News</RouterLink>
+      </li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse"
+          data-bs-target="#home-collapse" aria-expanded="true">
           Home
         </button>
         <div class="collapse show" id="home-collapse" style="">
