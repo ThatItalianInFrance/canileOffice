@@ -64,39 +64,37 @@ function getImageUrl(id) {
 }
 
 
-
-  let saveFood = async function () {
-
-    console.log("SaveFood func");
-    if (base64Image.value != '') food.value.image = base64Image
-    if (id == 0) {
-      console.log("new food");
-      await fetch(`${import.meta.env.VITE_SERVER}/office/food`, {
-        method: 'POST',
-        headers: {
-          // 'Authorization': `Bearer ${check.token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(food.value)
-      })
-    } else {
-      await fetch(`${import.meta.env.VITE_SERVER}/office/food/${id}`, {
-        method: 'PUT',
-        headers: {
-          // 'Authorization': `Bearer ${check.token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(food.value)
-      })
-      // console.log(image.value);
-    }
-    router.push({ path: '/food' })
-
+let saveFood = async function (id) {
+  if (base64Image.value != '') food.value.image = base64Image
+  console.log("food.value.image", food.value.image);
+  if (id == 0) {
+    console.log("new food");
+    await fetch(`${import.meta.env.VITE_SERVER}/office/food`, {
+      method: 'POST',
+      headers: {
+        // 'Authorization': `Bearer ${check.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(food.value)
+    })
+  } else {
+    await fetch(`${import.meta.env.VITE_SERVER}/office/food/${id}`, {
+      method: 'PUT',
+      headers: {
+        // 'Authorization': `Bearer ${check.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(food.value)
+    })
+    // console.log(image.value);
   }
+  router.push({ path: '/food' })
+}
 
-  watch(route, (newSearchTerm, oldSearchTerm) => {
-    loadFood(id)
-  })
+watch(route, (newSearchTerm, oldSearchTerm) => {
+  loadFood(route.params.id)
+})
+
 </script>
 
 <template>
