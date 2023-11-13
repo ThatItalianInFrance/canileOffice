@@ -45,7 +45,7 @@ loadNews();
             <p>Overview of news articles</p>
           </div>
           <div class="my-auto">
-            <button class="btn btn-outline-success mx-2" type="button">New Article</button>
+            <button class="btn btn-outline-secondary"><RouterLink class="nav-link active" to="/news/0">New Article</RouterLink></button>
             <button class="btn btn-outline-secondary">All news</button>
           </div>
         </div>

@@ -121,6 +121,11 @@
           </span>News</RouterLink>
       </li>
       <li class="mb-1">
+        <RouterLink to="/shelter/1" class="nav-link active "><span class="material-symbols-outlined">
+            home
+          </span>Shelter</RouterLink>
+      </li>
+      <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse"
           data-bs-target="#home-collapse" aria-expanded="true">
           Home
