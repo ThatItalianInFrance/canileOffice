@@ -79,7 +79,11 @@ let saveUser = async function () {
 <template>
   <main class="d-flex justify-content-center">
     <div class="card shadow" style="max-width:600px">
+      <RouterLink class="nav-link active btn btn-primary button" to="/listausers" style="width: 140px;">
+        <span class="material-symbols-outlined">arrow_back</span> Users list
+      </RouterLink>
       <div class="card-body">
+
         <h1 class="card-title text-center mb-4">Edit User</h1>
         <div class="row">
           <div class="col-6">
@@ -91,13 +95,11 @@ let saveUser = async function () {
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" v-model="user.email"
-                  placeholder="Enter email" />
+                <input type="email" class="form-control" id="email" v-model="user.email" placeholder="Enter email" />
               </div>
               <div class="mb-3">
                 <label for="tipo" class="form-label">role</label>
-                <input type="text" class="form-control" id="tipo" v-model="user.tipo"
-                  placeholder="Enter type" />
+                <input type="text" class="form-control" id="tipo" v-model="user.tipo" placeholder="Enter type" />
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
@@ -118,8 +120,8 @@ let saveUser = async function () {
               <div id="thumbnail" class="text-center">
                 <img v-if="base64Image" :src="base64Image" style="max-height: 500px; max-width: 500px"
                   class="img-thumbnail" />
-                <img v-else src="https://placehold.co/200" alt="Placeholder"
-                  style="max-height: 500px; max-width: 500px" class="img-thumbnail rounded-circle" />
+                <img v-else src="https://placehold.co/200" alt="Placeholder" style="max-height: 500px; max-width: 500px"
+                  class="img-thumbnail rounded-circle" />
               </div>
             </div>
           </div>

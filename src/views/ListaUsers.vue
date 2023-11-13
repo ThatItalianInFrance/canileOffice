@@ -15,7 +15,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 let users = ref([])
 let searchTerm = ref('')
 
-let loadProducts = function (searchTerm) {
+let loadUsers = function (searchTerm) {
   // check = JSON.parse(localStorage.getItem('user'))
   // console.log('ciccio' + check.token)
   fetch(`${import.meta.env.VITE_SERVER}/office/users`, {
@@ -42,7 +42,7 @@ watch(searchTerm, (newSearchTerm, oldSearchTerm) => {
   loadUsers(searchTerm.value);
 })
 
-loadUsers()
+loadUsers(searchTerm.value)
 </script>
 
 <template>
@@ -54,7 +54,10 @@ loadUsers()
             <h3 class="fw-bold">User List</h3>
             <p>Overview of registered users</p>
           </div>
-          <div class="my-auto">
+          <div class="my-auto mb-3">
+            <RouterLink class="nav-link active btn btn-primary button mb-3 p-1" to="/users/edit/0">
+              <span class="material-symbols-outlined">add</span> New user
+            </RouterLink>
             <button class="btn btn-outline-secondary mx-2" type="button">...</button>
             <button class="btn btn-outline-secondary">All users</button>
           </div>
@@ -127,5 +130,11 @@ loadUsers()
   font-weight: bold;
   color: #d9534f;
   /* Bootstrap 'danger' color */
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

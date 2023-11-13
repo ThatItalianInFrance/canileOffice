@@ -91,6 +91,23 @@ let saveFood = async function (id) {
   router.push({ path: '/food' })
 }
 
+let deleteFood = async function (id) {
+  if (confirm("Are you sure delete this food? ")) {
+    console.log("delete", id);
+
+    await fetch(`${import.meta.env.VITE_SERVER}/office/food/${id}`, {
+      method: 'DELETE',
+      headers: {
+        // 'Authorization': `Bearer ${check.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(food.value)
+    })
+    router.push({ path: '/food' })
+  }
+
+}
+
 watch(route, () => {
   loadFood(route.params.id)
 })
@@ -99,9 +116,15 @@ watch(route, () => {
 <template>
   <main>
     <div class="card shadow">
-      <RouterLink class="nav-link active btn btn-primary button" to="/food" style="width: 130px;">
-        <span class="material-symbols-outlined">arrow_back</span> Food list
-      </RouterLink>
+      <div class="d-flex justify-content-between align-items-center p-3">
+        <RouterLink class="nav-link active btn btn-primary button" to="/food" style="width: 130px;">
+          <span class="material-symbols-outlined">arrow_back</span> Food list
+        </RouterLink>
+        <button v-if="addOrEdit != '0'" @click="deleteFood(route.params.id)"
+          class="btn btn-toggle justify-content-between d-flex align-items-center rounded bg-danger">
+          <span class="material-symbols-outlined">delete</span>
+        </button>
+      </div>
       <div class="card-body">
         <h1 class="card-title text-center mb-4">{{ addOrEdit != "0" ? "Edit" : "Add" }} Food</h1>
         <div class="row">
