@@ -42,6 +42,7 @@ watch(searchTerm, () => {//newSearchTerm, oldSearchTerm
 
 loadFood()
 console.log(foods.value)
+
 </script>
 
 <template>

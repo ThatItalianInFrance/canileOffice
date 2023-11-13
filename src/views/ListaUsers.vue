@@ -1,9 +1,15 @@
 <script setup>
 
-import { ref } from 'vue'
+
+
+// REMEBER TO IMPORT REF
+import { ref, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+
+// let check = JSON.parse(localStorage.getItem('user'))
+// console.log(check.token)
 
 // ref must be used for responsive data - use .value to assign or read
 let users = ref([])
@@ -31,7 +37,12 @@ let loadProducts = function (searchTerm) {
     })
 }
 
-loadProducts()
+
+watch(searchTerm, (newSearchTerm, oldSearchTerm) => {
+  loadUsers(searchTerm.value);
+})
+
+loadUsers()
 </script>
 
 <template>

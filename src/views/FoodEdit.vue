@@ -21,8 +21,9 @@ function onChangeImage(evt) {
       newImage.style = 'max-height: 500px; max-width:500px'
       document.getElementById('thumbnail').innerHTML = newImage.outerHTML
 
-      console.log(base64Image)
+      console.log("base64Image", base64Image)
       // console.log(fileReader.readAsDataURL(imageFile));
+
     }
     fileReader.readAsDataURL(imageFile)
   }
@@ -56,15 +57,15 @@ let loadFood = async function (id) {
   food.value = json.data
 }
 loadFood(id)
+
 function getImageUrl(id) {
   const timestamp = new Date().getTime();
   return `${import.meta.env.VITE_SERVER}/food/${id}.jpg?timestamp=${timestamp}`;
 }
 
 let saveFood = async function (id) {
-  console.log("id", id);
-  console.log("SaveFood func");
   if (base64Image.value != '') food.value.image = base64Image
+  console.log("food.value.image", food.value.image);
   if (id == 0) {
     console.log("new food");
     await fetch(`${import.meta.env.VITE_SERVER}/office/food`, {
@@ -87,20 +88,47 @@ let saveFood = async function (id) {
     // console.log(image.value);
   }
   router.push({ path: '/food' })
-}
 
-watch(route, (newSearchTerm, oldSearchTerm) => {
-  loadFood(route.params.id)
-})
+  let saveFood = async function () {
 
+    console.log("SaveFood func");
+    if (base64Image.value != '') food.value.image = base64Image
+    if (id == 0) {
+      console.log("new food");
+      await fetch(`${import.meta.env.VITE_SERVER}/office/food`, {
+        method: 'POST',
+        headers: {
+          // 'Authorization': `Bearer ${check.token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(food.value)
+      })
+    } else {
+      await fetch(`${import.meta.env.VITE_SERVER}/office/food/${id}`, {
+        method: 'PUT',
+        headers: {
+          // 'Authorization': `Bearer ${check.token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(food.value)
+      })
+      // console.log(image.value);
+    }
+    router.push({ path: '/food' })
+
+  }
+
+  watch(route, (newSearchTerm, oldSearchTerm) => {
+    loadFood(id)
+  })
 </script>
 
 <template>
   <main>
     <div class="card shadow">
-    <RouterLink class="nav-link active btn btn-primary button" to="/food" style="width: 130px;">
-      <span class="material-symbols-outlined">arrow_back</span> Food list
-    </RouterLink>
+      <RouterLink class="nav-link active btn btn-primary button" to="/food" style="width: 130px;">
+        <span class="material-symbols-outlined">arrow_back</span> Food list
+      </RouterLink>
       <div class="card-body">
         <h1 class="card-title text-center mb-4">{{ addOrEdit != "0" ? "Edit" : "Add" }} Food</h1>
         <div class="row">
@@ -108,13 +136,11 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
             <form @submit.prevent="saveFood(route.params.id)">
               <div class="mb-3">
                 <label for="foodname" class="form-label">Food Name</label>
-                <input type="text" class="form-control" id="foodname" v-model="food.name"
-                  placeholder="Enter food name" />
+                <input type="text" class="form-control" id="foodname" v-model="food.name" placeholder="Enter food name" />
               </div>
               <div class="mb-3">
                 <label for="type" class="form-label">Type</label>
-                <input type="text" class="form-control" id="type" v-model="food.type"
-                  placeholder="Enter type" />
+                <input type="text" class="form-control" id="type" v-model="food.type" placeholder="Enter type" />
               </div>
               <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
@@ -122,7 +148,8 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
                   placeholder="Enter description" />
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary mt-3">{{ addOrEdit != "0" ? "Save Changes" : "Add food" }}</button>
+                <button type="submit" class="btn btn-primary mt-3">{{ addOrEdit != "0" ? "Save Changes" : "Add food"
+                }}</button>
               </div>
             </form>
           </div>
@@ -131,8 +158,8 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
               <div id="thumbnail" class="text-center">
                 <img v-if="food.hasImg" id="thumbnail" :src="getImageUrl(id)" style="max-height: 500px; max-width: 500px"
                   class="img-thumbnail" />
-                <img v-else src="https://placehold.co/200" alt="Placeholder"
-                  style="max-height: 500px; max-width: 500px" class="img-thumbnail rounded-circle" />
+                <img v-else src="https://placehold.co/200" alt="Placeholder" style="max-height: 500px; max-width: 500px"
+                  class="img-thumbnail rounded-circle" />
               </div>
               <label for="image" class="camera-icon-label">
                 <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512">
@@ -153,7 +180,7 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
           </div>
         </div>
       </div>
-      <div class="card-footer text-muted text-center">Food ID: {{ route.params.id}}</div>
+      <div class="card-footer text-muted text-center">Food ID: {{ route.params.id }}</div>
     </div>
   </main>
 </template>
@@ -193,7 +220,9 @@ watch(route, (newSearchTerm, oldSearchTerm) => {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.button{
-display: flex; justify-content: center; align-items: center;
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
