@@ -121,6 +121,7 @@ let saveFood = async function (id) {
   watch(route, (newSearchTerm, oldSearchTerm) => {
     loadFood(id)
   })
+}
 </script>
 
 <template>
