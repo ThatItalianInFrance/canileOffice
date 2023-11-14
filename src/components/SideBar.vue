@@ -73,7 +73,7 @@
       </li>
       <li class="mb-1">
         <RouterLink class="nav-link active" to="/shelter/1"><span class="material-symbols-outlined">home
-          </span> Shelter</RouterLink>
+          </span>Shelter</RouterLink>
       </li>
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse"
@@ -186,4 +186,5 @@
   width: 100%;
   text-align: left;
   padding: 5px 0;
-}</style>
+}
+</style>

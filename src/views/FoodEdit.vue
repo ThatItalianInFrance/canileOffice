@@ -117,6 +117,7 @@ watch(route, () => {
   loadFood(route.params.id)
 })
 
+
 watch(route, (newSearchTerm, oldSearchTerm) => {
   loadFood(route.params.id)
 })
