@@ -102,8 +102,12 @@ let deleteFood = async function (id) {
         // 'Authorization': `Bearer ${check.token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(food.value)
+      body: { id: 36, name: "", type: "", description: "" }
     })
+      .then(response => (response))
+      .then(data => console.log(data))
+
+    console.log("json Stringify:", JSON.stringify(food.value), food.value);
     router.push({ path: '/food' })
   }
 
