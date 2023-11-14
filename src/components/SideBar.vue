@@ -49,7 +49,16 @@
               food_bank
             </span> Stock </RouterLink>
         </button>
+
       </li>
+      <li class="mb-1">
+        <a href="/news" class="link-body-emphasis d-inline-flex text-decoration-none rounded"> <RouterLink class="nav-link active" to="/news"><span class="material-symbols-outlined">news
+                </span> News</RouterLink></a>
+        </li>
+      <li class="mb-1">
+        <RouterLink class="nav-link active" to="/shelter/1"><span class="material-symbols-outlined">home
+                </span>Shelter</RouterLink>
+        </li>
       <li class="mb-1">
         <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
           data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">

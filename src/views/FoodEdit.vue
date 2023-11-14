@@ -91,6 +91,7 @@ let saveFood = async function (id) {
   router.push({ path: '/food' })
 }
 
+
 let deleteFood = async function (id) {
   if (confirm("Are you sure delete this food? ")) {
     console.log("delete", id);
@@ -111,6 +112,7 @@ let deleteFood = async function (id) {
 watch(route, () => {
   loadFood(route.params.id)
 })
+
 </script>
 
 <template>
