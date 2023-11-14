@@ -93,32 +93,25 @@ let saveFood = async function (id) {
 
 
 let deleteFood = async function (id) {
-  if (confirm("Are you sure delete this food? ")) {
-    console.log("delete", id);
-
+  if (confirm("Are you sure you want to delete this food?")) {
     await fetch(`${import.meta.env.VITE_SERVER}/office/food/${id}`, {
       method: 'DELETE',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
         'Content-Type': 'application/json'
       },
-      body: { id: 36, name: "", type: "", description: "" }
+      body: JSON.stringify(food.value)
     })
-      .then(response => (response))
-      .then(data => console.log(data))
-
-    console.log("json Stringify:", JSON.stringify(food.value), food.value);
     router.push({ path: '/food' })
   }
-
+  console.log("delete canceled");
 }
 
 watch(route, () => {
   loadFood(route.params.id)
 })
 
-
-watch(route, (newSearchTerm, oldSearchTerm) => {
+watch(route, () => {
   loadFood(route.params.id)
 })
 
