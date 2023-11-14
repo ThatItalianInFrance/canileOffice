@@ -31,7 +31,7 @@ let loadFood = function () {
       foods.value = foo.data;
       foods.value = foods.value.filter(food => food.name.toLowerCase().includes(searchTerm.value.toLowerCase()));
 
-      console.log(food.value)
+      console.log(foods.value)
       // console.log(cani)
     })
 }
@@ -49,7 +49,7 @@ console.log(foods.value)
   <main>
     <div class="card shadow">
       <div class="card-body">
-        <div style="display:flex; justify-content: space-between; align-items: center;">
+        <div class="d-flex justify-content-between ">
           <div>
             <h3>Food list</h3>
             <p>Overview of registered food</p>

@@ -46,8 +46,18 @@ loadDogs()
   <main>
     <div class="card shadow">
       <div class="card-body">
-        <h3>Dogs list</h3>
-        <p>Overview of registered dogs</p>
+        <div class="d-flex justify-content-between ">
+          <div>
+            <h3>Dogs list</h3>
+            <p>Overview of registered dogs</p>
+          </div>
+          <div>
+            <RouterLink class="nav-link active btn btn-primary button mb-3" style="width: 220px; height:40px"
+              to="/cani/edit/0">
+              <span class="material-symbols-outlined">add</span> New dog
+            </RouterLink>
+          </div>
+        </div>
         <div class="input-group mb-3">
           <div class="input-group-append">
             <span class="input-group-text">
@@ -121,5 +131,11 @@ loadDogs()
   font-weight: bold;
   color: #d9534f;
   /* Bootstrap 'danger' color */
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
