@@ -3,17 +3,17 @@
 
 const userLogIn = async function () {
   console.log('welcome to the LOGIN FORM')
-  let name = document.getElementById('name').value
-  let pwd = document.getElementById('pass').value
+  let name = document.getElementById('username').value
+  let pwd = document.getElementById('password').value
   console.log(name)
   console.log(pwd)
   let response = await fetch('http://localhost:8000/office/login', {
-    method: 'POST',
-    headers: {
+    // method: 'GET',
+    // headers: {
 
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ name: name, password: pwd })
+    //   'Content-Type': 'application/json'
+    // },
+    // body: JSON.stringify({ name: name, password: pwd })
   })
   let user = await response.json();
   console.log({ response });
@@ -36,7 +36,7 @@ const logOut = function () {
 
 </script>
 
-<template>
+<!-- <template>
   <main>
     <div class="container">
       <div class="row">
@@ -64,4 +64,30 @@ const logOut = function () {
 
     </div>
   </main>
+</template> -->
+
+
+<template>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Login</div>
+          <div class="card-body">
+            <form @submit.prevent="userLogIn">
+              <div class="form-group">
+                <label for="username" class="small">Username:</label>
+                <input type="text" class="form-control" id="username" v-model="username" required>
+              </div>
+              <div class="form-group">
+                <small for="password">Password:</small>
+                <input type="password" class="form-control" id="password" v-model="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary my-3">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

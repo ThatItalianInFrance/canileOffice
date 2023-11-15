@@ -7,8 +7,8 @@ import UsersEdit from '../views/UsersEdit.vue'
 import LoginView from '../views/LoginView.vue'
 import ListaBox from '../views/ListaBox.vue'
 import PlanningView from '../components/PlanningView.vue'
-import ListaFood from '../views/ListaFood.vue'
-import FoodEdit from '../views/FoodEdit.vue'
+import ListaStock from '../views/ListaStock.vue'
+import StockMovementEdit from '../views/StockMovementEdit.vue'
 import NewsList from '../views/NewsList.vue'
 import NewsEdit from '../views/NewsEdit.vue'
 import ShelterView from '../views/ShelterView.vue'
@@ -72,14 +72,14 @@ const router = createRouter({
       component: NewsEdit
     },
     {
-      path: '/food',
-      name: 'food',
-      component: ListaFood
+      path: '/stock',
+      name: 'stock',
+      component: ListaStock
     },
     {
-      path: '/food/edit/:id',
-      name: 'foodedit',
-      component: FoodEdit
+      path: '/stock/edit/:id',
+      name: 'stockedit',
+      component: StockMovementEdit
     },
     {
       path: '/about',
