@@ -2,8 +2,8 @@
   <div class="">
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
-        <button class="d-flex btn btn-toggle align-items-center rounded collapsed" aria-expanded="true">
-          <RouterLink class="nav-link active" to="/listacani">
+        <button class="d-flex btn btn-toggle align-items-center rounded collapsed w-100" aria-expanded="true">
+          <RouterLink class="nav-link active router-link" to="/listacani">
             <span class="material-symbols-outlined"> lists </span> Dogs
           </RouterLink>
         </button>
