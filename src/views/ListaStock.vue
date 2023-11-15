@@ -9,13 +9,13 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 // console.log(check.token)
 
 // ref must be used for responsive data - use .value to assign or read 
-let foods = ref([])
+let stock = ref([])
 let searchTerm = ref('')
 
-let loadFood = function () {
+let loadStock = function () {
   // check = JSON.parse(localStorage.getItem('user'))
   // console.log('ciccio' + check.token)
-  fetch(`${import.meta.env.VITE_SERVER}/office/food`, {
+  fetch(`${import.meta.env.VITE_SERVER}/office/stock`, {
     method: 'GET',
     // withCredentials: true,
     // credentials: 'include',
@@ -28,20 +28,20 @@ let loadFood = function () {
       return response.json()
     })
     .then(function (foo) {
-      foods.value = foo.data;
-      foods.value = foods.value.filter(food => food.name.toLowerCase().includes(searchTerm.value.toLowerCase()));
+      stock.value = foo.data;
+      // stock.value = stock.value.filter(stock => stock.toLowerCase().includes(searchTerm.value.toLowerCase()));
 
-      console.log(foods.value)
+      console.log(stock.value)
       // console.log(cani)
     })
 }
 
 watch(searchTerm, () => {//newSearchTerm, oldSearchTerm
-  loadFood();
+  loadStock();
 })
 
-loadFood()
-console.log(foods.value)
+loadStock()
+console.log(stock.value)
 
 </script>
 
@@ -51,17 +51,17 @@ console.log(foods.value)
       <div class="card-body">
         <div class="d-flex justify-content-between ">
           <div>
-            <h3>Food list</h3>
-            <p>Overview of registered food</p>
+            <h3>Stock list</h3>
+            <p>Overview of registered stock</p>
           </div>
           <div>
             <RouterLink class="nav-link active btn btn-primary button mb-3" style="width: 220px; height:40px"
               to="/food/edit/0">
-              <span class="material-symbols-outlined">add</span> New food
+              <span class="material-symbols-outlined">add</span> New stock movement
             </RouterLink>
             <RouterLink class="nav-link active btn btn-danger button mb-3" style="width: 220px; height:40px"
               to="/food/edit/0">
-              <span class="material-symbols-outlined">delete</span> Delete food
+              <span class="material-symbols-outlined">delete</span> Delete stock /!\
             </RouterLink>
           </div>
         </div>
@@ -79,15 +79,17 @@ console.log(foods.value)
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Type</th>
-              <th scope="col">Desciption</th>
+              <th scope="col">Description</th>
+              <th scope="col">Q.ty in stock</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="food in foods" :key="food.id">
-              <td>{{ food.id }}</td>
-              <td><router-link :to="{ path: '/food/edit/' + food.id }">{{ food.name }}</router-link></td>
-              <td>{{ food.type }}</td>
-              <td>{{ food.description }}</td>
+            <tr v-for="item in stock" :key="item.id">
+              <td>{{ item.id }}</td>
+              <td><router-link :to="{ path: '/stock/edit/' + item.id }">{{ item.name }}</router-link></td>
+              <td>{{ item.type }}</td>
+              <td>{{ item.description }}</td>
+              <td>compute data from stock_events</td>
             </tr>
             <!-- Additional rows as needed -->
           </tbody>

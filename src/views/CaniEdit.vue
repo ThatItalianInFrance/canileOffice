@@ -295,12 +295,12 @@ let printToPdf = async function () {
                 <div class="col-6">
                   <div class="d-flex mt-2">
                     <div class="form-check mx-2 my-auto">
-                      <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="Yes"
+                      <input class="form-check-input" type="radio" name="onHome" id="onHomeRadio" value="1"
                         v-model="cane.onHome" />
                       <label class="form-check-label" for="aliveRadio"> Yes </label>
                     </div>
                     <div class="form-check form-check mx-2 my-auto">
-                      <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="No"
+                      <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="0"
                         v-model="cane.onHome" />
                       <label class="form-check-label" for="aliveRadio"> No </label>
                     </div>

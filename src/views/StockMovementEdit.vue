@@ -29,7 +29,7 @@ function onChangeImage(evt) {
   }
 }
 
-let food = ref({
+let stock = ref({
   id: 0,
   name: '',
   type: '',
@@ -37,80 +37,80 @@ let food = ref({
 })
 
 let initFields = function (id) {
-  food.value.name = "";
-  food.value.type = "";
-  food.value.description = "";
-  food.value.hasImg = false;
+  stock.value.name = "";
+  stock.value.type = "";
+  stock.value.description = "";
+  stock.value.hasImg = false;
 
   addOrEdit.value = id;
 }
 
-let loadFood = async function (id) {
+let loadStock = async function (id) {
   initFields(id)
 
   if (id == 0) {
     console.log('id 0')
     return
   }
-  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/food/${id}`) // par défaut, fetch() fait une requête GET
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/stock/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
-  food.value = json.data
+  stock.value = json.data
 }
-loadFood(id)
+loadStock(id)
 
 function getImageUrl(id) {
   const timestamp = new Date().getTime();
-  return `${import.meta.env.VITE_SERVER}/food/${id}.jpg?timestamp=${timestamp}`;
+  return `${import.meta.env.VITE_SERVER}/stock/${id}.jpg?timestamp=${timestamp}`;
 }
 
 
-let saveFood = async function (id) {
-  if (base64Image.value != '') food.value.image = base64Image
-  console.log("food.value.image", food.value.image);
+let saveStock = async function (id) {
+  if (base64Image.value != '') stock.value.image = base64Image
+  console.log("stock.value.image", stock.value.image);
   if (id == 0) {
-    console.log("new food");
-    await fetch(`${import.meta.env.VITE_SERVER}/office/food`, {
+    console.log("new stock");
+    await fetch(`${import.meta.env.VITE_SERVER}/office/stock_events`, {
       method: 'POST',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(food.value)
+      body: JSON.stringify(stock.value)
     })
   } else {
-    await fetch(`${import.meta.env.VITE_SERVER}/office/food/${id}`, {
+    await fetch(`${import.meta.env.VITE_SERVER}/office/stock_events/${id}`, {
       method: 'PUT',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(food.value)
+      body: JSON.stringify(stock.value)
     })
     // console.log(image.value);
   }
-  router.push({ path: '/food' })
+  router.push({ path: '/stock' })
 }
 
 
-let deleteFood = async function (id) {
+let deleteStock = async function (id) {
   if (confirm("Are you sure delete this food? ")) {
     console.log("delete", id);
 
-    await fetch(`${import.meta.env.VITE_SERVER}/office/food/${id}`, {
+    await fetch(`${import.meta.env.VITE_SERVER}/office/stock_events/${id}`, {
       method: 'DELETE',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(food.value)
+      body: JSON.stringify(stock.value)
     })
-    router.push({ path: '/food' })
+    router.push({ path: '/stock' })
   }
 
 }
 
 watch(route, () => {
-  loadFood(route.params.id)
+  loadStock(route.params.id)
 })
 
 </script>
@@ -119,8 +119,8 @@ watch(route, () => {
   <main>
     <div class="card shadow">
       <div class="d-flex justify-content-between align-items-center p-3">
-        <RouterLink class="nav-link active btn btn-primary button" to="/food" style="width: 130px;">
-          <span class="material-symbols-outlined">arrow_back</span> Food list
+        <RouterLink class="nav-link active btn btn-primary button" to="/Stock" style="width: 130px;">
+          <span class="material-symbols-outlined">arrow_back</span> StockMovement list
         </RouterLink>
         <button v-if="addOrEdit != '0'" @click="deleteFood(route.params.id)"
           class="btn btn-toggle justify-content-between d-flex align-items-center rounded bg-danger">
@@ -128,25 +128,30 @@ watch(route, () => {
         </button>
       </div>
       <div class="card-body">
-        <h1 class="card-title text-center mb-4">{{ addOrEdit != "0" ? "Edit" : "Add" }} Food</h1>
+        <h1 class="card-title text-center mb-4">{{ addOrEdit != "0" ? "Edit" : "Add" }} StockMovement</h1>
         <div class="row">
           <div class="col-6">
-            <form @submit.prevent="saveFood(route.params.id)">
+            <form @submit.prevent="saveStock(route.params.id)">
               <div class="mb-3">
-                <label for="foodname" class="form-label">Food Name</label>
-                <input type="text" class="form-control" id="foodname" v-model="food.name" placeholder="Enter food name" />
+                <label for="foodname" class="form-label">StockMovement Name</label>
+                <input type="text" class="form-control" id="foodname" v-model="stock.name" placeholder="Enter StockMovement name" />
               </div>
               <div class="mb-3">
-                <label for="type" class="form-label">Type</label>
-                <input type="text" class="form-control" id="type" v-model="food.type" placeholder="Enter type" />
+                <label for="type" class="form-label">StockMovement Type</label>
+                <input type="text" class="form-control" id="type" v-model="stock.type" placeholder="Enter StockMovement type" />
               </div>
               <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <input type="textarea" class="form-control" id="description" v-model="food.description"
-                  placeholder="Enter description" />
+                <label for="description" class="form-label">StockMovement Description</label>
+                <input type="textarea" class="form-control" id="description" v-model="stock.description"
+                  placeholder="Enter StockMovement description" />
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">StockMovement Quantity</label>
+                <input type="textarea" class="form-control" id="description" v-model="stock.quantity"
+                  placeholder="Enter StockMovement quantity" />
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary mt-3">{{ addOrEdit != "0" ? "Save Changes" : "Add food"
+                <button type="submit" class="btn btn-primary mt-3">{{ addOrEdit != "0" ? "Save Changes" : "Add stock"
                 }}</button>
               </div>
             </form>
@@ -154,7 +159,7 @@ watch(route, () => {
           <div class="col-6">
             <div class="mx-auto my-5">
               <div id="thumbnail" class="text-center">
-                <img v-if="food.hasImg" id="thumbnail" :src="getImageUrl(id)" style="max-height: 500px; max-width: 500px"
+                <img v-if="stock.hasImg" id="thumbnail" :src="getImageUrl(id)" style="max-height: 500px; max-width: 500px"
                   class="img-thumbnail" />
                 <img v-else src="https://placehold.co/200" alt="Placeholder" style="max-height: 500px; max-width: 500px"
                   class="img-thumbnail rounded-circle" />
@@ -170,15 +175,15 @@ watch(route, () => {
             </div>
           </div>
           <div v-if="addOrEdit != '0'" class="card-footer text-muted text-center">
-            <!-- Arrow previous food -->
-            <RouterLink class="nav-link active btn btn-primary button" to="/food/edit/0">
-              <span class="material-symbols-outlined">add</span> New food
+            <!-- Arrow previous stock -->
+            <RouterLink class="nav-link active btn btn-primary button" to="/stock/edit/0">
+              <span class="material-symbols-outlined">add</span> New stock
             </RouterLink>
-            <!-- Arrow next food -->
+            <!-- Arrow next stock -->
           </div>
         </div>
       </div>
-      <div class="card-footer text-muted text-center">Food ID: {{ route.params.id }}</div>
+      <div class="card-footer text-muted text-center">stock ID: {{ route.params.id }}</div>
     </div>
   </main>
 </template>
