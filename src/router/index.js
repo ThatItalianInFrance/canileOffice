@@ -6,7 +6,12 @@ import CaniEdit from '../views/CaniEdit.vue'
 import UsersEdit from '../views/UsersEdit.vue'
 import LoginView from '../views/LoginView.vue'
 import ListaBox from '../views/ListaBox.vue'
-import Calendar from '../components/Calendar.vue'
+import PlanningView from '../components/PlanningView.vue'
+import ListaStock from '../views/ListaStock.vue'
+import StockMovementEdit from '../views/StockMovementEdit.vue'
+import NewsList from '../views/NewsList.vue'
+import NewsEdit from '../views/NewsEdit.vue'
+import ShelterView from '../views/ShelterView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,7 +54,32 @@ const router = createRouter({
     {
       path: '/planning',
       name: 'planning',
-      component: Calendar
+      component: PlanningView
+    },
+    {
+      path: '/news',
+      name: 'news',
+      component: NewsList
+    },
+    {
+      path: '/shelter/:id',
+      name: 'shelter',
+      component: ShelterView
+    },
+    {
+      path: '/news/:id',
+      name: 'newsedit',
+      component: NewsEdit
+    },
+    {
+      path: '/stock',
+      name: 'stock',
+      component: ListaStock
+    },
+    {
+      path: '/stock/edit/:id',
+      name: 'stockedit',
+      component: StockMovementEdit
     },
     {
       path: '/about',
