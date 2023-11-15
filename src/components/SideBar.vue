@@ -32,7 +32,7 @@
       </li>
       <li class="mb-1">
         <button class="d-flex btn btn-toggle align-items-center rounded w-100" aria-expanded="true">
-          <RouterLink class="nav-link active router-link" to="/food"><span class="material-symbols-outlined">
+          <RouterLink class="nav-link active router-link" to="/Stock"><span class="material-symbols-outlined">
               food_bank
             </span> Stock </RouterLink>
         </button>
