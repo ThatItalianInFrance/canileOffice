@@ -23,7 +23,6 @@ function onChangeImage(evt) {
 
       console.log("base64Image", base64Image)
       // console.log(fileReader.readAsDataURL(imageFile));
-
     }
     fileReader.readAsDataURL(imageFile)
   }
@@ -33,13 +32,15 @@ let stock = ref({
   id: 0,
   name: '',
   type: '',
-  description: ''
+  description: '',
+  quantity: ''
 })
 
 let initFields = function (id) {
   stock.value.name = "";
   stock.value.type = "";
   stock.value.description = "";
+  stock.value.quantity = 0;
   stock.value.hasImg = false;
 
   addOrEdit.value = id;
@@ -63,13 +64,12 @@ function getImageUrl(id) {
   return `${import.meta.env.VITE_SERVER}/stock/${id}.jpg?timestamp=${timestamp}`;
 }
 
-
 let saveStock = async function (id) {
   if (base64Image.value != '') stock.value.image = base64Image
   console.log("stock.value.image", stock.value.image);
   if (id == 0) {
     console.log("new stock");
-    await fetch(`${import.meta.env.VITE_SERVER}/office/stock_events`, {
+    await fetch(`${import.meta.env.VITE_SERVER}/office/stock`, {
       method: 'POST',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
@@ -78,7 +78,7 @@ let saveStock = async function (id) {
       body: JSON.stringify(stock.value)
     })
   } else {
-    await fetch(`${import.meta.env.VITE_SERVER}/office/stock_events/${id}`, {
+    await fetch(`${import.meta.env.VITE_SERVER}/office/stock/${id}`, {
       method: 'PUT',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
@@ -115,7 +115,7 @@ watch(route, () => {
 })
 
 watch(route, () => {
-  loadFood(route.params.id)
+  loadStock(route.params.id)
 })
 
 </script>
@@ -124,10 +124,10 @@ watch(route, () => {
   <main>
     <div class="card shadow">
       <div class="d-flex justify-content-between align-items-center p-3">
-        <RouterLink class="nav-link active btn btn-primary button" to="/Stock" style="width: 130px;">
+        <RouterLink class="nav-link active btn btn-primary button" to="/stock" style="width: 190px;">
           <span class="material-symbols-outlined">arrow_back</span> StockMovement list
         </RouterLink>
-        <button v-if="addOrEdit != '0'" @click="deleteFood(route.params.id)"
+        <button v-if="addOrEdit != '0'" @click="deleteStock(route.params.id)"
           class="btn btn-toggle justify-content-between d-flex align-items-center rounded bg-danger">
           <span class="material-symbols-outlined">delete</span>
         </button>
