@@ -131,6 +131,8 @@ loadDogs()
   font-weight: bold;
   color: #d9534f;
   /* Bootstrap 'danger' color */
+
+
 }
 
 .button {
