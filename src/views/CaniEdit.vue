@@ -63,7 +63,12 @@ let cane = ref({
 })
 let kind = ref({})
 
-let shelter = ref({})
+let shelter = ref({
+  idcane: 44,
+  idbox: 1,
+  date_in: "17-11-2023",
+  date_out: "17-12-2023"
+})
 
 let box = ref({})
 
@@ -73,29 +78,45 @@ let idcaneValue
 
 let loadCane = async function (id) {
   if (id == 0) {
-    return
+    return;
   }
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   cane.value = json.data
+
+  console.log("cane.value", cane.value);
 }
 
+console.log("shelter.value", shelter.value);
+
 let loadKind = async function (id) {
-  if (id == 0) {
-    return
-  }
+  // if (id == 0) {
+  //   return
+  // }
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/kind/`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   kind.value = json.data
 }
 
 let loadBoxCani = async function (id) {
-  if (id == 0) {
-    return
+  console.log("loadBoxCani");
+  console.log("id", id);
+  let response;
+  let json;
+
+  if (id !== 0) {
+    console.log("loadBoxCani after return");
+    response = await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`) // par défaut, fetch() fait une requête GET
+    json = await response.json()
+
+    console.log("shelter.value", shelter.value);
+
+    console.log("loadBoxCani", json.data)
+  } else {
+    return;
   }
-  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`) // par défaut, fetch() fait une requête GET
-  let json = await response.json()
-  console.log(json.data)
+
+
   if (!json.data) {
     json.data = {}
   }
@@ -108,6 +129,8 @@ let loadBoxCani = async function (id) {
 }
 
 let loadBox = async function (idcaneValue) {
+
+  // idcaneValue = 1;
   if (id == 0) {
     console.log('id 0')
     return
@@ -124,10 +147,10 @@ let loadBox = async function (idcaneValue) {
 }
 
 let loadStalli = async function (id) {
-  if (id == 0) {
-    console.log('id 0')
-    return
-  }
+  // if (id == 0) {
+  //   console.log('id 0')
+  //   return
+  // }
   console.log(idcaneValue)
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/stalli/`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
@@ -136,7 +159,7 @@ let loadStalli = async function (id) {
     json.data = {}
   }
   stalli.value = json.data
-  console.log(stalli.value)
+  console.log("(stalli.value", stalli.value)
 }
 
 loadBoxCani(id)
@@ -158,8 +181,12 @@ function getImageUrl(id) {
 
 let saveCane = async function () {
   if (base64Image != '') cane.value.image = base64Image
+  console.log("shelter Value:", shelter.value);
+  // console.log("cane.value", cane.value);
+  // console.log("(stalli.value", stalli.value)
+
   if (id == 0) {
-    await fetch(`${import.meta.env.VITE_SERVER}/office/cane`, {
+    let responseCane = await fetch(`${import.meta.env.VITE_SERVER}/office/cane`, {
       method: 'POST',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
@@ -167,7 +194,11 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
-    await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
+    let dataCane = await responseCane.json();
+
+    shelter.value.idcane = dataCane.data.id;
+
+    await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box`, {
       method: 'POST',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
@@ -477,6 +508,7 @@ let printToPdf = async function () {
                         <label for="birth" class="col-form-label fw-bold">Shelter section</label>
                       </div>
                       <div class="col-7">
+                        {{ shelter.idbox }}
                         <select class="form-control" name="box" v-model="shelter.idbox">
                           <option v-for="item in stalli" :key="item.id" :value="item.id" :model="shelter.idbox">
                             {{ item.blocco }} - {{ item.numero }}
