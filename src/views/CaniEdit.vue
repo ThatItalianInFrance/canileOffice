@@ -51,7 +51,7 @@ dog.value.actions = [
 
 let cane = ref({
   id: 0,
-  nome: '',
+  name: '',
   carattere: '',
   birth: '',
   chip: '',
@@ -278,10 +278,10 @@ let printToPdf = async function () {
           <div class="rounded bgtest p-3" style="">
             <div class="pb-3">
 
-              <h1>{{ cane.nome }}</h1>
+              <h1>{{ cane.do_name }}</h1>
               <div class="position-relative">
                 <div class="image-container m-auto mb-3" width="">
-                  <img v-if="cane.hasImg" id="thumbnail" :src="getImageUrl(cane.id)"
+                  <img v-if="cane.hasImg" id="thumbnail" :src="getImageUrl(cane.do_id)"
                     class="img-fluid circular-image image-to-download shadow" width="" style="" />
                 </div>
 
@@ -297,43 +297,43 @@ let printToPdf = async function () {
               </div>
               <div class="row mb-1">
                 <div class="col-4">
-                  <label for="nome" class="col-form-label fw-bold">Name</label>
+                  <label for="do_name" class="col-form-label fw-bold">Name</label>
                 </div>
                 <div class="col-8">
-                  <input type="text" class="form-control" id="nome" v-model="cane.nome" />
+                  <input type="text" class="form-control" id="do_name" v-model="cane.do_name" />
                 </div>
               </div>
               <div class="row mb-1">
                 <div class="col-4">
-                  <label for="carattere" class="col-form-label fw-bold">character</label>
+                  <label for="do_attitude" class="col-form-label fw-bold">character</label>
                 </div>
                 <div class="col-8">
-                  <input type="text" class="form-control" id="nome" v-model="cane.carattere" />
+                  <input type="text" class="form-control" id="do_attitude" v-model="cane.do_attitude" />
                 </div>
               </div>
               <div class="row mb-1">
                 <div class="col-4">
-                  <label for="morsicatore" class="col-form-label fw-bold">Bites</label>
+                  <label for="biter" class="col-form-label fw-bold">Bites</label>
                 </div>
                 <div class="col-8">
-                  <input type="text" class="form-control" id="nome" v-model="cane.morsicatore" />
+                  <input type="text" class="form-control" id="do_attitude" v-model="cane.do_attitude" />
                 </div>
               </div>
               <div class="row mb-1">
                 <div class="col-6">
-                  <label for="onHome" class="col-form-label fw-bold">Display on Home</label>
+                  <label for="onhome" class="col-form-label fw-bold">Display on Home</label>
                 </div>
                 <div class="col-6">
                   <div class="d-flex mt-2">
                     <div class="form-check mx-2 my-auto">
-                      <input class="form-check-input" type="radio" name="onHome" id="onHomeRadio" value="1"
-                        v-model="cane.onHome" />
-                      <label class="form-check-label" for="aliveRadio"> Yes </label>
+                      <input class="form-check-input" type="radio" name="do_onhome" id="onHomeRadio1" value="1"
+                        v-model="cane.do_onhome" />
+                      <label class="form-check-label" for="onHomeRadio1"> Yes </label>
                     </div>
                     <div class="form-check form-check mx-2 my-auto">
-                      <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="0"
-                        v-model="cane.onHome" />
-                      <label class="form-check-label" for="aliveRadio"> No </label>
+                      <input class="form-check-input" type="radio" name="do_onhome" id="onHomeRadio2" value="0"
+                        v-model="cane.do_onhome" />
+                      <label class="form-check-label" for="onHomeRadio2"> No </label>
                     </div>
                   </div>
                 </div>
@@ -367,10 +367,10 @@ let printToPdf = async function () {
                   </h2>
                   <div class="row mb-1">
                     <div class="col-4">
-                      <label for="birth" class="col-form-label fw-bold">Birth: </label>
+                      <label for="do_birth" class="col-form-label fw-bold">Birth: </label>
                     </div>
                     <div class="col-8">
-                      <input type="date" class="form-control" id="birth" v-model="cane.birth" />
+                      <input type="date" class="form-control" id="do_birth" v-model="cane.do_birth" />
                     </div>
                   </div>
                   <div class="row mb-1">
@@ -378,37 +378,37 @@ let printToPdf = async function () {
                       <label for="razza" class="col-form-label fw-bold">Kind</label>
                     </div>
                     <div class="col-8">
-                      <select class="form-control" name="kind" v-model="cane.kind">
-                        <option v-for="item in kind" :key="item.id" :value="item.id">
-                          {{ item.kind }}
+                      <select class="form-control" name="kind" v-model="cane.ki_id">
+                        <option v-for="item in kind" :key="item.ki_id" :value="item.ki_id">
+                          {{ item.ki_name }}
                         </option>
                       </select>
                     </div>
                   </div>
                   <div class="row mb-1">
                     <div class="col-4">
-                      <label for="taglia" class="col-form-label fw-bold">Size</label>
+                      <label for="do_size" class="col-form-label fw-bold">Size</label>
                     </div>
                     <div class="col-8">
-                      <input type="text" class="form-control" id="carattere" v-model="cane.taglia" />
+                      <input type="text" class="form-control" id="size" v-model="cane.do_size" />
                     </div>
                   </div>
                   <div class="row mb-1">
                     <div class="col-4">
-                      <label for="sesso" class="col-form-label fw-bold">Sex</label>
+                      <label for="sex" class="col-form-label fw-bold">Sex</label>
                     </div>
                     <div class="col-8">
                       <div class="d-flex mt-2">
                         <div class="form-check mx-2 my-auto">
-                          <input type="radio" class="form-check-input" name="sesso" id="maleRadio" v-model="cane.sesso"
+                          <input type="radio" class="form-check-input" name="do_sex" id="sex1" v-model="cane.do_sex"
                             value="Male" />
-                          <label class="form-check-label" for="maleRadio"> Male </label>
+                          <label class="form-check-label" for="sex1"> Male </label>
                         </div>
 
                         <div class="form-check form-check mx-2 my-auto">
-                          <input class="form-check-input" type="radio" name="sesso" id="femaleRadio" v-model="cane.sesso"
+                          <input class="form-check-input" type="radio" name="do_sex" id="sex2" v-model="cane.do_sex"
                             value="Female" />
-                          <label class="form-check-label" for="femaleRadio"> Female </label>
+                          <label class="form-check-label" for="sex2"> Female </label>
                         </div>
                       </div>
                     </div>
@@ -416,10 +416,10 @@ let printToPdf = async function () {
 
                   <div class="row mb-1">
                     <div class="col-4">
-                      <label for="mantello" class="col-form-label fw-bold">Coat</label>
+                      <label for="do_coat" class="col-form-label fw-bold">Coat</label>
                     </div>
                     <div class="col-8">
-                      <input type="text" class="form-control" id="carattere" v-model="cane.mantello" />
+                      <input type="text" class="form-control" id="do_coat" v-model="cane.do_coat" />
                     </div>
                   </div>
                   <div class="row mb-1">
@@ -427,7 +427,7 @@ let printToPdf = async function () {
                       <label for="chip" class="form-label fw-bold">Chip</label>
                     </div>
                     <div class="col-8">
-                      <input type="text" class="form-control" id="chip" v-model="cane.chip" />
+                      <input type="text" class="form-control" id="do_chip" v-model="cane.do_chip" />
                     </div>
                   </div>
                 </div>
@@ -443,10 +443,10 @@ let printToPdf = async function () {
                   </h2>
                   <div class="row mb-1">
                     <div class="col-4">
-                      <label for="neutering" class="col-form-label fw-bold">Neutering</label>
+                      <label for="do_neutering" class="col-form-label fw-bold">Neutering</label>
                     </div>
                     <div class="col-8">
-                      <input type="text" class="form-control" id="neutering" v-model="cane.sterilizzazione" />
+                      <input type="text" class="form-control" id="do_neutering" v-model="cane.do_neutering" />
                     </div>
                   </div>
                   <div class="row mb-1">
@@ -454,15 +454,15 @@ let printToPdf = async function () {
                       <label for="therapy" class="col-form-label fw-bold">Therapy</label>
                     </div>
                     <div class="col-8">
-                      <input type="text" class="form-control" id="neutering" v-model="cane.terapia" />
+                      <input type="text" class="form-control" id="do_therapy" v-model="cane.do_therapy" />
                     </div>
                   </div>
                   <div class="row mb-1">
                     <div class="col-4">
-                      <label for="taglia" class="col-form-label fw-bold">Pathologies</label>
+                      <label for="pathologies" class="col-form-label fw-bold">Pathologies</label>
                     </div>
                     <div class="col-8">
-                      <input type="text" class="form-control" id="patologie" v-model="cane.patologie" />
+                      <input type="text" class="form-control" id="do_pathologies" v-model="cane.do_pathologies" />
                     </div>
                   </div>
                   <div class="row mb-1">
@@ -481,12 +481,12 @@ let printToPdf = async function () {
                       <div class="d-flex mt-2">
                         <div class="form-check mx-2 my-auto">
                           <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="Yes"
-                            v-model="cane.alive" />
+                            v-model="cane.do_alive" />
                           <label class="form-check-label" for="aliveRadio"> Yes </label>
                         </div>
                         <div class="form-check form-check mx-2 my-auto">
                           <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="No"
-                            v-model="cane.alive" />
+                            v-model="cane.do_alive" />
                           <label class="form-check-label" for="aliveRadio"> No </label>
                         </div>
                       </div>
@@ -508,7 +508,6 @@ let printToPdf = async function () {
                         <label for="birth" class="col-form-label fw-bold">Shelter section</label>
                       </div>
                       <div class="col-7">
-                        {{ shelter.idbox }}
                         <select class="form-control" name="box" v-model="shelter.idbox">
                           <option v-for="item in stalli" :key="item.id" :value="item.id" :model="shelter.idbox">
                             {{ item.blocco }} - {{ item.numero }}
@@ -567,7 +566,8 @@ let printToPdf = async function () {
                         </div>
                       </td>
                       <td>
-                        <small class="mx-2">{{ action.date }} </small>|<small class="mx-2"> {{ action.time }}</small>
+                        <small class="mx-2">{{ action.date }} </small>|<small class="mx-2"> {{ action.time
+                        }}</small>
                       </td>
 
                       <td :class="action.status === 'Completed' ? 'status-completed' : 'status-pending'
@@ -593,28 +593,28 @@ let printToPdf = async function () {
           <!-- Left column for dog details -->
           <div class="image-container shadow mb-3" width="">
             <div class="image-to-replace">
-              <img alt="" style="" :src="getImageUrl(cane.id)" id="thumbpdf" />
+              <img alt="" style="" :src="getImageUrl(cane.do_id)" id="thumbpdf" />
             </div>
           </div>
           <div class="mb-3">
             <label class="form-label" style="font-weight: bold">Name:</label>
-            <p id="dogName">{{ cane.nome }}</p>
+            <p id="dogName">{{ cane.do_name }}</p>
           </div>
           <div class="mb-3">
             <label class="form-label" style="font-weight: bold">Character:</label>
-            <p id="dogChar">{{ cane.carattere }}</p>
+            <p id="dogChar">{{ cane.do_carattere }}</p>
           </div>
           <div class="mb-3">
             <label class="form-label" style="font-weight: bold">Breed:</label>
-            <p id="dogBreed">{{ cane.razza }}</p>
+            <p id="dogBreed">{{ cane.do_razza }}</p>
           </div>
           <div class="mb-3">
             <label class="form-label" style="font-weight: bold">Age:</label>
-            <p id="dogAge">{{ cane.birth }}</p>
+            <p id="dogAge">{{ cane.do_birth }}</p>
           </div>
           <div class="mb-3">
             <label class="form-label" style="font-weight: bold">Sex:</label>
-            <p id="dogSex">{{ cane.sesso }}</p>
+            <p id="dogSex">{{ cane.do_sex }}</p>
           </div>
         </div>
         <div class="col-6">
@@ -656,7 +656,7 @@ let printToPdf = async function () {
                     style="" />
                 </div>
                 <div class="text-center">
-                  <h1 class="m-auto">{{ cane.nome }}</h1>
+                  <h1 class="m-auto">{{ cane.name }}</h1>
                   <small class="small">I'm born on</small>
                   <h5 class="m-auto">{{ cane.birth }}</h5>
                   <small> My character is </small>
