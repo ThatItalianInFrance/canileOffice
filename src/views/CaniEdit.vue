@@ -77,6 +77,7 @@ let stalli = ref({})
 let idcaneValue
 
 let loadCane = async function (id) {
+  console.log("load Dog");
   if (id == 0) {
     return;
   }
@@ -316,7 +317,7 @@ let printToPdf = async function () {
                   <label for="biter" class="col-form-label fw-bold">Bites</label>
                 </div>
                 <div class="col-8">
-                  <input type="text" class="form-control" id="do_attitude" v-model="cane.do_attitude" />
+                  <input type="text" class="form-control" id="do_attitude" v-model="cane.biter" />
                 </div>
               </div>
               <div class="row mb-1">

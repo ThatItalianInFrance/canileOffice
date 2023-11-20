@@ -52,8 +52,7 @@ loadDogs()
             <p>Overview of registered dogs</p>
           </div>
           <div>
-            <RouterLink class="nav-link active btn btn-primary button mb-3"
-              style="width: 220px; height:40px"
+            <RouterLink class="nav-link active btn btn-primary button mb-3" style="width: 220px; height:40px"
               to="/cani/edit/0">
               <span class="material-symbols-outlined">add</span> New dog
             </RouterLink>
@@ -65,9 +64,7 @@ loadDogs()
               <i class="bi bi-search"></i><!-- Assuming you're using Bootstrap Icons -->
             </span>
           </div>
-          <input v-model="searchTerm"
-            placeholder="Enter dog name..."
-            class="form-control">
+          <input v-model="searchTerm" placeholder="Enter dog name..." class="form-control">
         </div>
         <table class="table table-hover">
           <thead class="thead-dark">
@@ -86,8 +83,7 @@ loadDogs()
             </tr>
           </thead>
           <tbody>
-            <tr v-for="dog in dogs"
-              :key="dog.do_id">
+            <tr v-for="dog in dogs" :key="dog.do_id">
               <td><router-link :to="{ path: '/cani/edit/' + dog.do_id }">{{ dog.do_name }}</router-link></td>
               <td>{{ dog.do_chip }}</td>
               <td>{{ dog.kind?.ki_name }}</td>
