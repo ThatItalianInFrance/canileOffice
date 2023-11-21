@@ -87,7 +87,7 @@ loadDogs()
           <tbody>
             <tr v-for="dog in dogs"
               :key="dog.do_id">
-              <td><router-link :to="{ path: '/cani/edit/' + dog.do_id }">{{ dog.do_name }}</router-link></td>
+              <td><router-link :to="{ path: '/animal/edit/' + dog.do_id }">{{ dog.do_name }}</router-link></td>
               <td>{{ dog.do_chip }}</td>
               <td>{{ dog.do_birth }}</td>
               <td :class="dog.do_biter === '1' ? 'status-active' : 'status-inactive'">

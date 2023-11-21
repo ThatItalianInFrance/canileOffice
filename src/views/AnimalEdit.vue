@@ -59,7 +59,7 @@ let loadCane = async function (id) {
   if (id == 0) {
     return
   }
-  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`) // par défaut, fetch() fait une requête GET
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/animal/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   cane.value = json.data
 }
@@ -85,7 +85,7 @@ let loadBoxCani = async function (id) {
   }
   shelter.value = json.data
   console.log(shelter.value)
-  idcaneValue = shelter.value.idbox
+  idcaneValue = shelter.value.do_id
   loadBox(idcaneValue)
 
   console.log(idcaneValue)
@@ -96,7 +96,7 @@ let loadBox = async function (id) {
     console.log('id 0')
     return
   }
-  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/${id}`) // par défaut, fetch() fait une requête GET
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/${idcaneValue}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   console.log(json.data)
   if (!json.data) {
@@ -111,7 +111,7 @@ let loadStalli = async function (id) {
     console.log('id 0')
     return
   }
-  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/stalli/`) // par défaut, fetch() fait une requête GET
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   console.log(json.data)
   if (!json.data) {
@@ -166,14 +166,14 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
-    // await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
-    //   method: 'PUT',
-    //   headers: {
-    //     // 'Authorization': `Bearer ${check.token}`,
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(shelter.value)
-    // })
+    await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
+      method: 'PUT',
+      headers: {
+        // 'Authorization': `Bearer ${check.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(shelter.value)
+    })
     // console.log(image.value)
   }
   // router.push({ path: '/listacani' })
@@ -286,16 +286,35 @@ let printToPdf = async function () {
                     v-model="cane.do_attitude" />
                 </div>
               </div>
+ 
               <div class="row mb-1">
-                <div class="col-4">
-                  <label for="biter"
-                    class="col-form-label fw-bold">Bites</label>
+                <div class="col-6">
+                  <label for="do_biter"
+                    class="col-form-label fw-bold">Biter</label>
                 </div>
-                <div class="col-8">
-                  <input type="text"
-                    class="form-control"
-                    id="do_biter"
-                    v-model="cane.do_biter" />
+                <div class="col-6">
+                  <div class="d-flex mt-2">
+                    <div class="form-check mx-2 my-auto">
+                      <input class="form-check-input"
+                        type="radio"
+                        name="do_biter"
+                        id="biterRadio1"
+                        value="1"
+                        v-model="cane.do_biter" />
+                      <label class="form-check-label"
+                        for="bitereRadio1"> Yes </label>
+                    </div>
+                    <div class="form-check form-check mx-2 my-auto">
+                      <input class="form-check-input"
+                        type="radio"
+                        name="do_biter"
+                        id="biterRadio2"
+                        value="0"
+                        v-model="cane.do_biter" />
+                      <label class="form-check-label"
+                        for="biterRadio2"> No </label>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="row mb-1">
@@ -472,17 +491,35 @@ let printToPdf = async function () {
                     <span>Health Data</span>
                   </h2>
                   <div class="row mb-1">
-                    <div class="col-4">
-                      <label for="do_neutering"
-                        class="col-form-label fw-bold">Neutering</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text"
-                        class="form-control"
-                        id="do_neutering"
+                <div class="col-6">
+                  <label for="do_biter"
+                    class="col-form-label fw-bold">Neutering</label>
+                </div>
+                <div class="col-6">
+                  <div class="d-flex mt-2">
+                    <div class="form-check mx-2 my-auto">
+                      <input class="form-check-input"
+                        type="radio"
+                        name="do_neutering"
+                        id="neuteringRadio1"
+                        value="1"
                         v-model="cane.do_neutering" />
+                      <label class="form-check-label"
+                        for="neuteringRadio1"> Yes </label>
+                    </div>
+                    <div class="form-check form-check mx-2 my-auto">
+                      <input class="form-check-input"
+                        type="radio"
+                        name="do_neutering"
+                        id="neuteringRadio2"
+                        value="0"
+                        v-model="cane.do_neutering" />
+                      <label class="form-check-label"
+                        for="neuteringRadio2"> No </label>
                     </div>
                   </div>
+                </div>
+              </div>
                   <div class="row mb-1">
                     <div class="col-4">
                       <label for="therapy"
@@ -529,19 +566,19 @@ let printToPdf = async function () {
                         <div class="form-check mx-2 my-auto">
                           <input class="form-check-input"
                             type="radio"
-                            name="alive"
-                            id="aliveRadio"
-                            value="Yes"
-                            v-model="cane.do_alive" />
+                            name="do_alive"
+                            id="aliveRadio1"
+                            value="1"
+                            v-model="cane.do_alive" /> 
                           <label class="form-check-label"
                             for="aliveRadio"> Yes </label>
                         </div>
                         <div class="form-check form-check mx-2 my-auto">
                           <input class="form-check-input"
                             type="radio"
-                            name="alive"
-                            id="aliveRadio"
-                            value="No"
+                            name="do_alive"
+                            id="aliveRadio2"
+                            value="0"
                             v-model="cane.do_alive" />
                           <label class="form-check-label"
                             for="aliveRadio"> No </label>
@@ -569,12 +606,12 @@ let printToPdf = async function () {
                       <div class="col-7">
                         <select class="form-control"
                           name="box"
-                          v-model="shelter.idbox">
+                          v-model="shelter.db_idbox">
                           <option v-for="item in stalli"
-                            :key="item.id"
-                            :value="item.id"
-                            :model="shelter.idbox">
-                            {{ item.blocco }} - {{ item.numero }}
+                            :key="item.db_id"
+                            :value="item.db_id"
+                            :model="shelter.db_idbox">
+                            {{ item.db_block }} - {{ item.db_number }}
                           </option>
                         </select>
                       </div>

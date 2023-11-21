@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ListAnimal from '../views/ListAnimal.vue'
 import ListaUsers from '../views/ListaUsers.vue'
-import CaniEdit from '../views/CaniEdit.vue'
+import AnimalEdit from '../views/AnimalEdit.vue'
 import UsersEdit from '../views/UsersEdit.vue'
 import LoginView from '../views/LoginView.vue'
 import ListaBox from '../views/ListaBox.vue'
@@ -27,9 +27,9 @@ const router = createRouter({
       component: LoginView
     },
     {
-      path: '/cani/edit/:id',
-      name: 'edit',
-      component: CaniEdit
+      path: '/animal/edit/:id',
+      name: 'animaledit',
+      component: AnimalEdit
     },
     {
       path: '/users/edit/:id',
