@@ -30,14 +30,7 @@ function onChangeImage(evt) {
 }
 let dog = ref({})
 
-dog.value.attachments = [
-  { id: 1, type: 'image', url: getImageUrl(id), name: 'Dog Image 1' },
-  { id: 2, type: 'image', url: 'https://example.com/image2.jpg', name: 'Dog Image 2' },
-  { id: 3, type: 'document', url: 'https://example.com/medical-record.pdf', name: 'Medical Record' },
-  { id: 4, type: 'image', url: 'https://example.com/image3.jpg', name: 'Dog Image 3' },
-  { id: 5, type: 'document', url: 'https://example.com/training-certificate.pdf', name: 'Training Certificate' },
-  // Add more attachments as needed
-];
+
 
 dog.value.actions = [
   { id: 1, actionType: 'Adoption Visit', date: '2023-01-01', time: '12.00', status: 'Completed' },
@@ -50,16 +43,7 @@ dog.value.actions = [
 ]
 
 let cane = ref({
-  id: 0,
-  name: '',
-  carattere: '',
-  birth: '',
-  chip: '',
-  terapia: '',
-  patologie: '',
-  alive: '',
-  image: '',
-  morsicatore: ''
+
 })
 let kind = ref({})
 
@@ -93,7 +77,7 @@ let loadBoxCani = async function (id) {
   if (id == 0) {
     return
   }
-  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`) // par défaut, fetch() fait une requête GET
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/dogsbox/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   console.log(json.data)
   if (!json.data) {
@@ -107,13 +91,12 @@ let loadBoxCani = async function (id) {
   console.log(idcaneValue)
 }
 
-let loadBox = async function (idcaneValue) {
+let loadBox = async function (id) {
   if (id == 0) {
     console.log('id 0')
     return
   }
-  console.log(idcaneValue)
-  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/${idcaneValue}`) // par défaut, fetch() fait une requête GET
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   console.log(json.data)
   if (!json.data) {
@@ -128,7 +111,6 @@ let loadStalli = async function (id) {
     console.log('id 0')
     return
   }
-  console.log(idcaneValue)
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/stalli/`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   console.log(json.data)
@@ -150,7 +132,7 @@ console.log(stalli)
 
 // loadBox(id)
 // console.log(box)
-console.log(idcaneValue)
+// console.log(idcaneValue)
 loadCane(id)
 function getImageUrl(id) {
   return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
@@ -184,14 +166,14 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
-    await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
-      method: 'PUT',
-      headers: {
-        // 'Authorization': `Bearer ${check.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(shelter.value)
-    })
+    // await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
+    //   method: 'PUT',
+    //   headers: {
+    //     // 'Authorization': `Bearer ${check.token}`,
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(shelter.value)
+    // })
     // console.log(image.value)
   }
   // router.push({ path: '/listacani' })
@@ -256,11 +238,11 @@ let printToPdf = async function () {
               <div class="position-relative">
                 <div class="image-container m-auto mb-3"
                   width="">
-                  <img v-if="cane.hasImg"
-                    id="thumbnail"
+                  <img 
+                    id="main"
                     :src="getImageUrl(cane.do_id)"
                     class="img-fluid circular-image image-to-download shadow"
-                    width=""
+                    width="250px"
                     style="" />
                 </div>
 
@@ -312,8 +294,8 @@ let printToPdf = async function () {
                 <div class="col-8">
                   <input type="text"
                     class="form-control"
-                    id="do_attitude"
-                    v-model="cane.do_attitude" />
+                    id="do_biter"
+                    v-model="cane.do_biter" />
                 </div>
               </div>
               <div class="row mb-1">
