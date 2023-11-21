@@ -282,7 +282,7 @@ let printToPdf = async function () {
               <h1>{{ cane.do_name }}</h1>
               <div class="position-relative">
                 <div class="image-container m-auto mb-3" width="">
-                  <img v-if="cane.hasImg" id="thumbnail" :src="getImageUrl(cane.do_id)"
+                  <img  id="thumbnail" :src="getImageUrl(cane.do_id)"
                     class="img-fluid circular-image image-to-download shadow" width="" style="" />
                 </div>
 
