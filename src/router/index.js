@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ListaCani from '../views/ListaCani.vue'
+import ListAnimal from '../views/ListAnimal.vue'
 import ListaUsers from '../views/ListaUsers.vue'
 import CaniEdit from '../views/CaniEdit.vue'
 import UsersEdit from '../views/UsersEdit.vue'
@@ -37,9 +37,9 @@ const router = createRouter({
       component: UsersEdit
     },
     {
-      path: '/listacani',
-      name: 'listacani',
-      component: ListaCani
+      path: '/ListAnimal',
+      name: 'listanimal',
+      component: ListAnimal
     },
     {
       path: '/listausers',

@@ -73,14 +73,13 @@ loadDogs()
           <thead class="thead-dark">
             <tr>
               <th scope="col">Name</th>
-              <th scope="col">Kind</th>
               <th scope="col">Chip</th>
+              <th scope="col">Age / birth</th>
               <th scope="col">Biter</th>
-              <th scope="col">Breed</th>
+              <th scope="col">Kind</th>
               <th scope="col">Size</th>
               <th scope="col">Sex</th>
-              <th scope="col">Character</th>
-              <th scope="col">Age / birth</th>
+              <th scope="col">Attitude</th>
               <th scope="col">Health Issues</th>
               <th scope="col">Alive</th>
             </tr>
@@ -90,17 +89,18 @@ loadDogs()
               :key="dog.do_id">
               <td><router-link :to="{ path: '/cani/edit/' + dog.do_id }">{{ dog.do_name }}</router-link></td>
               <td>{{ dog.do_chip }}</td>
+              <td>{{ dog.do_birth }}</td>
+              <td :class="dog.do_biter === '1' ? 'status-active' : 'status-inactive'">
+              {{ dog.do_biter === 1 ? "Yes" : "No" }}
+            </td>
               <td>{{ dog.kind?.ki_name }}</td>
-              <td :class="dog.do_biter === 'yes' ? 'status-inactive' : 'status-active'">
-                {{ dog.do_biter }}
-              </td>
-              <td>{{ dog.do_kind }}</td>
               <td>{{ dog.do_size }}</td>
               <td>{{ dog.do_sex }}</td>
               <td>{{ dog.do_attitude }}</td>
-              <td>{{ dog.do_birth }}</td>
               <td>{{ dog.do_pathologies }}</td>
-              <td class="status-active">{{ dog.do_alive }}</td>
+              <td :class="dog.do_alive === 1 ? 'status-active' : 'status-inactive'">
+              {{ dog.do_alive === 1 ? "Yes" : "No" }}
+            </td>
             </tr>
           </tbody>
         </table>
