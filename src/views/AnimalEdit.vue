@@ -42,18 +42,12 @@ dog.value.actions = [
   // ... (other actions for Dog 1) ...
 ]
 
-let cane = ref({
-
-})
+let cane = ref({})
 let kind = ref({})
-
 let shelter = ref({})
-
 let box = ref({})
-
-let stalli = ref({})
-
-let idcaneValue
+let boxes = ref({})
+let idcaneValue;
 
 let loadCane = async function (id) {
   if (id == 0) {
@@ -84,7 +78,7 @@ let loadBoxCani = async function (id) {
     json.data = {}
   }
   shelter.value = json.data
-  console.log(shelter.value)
+  console.log(shelter.value.bo_id)
   idcaneValue = shelter.value.bo_id
   loadBox(idcaneValue)
 
@@ -117,8 +111,9 @@ let loadStalli = async function (id) {
   if (!json.data) {
     json.data = {}
   }
-  stalli.value = json.data
-  console.log(stalli.value)
+ 
+  boxes.value = json.data
+  console.log(boxes.value)
 }
 
 loadBoxCani(id)
@@ -128,7 +123,7 @@ loadKind(id)
 console.log(kind)
 
 loadStalli(id)
-console.log(stalli)
+console.log(boxes)
 
 // loadBox(id)
 // console.log(box)
@@ -139,6 +134,8 @@ function getImageUrl(id) {
 }
 
 let saveCane = async function () {
+  shelter.value.db_id = box.value.db_id;
+
   if (base64Image != '') cane.value.image = base64Image
   if (id == 0) {
     await fetch(`${import.meta.env.VITE_SERVER}/office/cane`, {
@@ -166,6 +163,7 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
+    console.log(shelter.value);
     await fetch(`${import.meta.env.VITE_SERVER}/office/dogsbox/${id}`, {
       method: 'PUT',
       headers: {
@@ -174,6 +172,8 @@ let saveCane = async function () {
       },
       body: JSON.stringify(shelter.value),
     })
+
+    console.log(box.value);
     console.log(shelter.value);
     // console.log(image.value)
   }
@@ -605,13 +605,14 @@ let printToPdf = async function () {
                           class="col-form-label fw-bold">Shelter section</label>
                       </div>
                       <div class="col-7">
+                        {{ shelter.bo_id }} 
                         <select class="form-control"
                           name="box"
-                          v-model="shelter.db_idbox">
-                          <option v-for="item in stalli"
+                          v-model="box.bo_id">
+                          <option v-for="item in boxes"
                             :key="item.bo_id"
-                            :value="item.bo_number"
-                            :model="shelter.bo_id">
+                            :value="shelter.bo_id"
+                            >
                             {{ item.bo_block }} - {{ item.bo_number }}
                           </option>
                         </select>
