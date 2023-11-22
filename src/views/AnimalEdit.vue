@@ -86,8 +86,6 @@ let loadKind = async function (id) {
 let loadBoxCani = async function (id) {
   console.log("loadBoxCani");
   console.log("id", id);
-  let response;
-  let json;
 
   if (id !== 0) {
     console.log("loadBoxCani after return");
@@ -100,14 +98,9 @@ let loadBoxCani = async function (id) {
   } else {
     return;
   }
-<<<<<<< HEAD:src/views/CaniEdit.vue
-
-
-=======
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/dogsbox/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   console.log(json.data)
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/AnimalEdit.vue
   if (!json.data) {
     json.data = {}
   }
@@ -119,13 +112,7 @@ let loadBoxCani = async function (id) {
   console.log(idcaneValue)
 }
 
-<<<<<<< HEAD:src/views/CaniEdit.vue
-let loadBox = async function (idcaneValue) {
-
-  // idcaneValue = 1;
-=======
 let loadBox = async function (id) {
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/AnimalEdit.vue
   if (id == 0) {
     console.log('id 0')
     return
@@ -141,20 +128,11 @@ let loadBox = async function (id) {
 }
 
 let loadStalli = async function (id) {
-<<<<<<< HEAD:src/views/CaniEdit.vue
-  // if (id == 0) {
-  //   console.log('id 0')
-  //   return
-  // }
-  console.log(idcaneValue)
-  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/stalli/`) // par défaut, fetch() fait une requête GET
-=======
   if (id == 0) {
     console.log('id 0')
     return
   }
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/`) // par défaut, fetch() fait une requête GET
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/AnimalEdit.vue
   let json = await response.json()
   console.log(json.data)
   if (!json.data) {
@@ -196,15 +174,7 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
-<<<<<<< HEAD:src/views/CaniEdit.vue
-    let dataCane = await responseCane.json();
-
-    shelter.value.idcane = dataCane.data.id;
-
-    await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box`, {
-=======
     await fetch(`${import.meta.env.VITE_SERVER}/office/dogsbox/${id}`, {
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/AnimalEdit.vue
       method: 'POST',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
@@ -284,14 +254,8 @@ let printToPdf = async function () {
         <div class="col-md-3">
           <div class="rounded bgtest p-3" style="">
             <div class="pb-3">
-
               <h1>{{ cane.do_name }}</h1>
               <div class="position-relative">
-<<<<<<< HEAD:src/views/CaniEdit.vue
-                <div class="image-container m-auto mb-3" width="">
-                  <img  id="thumbnail" :src="getImageUrl(cane.do_id)"
-                    class="img-fluid circular-image image-to-download shadow" width="" style="" />
-=======
                 <div class="image-container m-auto mb-3"
                   width="">
                   <img 
@@ -300,7 +264,6 @@ let printToPdf = async function () {
                     class="img-fluid circular-image image-to-download shadow"
                     width="250px"
                     style="" />
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/AnimalEdit.vue
                 </div>
 
                 <label for="image" class="camera-icon-label">
@@ -331,13 +294,6 @@ let printToPdf = async function () {
               </div>
  
               <div class="row mb-1">
-<<<<<<< HEAD:src/views/CaniEdit.vue
-                <div class="col-4">
-                  <label for="biter" class="col-form-label fw-bold">Bites</label>
-                </div>
-                <div class="col-8">
-                  <input type="text" class="form-control" id="do_attitude" v-model="cane.biter" />
-=======
                 <div class="col-6">
                   <label for="do_biter"
                     class="col-form-label fw-bold">Biter</label>
@@ -365,7 +321,6 @@ let printToPdf = async function () {
                         for="biterRadio2"> No </label>
                     </div>
                   </div>
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/AnimalEdit.vue
                 </div>
               </div>
               <div class="row mb-1">
@@ -491,13 +446,6 @@ let printToPdf = async function () {
                     <span>Health Data</span>
                   </h2>
                   <div class="row mb-1">
-<<<<<<< HEAD:src/views/CaniEdit.vue
-                    <div class="col-4">
-                      <label for="do_neutering" class="col-form-label fw-bold">Neutering</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" class="form-control" id="do_neutering" v-model="cane.do_neutering" />
-=======
                 <div class="col-6">
                   <label for="do_biter"
                     class="col-form-label fw-bold">Neutering</label>
@@ -523,7 +471,6 @@ let printToPdf = async function () {
                         v-model="cane.do_neutering" />
                       <label class="form-check-label"
                         for="neuteringRadio2"> No </label>
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/AnimalEdit.vue
                     </div>
                   </div>
                 </div>
@@ -559,14 +506,6 @@ let printToPdf = async function () {
                     <div class="col-8">
                       <div class="d-flex mt-2">
                         <div class="form-check mx-2 my-auto">
-<<<<<<< HEAD:src/views/CaniEdit.vue
-                          <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="Yes"
-                            v-model="cane.do_alive" />
-                          <label class="form-check-label" for="aliveRadio"> Yes </label>
-                        </div>
-                        <div class="form-check form-check mx-2 my-auto">
-                          <input class="form-check-input" type="radio" name="alive" id="aliveRadio" value="No"
-=======
                           <input class="form-check-input"
                             type="radio"
                             name="do_alive"
@@ -582,7 +521,6 @@ let printToPdf = async function () {
                             name="do_alive"
                             id="aliveRadio2"
                             value="0"
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/AnimalEdit.vue
                             v-model="cane.do_alive" />
                           <label class="form-check-label" for="aliveRadio"> No </label>
                         </div>
@@ -605,11 +543,6 @@ let printToPdf = async function () {
                         <label for="birth" class="col-form-label fw-bold">Shelter section</label>
                       </div>
                       <div class="col-7">
-<<<<<<< HEAD:src/views/CaniEdit.vue
-                        <select class="form-control" name="box" v-model="shelter.idbox">
-                          <option v-for="item in stalli" :key="item.id" :value="item.id" :model="shelter.idbox">
-                            {{ item.blocco }} - {{ item.numero }}
-=======
                         <select class="form-control"
                           name="box"
                           v-model="shelter.db_idbox">
@@ -618,7 +551,6 @@ let printToPdf = async function () {
                             :value="item.bo_number"
                             :model="shelter.bo_id">
                             {{ item.bo_block }} - {{ item.bo_number }}
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/AnimalEdit.vue
                           </option>
                         </select>
                       </div>
