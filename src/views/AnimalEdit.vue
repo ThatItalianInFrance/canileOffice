@@ -85,7 +85,7 @@ let loadBoxCani = async function (id) {
   }
   shelter.value = json.data
   console.log(shelter.value)
-  idcaneValue = shelter.value.do_id
+  idcaneValue = shelter.value.bo_id
   loadBox(idcaneValue)
 
   console.log(idcaneValue)
@@ -96,7 +96,7 @@ let loadBox = async function (id) {
     console.log('id 0')
     return
   }
-  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/${idcaneValue}`) // par défaut, fetch() fait une requête GET
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   console.log(json.data)
   if (!json.data) {
@@ -149,7 +149,7 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
-    await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
+    await fetch(`${import.meta.env.VITE_SERVER}/office/dogsbox/${id}`, {
       method: 'POST',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
@@ -166,14 +166,15 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
-    await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
+    await fetch(`${import.meta.env.VITE_SERVER}/office/dogsbox/${id}`, {
       method: 'PUT',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(shelter.value)
+      body: JSON.stringify(shelter.value),
     })
+    console.log(shelter.value);
     // console.log(image.value)
   }
   // router.push({ path: '/listacani' })
@@ -239,7 +240,7 @@ let printToPdf = async function () {
                 <div class="image-container m-auto mb-3"
                   width="">
                   <img 
-                    id="main"
+                    id="thumbnail"
                     :src="getImageUrl(cane.do_id)"
                     class="img-fluid circular-image image-to-download shadow"
                     width="250px"
@@ -608,10 +609,10 @@ let printToPdf = async function () {
                           name="box"
                           v-model="shelter.db_idbox">
                           <option v-for="item in stalli"
-                            :key="item.db_id"
-                            :value="item.db_id"
-                            :model="shelter.db_idbox">
-                            {{ item.db_block }} - {{ item.db_number }}
+                            :key="item.bo_id"
+                            :value="item.bo_number"
+                            :model="shelter.bo_id">
+                            {{ item.bo_block }} - {{ item.bo_number }}
                           </option>
                         </select>
                       </div>

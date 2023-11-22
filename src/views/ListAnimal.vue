@@ -54,7 +54,7 @@ loadDogs()
           <div>
             <RouterLink class="nav-link active btn btn-primary button mb-3"
               style="width: 220px; height:40px"
-              to="/cani/edit/0">
+              to="/animal/edit/0">
               <span class="material-symbols-outlined">add</span> New dog
             </RouterLink>
           </div>
