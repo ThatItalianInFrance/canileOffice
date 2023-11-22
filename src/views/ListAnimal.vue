@@ -52,14 +52,9 @@ loadDogs()
             <p>Overview of registered dogs</p>
           </div>
           <div>
-<<<<<<< HEAD:src/views/ListaCani.vue
-            <RouterLink class="nav-link active btn btn-primary button mb-3" style="width: 220px; height:40px"
-              to="/cani/edit/0">
-=======
             <RouterLink class="nav-link active btn btn-primary button mb-3"
               style="width: 220px; height:40px"
               to="/animal/edit/0">
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/ListAnimal.vue
               <span class="material-symbols-outlined">add</span> New dog
             </RouterLink>
           </div>
@@ -88,14 +83,9 @@ loadDogs()
             </tr>
           </thead>
           <tbody>
-<<<<<<< HEAD:src/views/ListaCani.vue
-            <tr v-for="dog in dogs" :key="dog.do_id">
-              <td><router-link :to="{ path: '/cani/edit/' + dog.do_id }">{{ dog.do_name }}</router-link></td>
-=======
             <tr v-for="dog in dogs"
               :key="dog.do_id">
               <td><router-link :to="{ path: '/animal/edit/' + dog.do_id }">{{ dog.do_name }}</router-link></td>
->>>>>>> 90f2b5595ad791865be698f522dcc2de434868b1:src/views/ListAnimal.vue
               <td>{{ dog.do_chip }}</td>
               <td>{{ dog.do_birth }}</td>
               <td :class="dog.do_biter === '1' ? 'status-active' : 'status-inactive'">
