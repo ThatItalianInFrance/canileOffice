@@ -67,6 +67,13 @@ let loadKind = async function (id) {
   kind.value = json.data
 }
 
+let shelterAssign = function () {
+  // this.shelter.value.bo_id = this.box.value.db_id;
+  box.value.db_id = shelter.value.bo_id;
+  console.log('chqnge');
+}
+
+
 let loadBoxCani = async function (id) {
   if (id == 0) {
     return
@@ -80,7 +87,7 @@ let loadBoxCani = async function (id) {
   shelter.value = json.data
   console.log(shelter.value.bo_id)
   idcaneValue = shelter.value.bo_id
-  loadBox(idcaneValue)
+  loadBox(shelter.value.bo_id)
 
   console.log(idcaneValue)
 }
@@ -134,7 +141,7 @@ function getImageUrl(id) {
 }
 
 let saveCane = async function () {
-  shelter.value.db_id = box.value.db_id;
+  
 
   if (base64Image != '') cane.value.image = base64Image
   if (id == 0) {
@@ -608,10 +615,11 @@ let printToPdf = async function () {
                         {{ shelter.bo_id }} 
                         <select class="form-control"
                           name="box"
-                          v-model="box.bo_id">
+                          v-model="shelter.bo_id">
                           <option v-for="item in boxes"
                             :key="item.bo_id"
-                            :value="shelter.bo_id"
+                            :value="item.bo_id"
+                            :model="shelter.bo_id"
                             >
                             {{ item.bo_block }} - {{ item.bo_number }}
                           </option>
@@ -627,7 +635,7 @@ let printToPdf = async function () {
                         <input type="date"
                           class="form-control"
                           id="date_in"
-                          v-model="shelter.date_in" />
+                          v-model="shelter.db_datein" />
                       </div>
                     </div>
                     <div class="row mb-1">
@@ -639,7 +647,7 @@ let printToPdf = async function () {
                         <input type="date"
                           class="form-control"
                           id="date_out"
-                          v-model="shelter.date_out" />
+                          v-model="shelter.db_dateout" />
                       </div>
                     </div>
                     <div class="row mb-1">
