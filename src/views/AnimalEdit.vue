@@ -44,18 +44,7 @@ dog.value.actions = [
 
 let cane = ref({})
 let kind = ref({})
-<<<<<<< HEAD
-
-let shelter = ref({
-  idcane: 44,
-  idbox: 1,
-  date_in: "17-11-2023",
-  date_out: "17-12-2023"
-})
-
-=======
 let shelter = ref({})
->>>>>>> 31b767fa67164b5723228076ccaf999aee69e9e7
 let box = ref({})
 let boxes = ref({})
 let idcaneValue;
@@ -145,14 +134,9 @@ let loadStalli = async function (id) {
   if (!json.data) {
     json.data = {}
   }
-<<<<<<< HEAD
-  stalli.value = json.data
-  console.log("(stalli.value", stalli.value)
-=======
  
   boxes.value = json.data
   console.log(boxes.value)
->>>>>>> 31b767fa67164b5723228076ccaf999aee69e9e7
 }
 
 loadBoxCani(id)
@@ -580,14 +564,10 @@ let printToPdf = async function () {
                         <label for="birth" class="col-form-label fw-bold"> Entry date </label>
                       </div>
                       <div class="col-8">
-<<<<<<< HEAD
-                        <input type="date" class="form-control" id="date_in" v-model="shelter.date_in" />
-=======
                         <input type="date"
                           class="form-control"
                           id="date_in"
                           v-model="shelter.db_datein" />
->>>>>>> 31b767fa67164b5723228076ccaf999aee69e9e7
                       </div>
                     </div>
                     <div class="row mb-1">
@@ -595,14 +575,10 @@ let printToPdf = async function () {
                         <label for="birth" class="col-form-label fw-bold"> Exit date </label>
                       </div>
                       <div class="col-8">
-<<<<<<< HEAD
-                        <input type="date" class="form-control" id="date_out" v-model="shelter.date_out" />
-=======
                         <input type="date"
                           class="form-control"
                           id="date_out"
                           v-model="shelter.db_dateout" />
->>>>>>> 31b767fa67164b5723228076ccaf999aee69e9e7
                       </div>
                     </div>
                     <div class="row mb-1">
