@@ -75,15 +75,7 @@
 
 
 
-  <button
-    class="btn btn-primary d-md-none"
-    type="button"
-    data-bs-toggle="offcanvas"
-    data-bs-target="#sidebar"
-    aria-controls="sidebar"
-  >
-    Toggle Sidebar
-  </button>
+
   <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title">Sidebar</h5>
