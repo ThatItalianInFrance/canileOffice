@@ -69,6 +69,8 @@ loadDogs()
             placeholder="Enter dog name..."
             class="form-control">
         </div>
+
+<div class="table-responsive">
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
@@ -104,6 +106,8 @@ loadDogs()
             </tr>
           </tbody>
         </table>
+
+      </div>
       </div>
     </div>
   </main>

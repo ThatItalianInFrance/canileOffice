@@ -62,6 +62,7 @@ loadUsers(searchTerm.value)
             <button class="btn btn-outline-secondary">All users</button>
           </div>
         </div>
+<div class="table-responsive">
 
         <table class="table table-hover">
           <thead class="thead-dark">
@@ -97,6 +98,7 @@ loadUsers(searchTerm.value)
             </tr>
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   </main>
