@@ -16,10 +16,10 @@ import NavBar from './components/NavBar.vue'
     </div>
 
     <div class="row">
-      <div class="col-2 bg-body-tertiary">
+      <div class="col-md-2 bg-body-tertiary">
         <SideBar />
       </div>
-      <div class="col-10 py-3 px-4">
+      <div class="col-md-10 py-3 px-4">
         <RouterView />
       </div>
     </div>

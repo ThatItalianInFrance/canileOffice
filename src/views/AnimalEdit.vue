@@ -42,10 +42,9 @@ dog.value.actions = [
   // ... (other actions for Dog 1) ...
 ]
 
-let cane = ref({
-
-})
+let cane = ref({})
 let kind = ref({})
+<<<<<<< HEAD
 
 let shelter = ref({
   idcane: 44,
@@ -54,11 +53,12 @@ let shelter = ref({
   date_out: "17-12-2023"
 })
 
+=======
+let shelter = ref({})
+>>>>>>> 31b767fa67164b5723228076ccaf999aee69e9e7
 let box = ref({})
-
-let stalli = ref({})
-
-let idcaneValue
+let boxes = ref({})
+let idcaneValue;
 
 let loadCane = async function (id) {
   console.log("load Dog");
@@ -83,6 +83,13 @@ let loadKind = async function (id) {
   kind.value = json.data
 }
 
+let shelterAssign = function () {
+  // this.shelter.value.bo_id = this.box.value.db_id;
+  box.value.db_id = shelter.value.bo_id;
+  console.log('chqnge');
+}
+
+
 let loadBoxCani = async function (id) {
   console.log("loadBoxCani");
   console.log("id", id);
@@ -105,9 +112,9 @@ let loadBoxCani = async function (id) {
     json.data = {}
   }
   shelter.value = json.data
-  console.log(shelter.value)
+  console.log(shelter.value.bo_id)
   idcaneValue = shelter.value.bo_id
-  loadBox(idcaneValue)
+  loadBox(shelter.value.bo_id)
 
   console.log(idcaneValue)
 }
@@ -138,8 +145,14 @@ let loadStalli = async function (id) {
   if (!json.data) {
     json.data = {}
   }
+<<<<<<< HEAD
   stalli.value = json.data
   console.log("(stalli.value", stalli.value)
+=======
+ 
+  boxes.value = json.data
+  console.log(boxes.value)
+>>>>>>> 31b767fa67164b5723228076ccaf999aee69e9e7
 }
 
 loadBoxCani(id)
@@ -149,7 +162,7 @@ loadKind(id)
 console.log(kind)
 
 loadStalli(id)
-console.log(stalli)
+console.log(boxes)
 
 // loadBox(id)
 // console.log(box)
@@ -160,6 +173,8 @@ function getImageUrl(id) {
 }
 
 let saveCane = async function () {
+  
+
   if (base64Image != '') cane.value.image = base64Image
   console.log("shelter Value:", shelter.value);
   // console.log("cane.value", cane.value);
@@ -191,6 +206,7 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
+    console.log(shelter.value);
     await fetch(`${import.meta.env.VITE_SERVER}/office/dogsbox/${id}`, {
       method: 'PUT',
       headers: {
@@ -199,6 +215,8 @@ let saveCane = async function () {
       },
       body: JSON.stringify(shelter.value),
     })
+
+    console.log(box.value);
     console.log(shelter.value);
     // console.log(image.value)
   }
@@ -543,13 +561,15 @@ let printToPdf = async function () {
                         <label for="birth" class="col-form-label fw-bold">Shelter section</label>
                       </div>
                       <div class="col-7">
+                        {{ shelter.bo_id }} 
                         <select class="form-control"
                           name="box"
-                          v-model="shelter.db_idbox">
-                          <option v-for="item in stalli"
+                          v-model="shelter.bo_id">
+                          <option v-for="item in boxes"
                             :key="item.bo_id"
-                            :value="item.bo_number"
-                            :model="shelter.bo_id">
+                            :value="item.bo_id"
+                            :model="shelter.bo_id"
+                            >
                             {{ item.bo_block }} - {{ item.bo_number }}
                           </option>
                         </select>
@@ -560,7 +580,14 @@ let printToPdf = async function () {
                         <label for="birth" class="col-form-label fw-bold"> Entry date </label>
                       </div>
                       <div class="col-8">
+<<<<<<< HEAD
                         <input type="date" class="form-control" id="date_in" v-model="shelter.date_in" />
+=======
+                        <input type="date"
+                          class="form-control"
+                          id="date_in"
+                          v-model="shelter.db_datein" />
+>>>>>>> 31b767fa67164b5723228076ccaf999aee69e9e7
                       </div>
                     </div>
                     <div class="row mb-1">
@@ -568,7 +595,14 @@ let printToPdf = async function () {
                         <label for="birth" class="col-form-label fw-bold"> Exit date </label>
                       </div>
                       <div class="col-8">
+<<<<<<< HEAD
                         <input type="date" class="form-control" id="date_out" v-model="shelter.date_out" />
+=======
+                        <input type="date"
+                          class="form-control"
+                          id="date_out"
+                          v-model="shelter.db_dateout" />
+>>>>>>> 31b767fa67164b5723228076ccaf999aee69e9e7
                       </div>
                     </div>
                     <div class="row mb-1">

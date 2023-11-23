@@ -14,6 +14,15 @@
       <a class="navbar-brand" href="/">
         <img src="http://localhost:8000/logo.png" class="logo">
       </a>
+      <button
+    class="btn btn-primary d-md-none"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#sidebar"
+    aria-controls="sidebar"
+  >
+  <i class="bi bi-list"></i>
+  </button>
     </div>
   </nav>
 </template>
