@@ -12,7 +12,7 @@
   <nav class="navbar fixed-top bg-body-tertiary">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
-        <img src="/logo.png" class="logo">
+        <img src="http://canile.wywiwyg.net/logo.png" class="logo">
       </a>
       <button
     class="btn btn-primary d-md-none"
