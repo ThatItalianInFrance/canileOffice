@@ -6,21 +6,20 @@ const userLogIn = async function () {
   let name = document.getElementById('username').value
   let pwd = document.getElementById('password').value
   console.log(name)
+  console.log('diopo');
   console.log(pwd)
   let response = await fetch('http://localhost:8000/office/login', {
-    // method: 'GET',
-    // headers: {
+    method: 'POST',
+    headers: {
 
-    //   'Content-Type': 'application/json'
-    // },
-    // body: JSON.stringify({ name: name, password: pwd })
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ username: name, password: pwd })
   })
   let user = await response.json();
-  console.log({ response });
-  console.log(user.data[0].token);
-  console.log(user.token);
+  console.log({ user });
   if (user) {
-    localStorage.setItem('user', JSON.stringify(user.data[0].token));
+    localStorage.setItem('user', 'JSON.stringify(user.data[0].token)');
     // window.location.href = "/";
   } else {
     console.log("no user in localstorage");

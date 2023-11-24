@@ -1,7 +1,25 @@
+<script setup>
+const logOut = function () {
+  
+  if (confirm('Are you sure you want to Log Out?')) {
+    localStorage.removeItem('user')
+    // Save it!
+    console.log('User Logged out');
+    window.location.href = '/office/login'
+} else {
+  // Do nothing!
+  console.log('Thing was not saved to the database.');
+  return
+}
+}
+</script>
+
+
 <template class="">
 
   <div class="d-lg-block d-md-block d-none">
     <ul class="list-unstyled ps-0">
+      <button class="btn btn-danger" @click="logOut()">log OUT</button>
       <li class="mb-1">
         <button class="d-flex btn btn-toggle align-items-center rounded collapsed w-100" aria-expanded="true">
           <RouterLink class="nav-link active router-link" to="/listanimal">
