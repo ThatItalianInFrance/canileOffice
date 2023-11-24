@@ -1,9 +1,10 @@
 <script setup>
 import { ref, nextTick } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 // import { getUserToken } from '/utils'
 import html2pdf from 'html2pdf.js'
 
+const router = useRouter()
 const route = useRoute()
 let id = route.params.id
 
@@ -183,8 +184,8 @@ let saveCane = async function () {
     console.log(box.value);
     console.log(shelter.value);
     // console.log(image.value)
+    router.push({ path: '/listanimal' })
   }
-  // router.push({ path: '/listacani' })
 }
 
 const opt = {

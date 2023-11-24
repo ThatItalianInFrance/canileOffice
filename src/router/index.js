@@ -96,7 +96,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   console.log('route change');
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    const user = JSON.parse(localStorage.getItem('user'))
+    const user = JSON.parse(localStorage.getItem('token'))
     console.log(user);
     if (user) {
       console.log('token OK');
