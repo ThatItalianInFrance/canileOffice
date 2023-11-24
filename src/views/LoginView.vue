@@ -19,7 +19,7 @@ const userLogIn = async function () {
   let user = await response.json();
   console.log({ user });
   if (user) {
-    localStorage.setItem('user', 'JSON.stringify(user.data[0].token)');
+    localStorage.setItem('user', user.data );
     // window.location.href = "/";
   } else {
     console.log("no user in localstorage");

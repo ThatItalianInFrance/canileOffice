@@ -5,7 +5,7 @@ const logOut = function () {
     localStorage.removeItem('user')
     // Save it!
     console.log('User Logged out');
-    window.location.href = '/office/login'
+    window.location.href = '/login'
 } else {
   // Do nothing!
   console.log('Thing was not saved to the database.');
