@@ -1,5 +1,8 @@
 <script setup>
+import { ref, nextTick } from 'vue'
+import { useRoute } from 'vue-router'
 
+let user = ref({})
 
 const userLogIn = async function () {
   console.log('welcome to the LOGIN FORM')
@@ -19,7 +22,8 @@ const userLogIn = async function () {
   let user = await response.json();
   console.log({ user });
   if (user) {
-    localStorage.setItem('user', user.data );
+    console.log(user);
+    localStorage.setItem('token', JSON.stringify(user.data) );
     // window.location.href = "/";
   } else {
     console.log("no user in localstorage");
