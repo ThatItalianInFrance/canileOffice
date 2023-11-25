@@ -112,6 +112,7 @@ const toggleSidebar = function (){
       ></button>
     </div>
     <div class="offcanvas-body">
+      <button class="btn btn-danger" @click="logOut()">log OUT</button>
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
           <button
