@@ -73,6 +73,8 @@ console.log(stock.value)
           </div>
           <input v-model="searchTerm" placeholder="Enter food name..." class="form-control">
         </div>
+        <div class="table-responsive">
+
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
@@ -94,6 +96,7 @@ console.log(stock.value)
             <!-- Additional rows as needed -->
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   </main>

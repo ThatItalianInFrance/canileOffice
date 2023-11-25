@@ -1,38 +1,34 @@
 <script setup>
+import { ref, nextTick } from 'vue'
+import { useRoute } from 'vue-router'
 
+let user = ref({})
 
 const userLogIn = async function () {
   console.log('welcome to the LOGIN FORM')
   let name = document.getElementById('username').value
   let pwd = document.getElementById('password').value
-  console.log(name)
-  console.log(pwd)
-  let response = await fetch('http://localhost:8000/office/login', {
-    // method: 'GET',
-    // headers: {
 
-    //   'Content-Type': 'application/json'
-    // },
-    // body: JSON.stringify({ name: name, password: pwd })
+  let response = await fetch('https://canile.wywiwyg.net/office/login', {
+    method: 'POST',
+    headers: {
+
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ username: name, password: pwd })
   })
   let user = await response.json();
-  console.log({ response });
-  console.log(user.data[0].token);
-  console.log(user.token);
+  // console.log({ user });
   if (user) {
-    localStorage.setItem('user', JSON.stringify(user.data[0].token));
-    // window.location.href = "/";
+    // console.log(user);
+    localStorage.setItem('token', JSON.stringify(user.data) );
+    window.location.href = "/";
   } else {
     console.log("no user in localstorage");
   }
 }
 
-const logOut = function () {
-  // let user = {};
-  localStorage.removeItem('user');
-  window.location.href = "/login";
 
-}
 
 </script>
 

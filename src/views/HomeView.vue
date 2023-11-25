@@ -5,11 +5,11 @@ import RemindersItem from '../components/RemindersItem.vue'
 
 <template>
   <div class="row">
-    <div class="col-6">
+    <div class="col-md-6">
       <OccupItem />
 
     </div>
-    <div class="col-12">
+    <div class="col-md-12">
       <RemindersItem />
 
     </div>

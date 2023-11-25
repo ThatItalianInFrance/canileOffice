@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ListaCani from '../views/ListaCani.vue'
+import ListAnimal from '../views/ListAnimal.vue'
 import ListaUsers from '../views/ListaUsers.vue'
-import CaniEdit from '../views/CaniEdit.vue'
+import AnimalEdit from '../views/AnimalEdit.vue'
 import UsersEdit from '../views/UsersEdit.vue'
 import LoginView from '../views/LoginView.vue'
 import ListaBox from '../views/ListaBox.vue'
@@ -27,9 +27,9 @@ const router = createRouter({
       component: LoginView
     },
     {
-      path: '/cani/edit/:id',
-      name: 'edit',
-      component: CaniEdit
+      path: '/animal/edit/:id',
+      name: 'animaledit',
+      component: AnimalEdit
     },
     {
       path: '/users/edit/:id',
@@ -37,14 +37,15 @@ const router = createRouter({
       component: UsersEdit
     },
     {
-      path: '/listacani',
-      name: 'listacani',
-      component: ListaCani
+      path: '/ListAnimal',
+      name: 'listanimal',
+      component: ListAnimal
     },
     {
       path: '/listausers',
       name: 'listausers',
-      component: ListaUsers
+      component: ListaUsers,
+      meta: { requiresAuth: true }
     },
     {
       path: '/listabox',
@@ -90,6 +91,26 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  console.log('route change');
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const user = JSON.parse(localStorage.getItem('token'))
+    console.log(user);
+    if (user) {
+      console.log('token OK');
+      next() 
+    } else {
+      console.log('token KO');
+      next({ name: 'login' })
+    }
+  } else {
+    console.log('token OK');
+    // next({ name: 'login' })
+
+    next() 
+  }
 })
 
 export default router

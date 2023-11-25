@@ -18,17 +18,17 @@ let loadDogs = function () {
     method: 'GET',
     // withCredentials: true,
     // credentials: 'include',
-    headers: {
-      Authorization: `Bearer ${getUserToken()}`,
-      'Content-Type': 'application/json'
-    }
+    // headers: {
+    //   Authorization: `Bearer ${getUserToken()}`,
+    //   'Content-Type': 'application/json'
+    // }
   }) // par défaut, fetch() fait une requête GET
     .then(function (response) {
       return response.json()
     })
     .then(function (foo) {
       dogs.value = foo.data;
-      dogs.value = dogs.value.filter(dog => dog.nome.toLowerCase().includes(searchTerm.value.toLowerCase()));
+      dogs.value = dogs.value.filter(dog => dog.do_name.toLowerCase().includes(searchTerm.value.toLowerCase()));
 
       console.log(dogs.value)
       // console.log(cani)
@@ -52,8 +52,9 @@ loadDogs()
             <p>Overview of registered dogs</p>
           </div>
           <div>
-            <RouterLink class="nav-link active btn btn-primary button mb-3" style="width: 220px; height:40px"
-              to="/cani/edit/0">
+            <RouterLink class="nav-link active btn btn-primary button mb-3"
+              style="width: 220px; height:40px"
+              to="/animal/edit/0">
               <span class="material-symbols-outlined">add</span> New dog
             </RouterLink>
           </div>
@@ -64,40 +65,49 @@ loadDogs()
               <i class="bi bi-search"></i><!-- Assuming you're using Bootstrap Icons -->
             </span>
           </div>
-          <input v-model="searchTerm" placeholder="Enter dog name..." class="form-control">
+          <input v-model="searchTerm"
+            placeholder="Enter dog name..."
+            class="form-control">
         </div>
+
+<div class="table-responsive">
         <table class="table table-hover">
           <thead class="thead-dark">
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Chip</th>
+              <th scope="col">Age / birth</th>
               <th scope="col">Biter</th>
-              <th scope="col">Breed</th>
+              <th scope="col">Kind</th>
               <th scope="col">Size</th>
               <th scope="col">Sex</th>
-              <th scope="col">Character</th>
-              <th scope="col">Age / birth</th>
+              <th scope="col">Attitude</th>
               <th scope="col">Health Issues</th>
               <th scope="col">Alive</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="dog in dogs" :key="dog.id">
-              <td><router-link :to="{ path: '/cani/edit/' + dog.id }">{{ dog.nome }}</router-link></td>
-              <td>{{ dog.chip }}</td>
-              <td :class="dog.morsicatore === 'yes' ? 'status-inactive' : 'status-active'">
-                {{ dog.morsicatore }}
-              </td>
-              <td>{{ dog.razza }}</td>
-              <td>{{ dog.taglia }}</td>
-              <td>{{ dog.sesso }}</td>
-              <td>{{ dog.carattere }}</td>
-              <td>{{ dog.birth }}</td>
-              <td>{{ dog.patologie }}</td>
-              <td class="status-active">{{ dog.alive }}</td>
+            <tr v-for="dog in dogs"
+              :key="dog.do_id">
+              <td><router-link :to="{ path: '/animal/edit/' + dog.do_id }">{{ dog.do_name }}</router-link></td>
+              <td>{{ dog.do_chip }}</td>
+              <td>{{ dog.do_birth }}</td>
+              <td :class="dog.do_biter === '1' ? 'status-active' : 'status-inactive'">
+              {{ dog.do_biter === 1 ? "Yes" : "No" }}
+            </td>
+              <td>{{ dog.kind?.ki_name }}</td>
+              <td>{{ dog.do_size }}</td>
+              <td>{{ dog.do_sex }}</td>
+              <td>{{ dog.do_attitude }}</td>
+              <td>{{ dog.do_pathologies }}</td>
+              <td :class="dog.do_alive === 1 ? 'status-active' : 'status-inactive'">
+              {{ dog.do_alive === 1 ? "Yes" : "No" }}
+            </td>
             </tr>
           </tbody>
         </table>
+
+      </div>
       </div>
     </div>
   </main>

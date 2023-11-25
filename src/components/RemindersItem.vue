@@ -57,6 +57,7 @@
         <button class="btn btn-outline-secondary">All reminders</button>
       </div>
     </div>
+<div class="table-responsive">
 
     <table class="table table-hover">
       <thead class="thead-dark">
@@ -97,6 +98,7 @@
         <!-- Additional rows as needed -->
       </tbody>
     </table>
+  </div>
 
   </div>
 </template>
