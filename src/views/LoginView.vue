@@ -8,9 +8,7 @@ const userLogIn = async function () {
   console.log('welcome to the LOGIN FORM')
   let name = document.getElementById('username').value
   let pwd = document.getElementById('password').value
-  console.log(name)
-  console.log('diopo');
-  console.log(pwd)
+
   let response = await fetch('http://localhost:8000/office/login', {
     method: 'POST',
     headers: {
@@ -20,11 +18,11 @@ const userLogIn = async function () {
     body: JSON.stringify({ username: name, password: pwd })
   })
   let user = await response.json();
-  console.log({ user });
+  // console.log({ user });
   if (user) {
-    console.log(user);
+    // console.log(user);
     localStorage.setItem('token', JSON.stringify(user.data) );
-    // window.location.href = "/";
+    window.location.href = "/";
   } else {
     console.log("no user in localstorage");
   }
@@ -32,7 +30,7 @@ const userLogIn = async function () {
 
 const logOut = function () {
   // let user = {};
-  localStorage.removeItem('user');
+  localStorage.removeItem('token');
   window.location.href = "/login";
 
 }
