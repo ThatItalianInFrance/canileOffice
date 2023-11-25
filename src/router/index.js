@@ -44,7 +44,8 @@ const router = createRouter({
     {
       path: '/listausers',
       name: 'listausers',
-      component: ListaUsers
+      component: ListaUsers,
+      meta: { requiresAuth: true }
     },
     {
       path: '/listabox',
@@ -90,6 +91,26 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  console.log('route change');
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const user = JSON.parse(localStorage.getItem('token'))
+    console.log(user);
+    if (user) {
+      console.log('token OK');
+      next() 
+    } else {
+      console.log('token KO');
+      next({ name: 'login' })
+    }
+  } else {
+    console.log('token OK');
+    // next({ name: 'login' })
+
+    next() 
+  }
 })
 
 export default router

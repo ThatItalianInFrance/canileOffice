@@ -32,9 +32,23 @@ let loadUsers = function (searchTerm) {
     })
     .then(function (foo) {
       users.value = foo.data
-      users.value = users.value.filter(user => user.username.toLowerCase().includes(searchTerm.toLowerCase()));
+      users.value = users.value.filter(user => user.us_username.toLowerCase().includes(searchTerm.toLowerCase()));
       console.log(users.value)
     })
+}
+
+let deleteUser = async function (id) {
+  if (id == 0) {
+    console.log('id 0')
+    return
+  }
+  let response = await fetch(`${import.meta.env.VITE_SERVER}/office/user/${id}`) // par défaut, fetch() fait une requête GET
+  let json = await response.json()
+  console.log(json.data)
+  if (!json.data) {
+    json.data = {}
+  }
+
 }
 
 
@@ -62,6 +76,7 @@ loadUsers(searchTerm.value)
             <button class="btn btn-outline-secondary">All users</button>
           </div>
         </div>
+<div class="table-responsive">
 
         <table class="table table-hover">
           <thead class="thead-dark">
@@ -74,10 +89,10 @@ loadUsers(searchTerm.value)
             </tr>
           </thead>
           <tbody>
-            <tr v-for="user in users" :key="user.id">
-              <td><router-link :to="{ path: '/users/edit/' + user.id }">{{ user.username }}</router-link></td>
-              <td>{{ user.email }}</td>
-              <td>Administrator</td>
+            <tr v-for="user in users" :key="user.us_id">
+              <td><router-link :to="{ path: '/users/edit/' + user.us_id }">{{ user.us_username }}</router-link></td>
+              <td>{{ user.us_email }}</td>
+              <td>{{ user.us_role }}</td>
               <td class="status-active">Active</td>
               <td>2023-08-01</td>
             </tr>
@@ -97,6 +112,7 @@ loadUsers(searchTerm.value)
             </tr>
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   </main>

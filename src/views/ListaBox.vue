@@ -41,6 +41,7 @@ console.log(products.value)
     <div class="card shadow">
       <div class="card-body">
         <h3>Lista Box</h3>
+<div class="table-responsive">
 
         <table class="table">
           <thead>
@@ -64,6 +65,7 @@ console.log(products.value)
 
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   </main>

@@ -1,9 +1,10 @@
 <script setup>
 import { ref, nextTick } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 // import { getUserToken } from '/utils'
 import html2pdf from 'html2pdf.js'
 
+const router = useRouter()
 const route = useRoute()
 let id = route.params.id
 
@@ -211,8 +212,8 @@ let saveCane = async function () {
     console.log(box.value);
     // console.log(shelter.value);
     // console.log(image.value)
+    router.push({ path: '/listanimal' })
   }
-  // router.push({ path: '/listacani' })
 }
 
 const opt = {
@@ -404,12 +405,16 @@ let printToPdf = async function () {
                       <label for="do_size" class="col-form-label fw-bold">Size</label>
                     </div>
                     <div class="col-8">
-                      <input type="text" class="form-control" id="size" v-model="cane.do_size" />
+                      <input type="text"
+                        class="form-control"
+                        id="do_size"
+                        v-model="cane.do_size" />
                     </div>
                   </div>
                   <div class="row mb-1">
                     <div class="col-4">
-                      <label for="sex" class="col-form-label fw-bold">Sex</label>
+                      <label for="do_sex"
+                        class="col-form-label fw-bold">Sex</label>
                     </div>
                     <div class="col-8">
                       <div class="d-flex mt-2">
