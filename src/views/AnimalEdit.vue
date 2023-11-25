@@ -427,13 +427,13 @@ let printToPdf = async function () {
                     <div class="col-8">
                       <input type="text"
                         class="form-control"
-                        id="size"
+                        id="do_size"
                         v-model="cane.do_size" />
                     </div>
                   </div>
                   <div class="row mb-1">
                     <div class="col-4">
-                      <label for="sex"
+                      <label for="do_sex"
                         class="col-form-label fw-bold">Sex</label>
                     </div>
                     <div class="col-8">
