@@ -12,6 +12,13 @@ const logOut = function () {
   return
 }
 }
+
+const toggleSidebar = function (){
+    const sidebar = document.getElementById('sidebar');
+    const bsOffcanvas = new bootstrap.Offcanvas(sidebar);
+    bsOffcanvas.hide();
+  }
+
 </script>
 
 
@@ -109,9 +116,9 @@ const logOut = function () {
         <li class="mb-1">
           <button
             class="d-flex btn btn-toggle align-items-center rounded collapsed w-100"
-            aria-expanded="true"
+            aria-expanded="true" data-bs-dismiss="offcanvas"
           >
-            <RouterLink class="nav-link active router-link" to="/listanimal">
+            <RouterLink class="nav-link active router-link" to="/listanimal" >
               <span class="material-symbols-outlined"> lists </span> Dogs
             </RouterLink>
           </button>
@@ -120,6 +127,7 @@ const logOut = function () {
           <button
             class="btn btn-toggle align-items-center rounded collapsed w-100"
             aria-expanded="true"
+            data-bs-dismiss="offcanvas"
           >
             <RouterLink class="nav-link active router-link" to="/listausers"
               ><span class="material-symbols-outlined"> person_search </span> Users
@@ -128,14 +136,14 @@ const logOut = function () {
         </li>
 
         <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded w-100" aria-expanded="false">
+          <button class="btn btn-toggle align-items-center rounded w-100" aria-expanded="false" data-bs-dismiss="offcanvas">
             <RouterLink to="/listabox" class="nav-link active router-link"
               ><span class="material-symbols-outlined"> travel_explore </span> Structure
             </RouterLink>
           </button>
         </li>
         <li class="mb-1">
-          <button class="btn btn-toggle align-items-center rounded w-100" aria-expanded="false">
+          <button class="btn btn-toggle align-items-center rounded w-100" aria-expanded="false" data-bs-dismiss="offcanvas">
             <RouterLink to="/planning" class="nav-link active router-link"
               ><span class="material-symbols-outlined"> edit_calendar </span> Planning
             </RouterLink>
@@ -145,6 +153,7 @@ const logOut = function () {
           <button
             class="d-flex btn btn-toggle align-items-center rounded w-100"
             aria-expanded="true"
+            data-bs-dismiss="offcanvas"
           >
             <RouterLink class="nav-link active router-link" to="/Stock"
               ><span class="material-symbols-outlined"> food_bank </span> Stock
@@ -154,6 +163,7 @@ const logOut = function () {
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li class="nav-item">
                 <RouterLink class="nav-link active" to="/food"
+                data-bs-dismiss="offcanvas"
                   ><span class="material-symbols-outlined"> food_bank </span> Food</RouterLink
                 >
               </li>
@@ -163,6 +173,7 @@ const logOut = function () {
                   class="link-body-emphasis d-inline-flex text-decoration-none rounded"
                 >
                   <RouterLink class="nav-link active" to="/food/edit/0"
+                  data-bs-dismiss="offcanvas"
                     ><span class="material-symbols-outlined">food_bank </span> New food</RouterLink
                   >
                 </a>
@@ -174,6 +185,7 @@ const logOut = function () {
           <button
             class="d-flex btn btn-toggle align-items-center rounded w-100"
             aria-expanded="true"
+            data-bs-dismiss="offcanvas"
           >
             <RouterLink class="nav-link active router-link" to="/news"
               ><span class="material-symbols-outlined"> news </span> News
@@ -184,6 +196,7 @@ const logOut = function () {
           <button
             class="d-flex btn btn-toggle align-items-center rounded w-100"
             aria-expanded="true"
+            data-bs-dismiss="offcanvas"
           >
             <RouterLink class="nav-link active router-link" to="/shelter/1"
               ><span class="material-symbols-outlined"> home </span> Shelter
