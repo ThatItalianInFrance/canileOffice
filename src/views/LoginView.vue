@@ -9,7 +9,7 @@ const userLogIn = async function () {
   let name = document.getElementById('username').value
   let pwd = document.getElementById('password').value
 
-  let response = await fetch('http://canile.wywiwyg.net/office/login', {
+  let response = await fetch('https://canile.wywiwyg.net/office/login', {
     method: 'POST',
     headers: {
 
