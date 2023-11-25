@@ -61,7 +61,7 @@ let loadCane = async function (id) {
 
 console.log("shelter.value", shelter.value);
 
-let loadKind = async function (id) {
+let loadKind = async function () {
   // if (id == 0) {
   //   return
   // }
@@ -128,7 +128,7 @@ let loadStalli = async function () {
 loadBoxCani(id)
 console.log(shelter)
 
-loadKind(id)
+loadKind()
 console.log(kind)
 
 loadStalli()
@@ -188,6 +188,8 @@ let saveCane = async function () {
       body: JSON.stringify(shelter.value)
     })
   } else {
+    console.log("Shelter value", shelter.value);
+
     await fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`, {
       method: 'PUT',
       headers: {
@@ -196,7 +198,7 @@ let saveCane = async function () {
       },
       body: JSON.stringify(cane.value)
     })
-    console.log(shelter.value);
+ 
     await fetch(`${import.meta.env.VITE_SERVER}/office/dogsbox/${id}`, {
       method: 'PUT',
       headers: {
@@ -207,7 +209,7 @@ let saveCane = async function () {
     })
 
     console.log(box.value);
-    console.log(shelter.value);
+    // console.log(shelter.value);
     // console.log(image.value)
   }
   // router.push({ path: '/listacani' })
