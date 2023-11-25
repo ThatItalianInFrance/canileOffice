@@ -18,10 +18,10 @@ let loadDogs = function () {
     method: 'GET',
     // withCredentials: true,
     // credentials: 'include',
-    headers: {
-      Authorization: `Bearer ${getUserToken()}`,
-      'Content-Type': 'application/json'
-    }
+    // headers: {
+    //   Authorization: `Bearer ${getUserToken()}`,
+    //   'Content-Type': 'application/json'
+    // }
   }) // par défaut, fetch() fait une requête GET
     .then(function (response) {
       return response.json()
