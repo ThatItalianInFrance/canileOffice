@@ -2,7 +2,7 @@
 const logOut = function () {
   
   if (confirm('Are you sure you want to Log Out?')) {
-    localStorage.removeItem('user')
+    localStorage.removeItem('token')
     // Save it!
     console.log('User Logged out');
     window.location.href = '/login'
@@ -13,11 +13,6 @@ const logOut = function () {
 }
 }
 
-const toggleSidebar = function (){
-    const sidebar = document.getElementById('sidebar');
-    const bsOffcanvas = new bootstrap.Offcanvas(sidebar);
-    bsOffcanvas.hide();
-  }
 
 </script>
 

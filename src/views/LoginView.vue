@@ -28,12 +28,7 @@ const userLogIn = async function () {
   }
 }
 
-const logOut = function () {
-  // let user = {};
-  localStorage.removeItem('token');
-  window.location.href = "/login";
 
-}
 
 </script>
 
