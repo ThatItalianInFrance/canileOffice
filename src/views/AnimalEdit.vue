@@ -99,6 +99,7 @@ let loadBoxCani = async function (id) {
   console.log(idcaneValue)
 }
 
+// Load selected box
 let loadBox = async function (id) {
   if (id == 0) {
     console.log('id 0')
