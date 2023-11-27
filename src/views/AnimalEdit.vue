@@ -115,6 +115,7 @@ let loadBox = async function (id) {
   console.log(box.value)
 }
 
+// Load all boxes
 let loadStalli = async function () {
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/box/`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
