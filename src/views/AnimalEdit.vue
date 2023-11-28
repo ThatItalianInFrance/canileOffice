@@ -190,6 +190,7 @@ let saveCane = async function () {
       },
       body: JSON.stringify(shelter.value)
     })
+
   } else {
     console.log("Shelter value", shelter.value);
 
@@ -214,7 +215,29 @@ let saveCane = async function () {
     console.log(box.value);
     // console.log(shelter.value);
     // console.log(image.value)
+  }
     router.push({ path: '/listanimal' })
+
+}
+
+let deleteCane = async function(id){
+  let responseData;
+
+  if(confirm("Delete this animal?")){
+    let response = await fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`, {
+      method: 'DELETE',
+      headers: {
+        // 'Authorization': `Bearer ${check.token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    responseData = await response.json();
+    if(responseData.data == 1){
+      console.log("Delete is successful!")
+      router.push({ path: '/listanimal' })
+    }
+  } else {
+    console.log("Canceled");
   }
 }
 
@@ -260,7 +283,8 @@ let printToPdf = async function () {
       <div class="row mb-2">
         <div class="col d-flex justify-content-end">
           <button type="button" class="btn btn-secondary me-2" @click="printToPdf()">Print</button>
-          <button type="button" class="btn btn-primary" @click.prevent="saveCane">Save</button>
+          <button type="button" class="btn btn-primary me-2" @click.prevent="saveCane">Save</button>
+          <button type="button" class="btn btn-danger" @click.prevent="deleteCane(cane.do_id)">Delete</button>
         </div>
       </div>
       <div class="row">
