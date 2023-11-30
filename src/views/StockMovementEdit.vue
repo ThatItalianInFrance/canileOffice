@@ -38,7 +38,7 @@ let stock = ref({
 
 let initFields = function (id) {
   stock.value.name = "";
-  stock.value.type = "";
+  // stock.value.type;
   stock.value.description = "";
   stock.value.quantity = 0;
   stock.value.hasImg = false;
@@ -65,6 +65,8 @@ function getImageUrl(id) {
 }
 
 let saveStock = async function (id) {
+
+  console.log("stock value", stock.value);
   if (base64Image.value != '') stock.value.image = base64Image
   console.log("stock.value.image", stock.value.image);
   if (id == 0) {

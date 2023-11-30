@@ -83,6 +83,7 @@ console.log(stock.value)
               <th scope="col">Type</th>
               <th scope="col">Description</th>
               <th scope="col">Q.ty in stock</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -91,6 +92,7 @@ console.log(stock.value)
               <td><router-link :to="{ path: '/stock/edit/' + item.id }">{{ item.name }}</router-link></td>
               <td>{{ item.type }}</td>
               <td>{{ item.description }}</td>
+              <td>{{ item.quantity }}</td>
               <td>compute data from stock_events</td>
             </tr>
             <!-- Additional rows as needed -->
