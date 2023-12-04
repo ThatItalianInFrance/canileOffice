@@ -41,7 +41,16 @@ dog.value.actions = [
   { id: 6, actionType: 'Walk in the Park', date: '2023-06-15', time: '12.00', status: 'Pending' },
   { id: 7, actionType: 'Dental Checkup', date: '2023-07-10', time: '12.00', status: 'Completed' }
   // ... (other actions for Dog 1) ...
-]
+];
+
+dog.value.attachments = [
+  { id: 1, type: 'image', url: getImageUrl(id), name: 'Dog Image 1' },
+  { id: 2, type: 'image', url: 'https://placehold.co/50', name: 'Dog Image 2' },
+  { id: 3, type: 'document', url: 'https://example.com/medical-record.pdf', name: 'Medical Record' },
+  { id: 4, type: 'image', url: 'https://placehold.co/50', name: 'Dog Image 3' },
+  { id: 5, type: 'document', url: 'https://example.com/training-certificate.pdf', name: 'Training Certificate' },
+  // Add more attachments as needed
+];
 
 let cane = ref({})
 let kind = ref({})
@@ -140,6 +149,22 @@ loadCane(id)
 function getImageUrl(id) {
   return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
 }
+
+let uploadFile = async function () {
+  let formData = new FormData(); 
+console.log('thui');
+formData.append("fileupload", fileupload.files[0]);
+console.log(formData);
+
+// console.log(formData);
+    fetch('http://localhost:8000/office/cane', {
+    method: "POST", 
+    body: formData
+  }); 
+  // router.push({ path: '/listanimal' })
+
+}
+
 
 let saveCane = async function () {
   
@@ -360,7 +385,11 @@ let printToPdf = async function () {
 
             <hr class="">
             <div class="my-3">
-
+              <input id="fileupload" type="file" name="fileupload" />
+<button type="button" id="upload-button" @click="uploadFile" > Upload </button>
+<button type="button"
+            class="btn btn-primary"
+            @click="uploadFile">Save</button>
               <h4 class="fw-bold">Attachments</h4>
               <ul class="list-group">
                 <li class="list-group-item my-2"
@@ -369,7 +398,7 @@ let printToPdf = async function () {
                   <img v-if="attachment.type === 'image'"
                     :src="attachment.url"
                     alt="Attachment"
-                    class="img img-thumbnail">
+                    class="img img-thumbnail" width="50">
                   <span v-else-if="attachment.type === 'document'"
                     class="icon-doc">📄</span>
                   <!-- Add more conditions for other types of attachments -->
