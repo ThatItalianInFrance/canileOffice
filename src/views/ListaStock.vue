@@ -56,11 +56,11 @@ console.log(stock.value)
           </div>
           <div>
             <RouterLink class="nav-link active btn btn-primary button mb-3" style="width: 220px; height:40px"
-              to="/food/edit/0">
+              to="/stock/edit/0">
               <span class="material-symbols-outlined">add</span> New stock movement
             </RouterLink>
             <RouterLink class="nav-link active btn btn-danger button mb-3" style="width: 220px; height:40px"
-              to="/food/edit/0">
+              to="/stock/edit/0">
               <span class="material-symbols-outlined">delete</span> Delete stock /!\
             </RouterLink>
           </div>

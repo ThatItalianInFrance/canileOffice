@@ -63,7 +63,13 @@ let cane = ref({
 })
 let kind = ref({})
 
-let shelter = ref({})
+
+
+let shelter = ref({
+  idcane: cane.value.id,
+  idbox: 1,
+
+})
 
 let box = ref({})
 
@@ -102,7 +108,7 @@ let loadBoxCani = async function (id) {
   shelter.value = json.data
   console.log(shelter.value)
   idcaneValue = shelter.value.idbox
-  loadBox(idcaneValue)
+  loadBox(id)
 
   console.log(idcaneValue)
 }
@@ -159,22 +165,25 @@ function getImageUrl(id) {
 let saveCane = async function () {
   if (base64Image != '') cane.value.image = base64Image
   if (id == 0) {
-    await fetch(`${import.meta.env.VITE_SERVER}/office/cane`, {
-      method: 'POST',
-      headers: {
-        // 'Authorization': `Bearer ${check.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(cane.value)
-    })
-    await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
-      method: 'POST',
-      headers: {
-        // 'Authorization': `Bearer ${check.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(shelter.value)
-    })
+    // await fetch(`${import.meta.env.VITE_SERVER}/office/cane`, {
+    //   method: 'POST',
+    //   headers: {
+    //     // 'Authorization': `Bearer ${check.token}`,
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(cane.value)
+    // })
+    // await fetch(`${import.meta.env.VITE_SERVER}/office/cani_box/${id}`, {
+    //   method: 'POST',
+    //   headers: {
+    //     // 'Authorization': `Bearer ${check.token}`,
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(shelter.value)
+    // }
+
+    // )
+    console.log(shelter);
   } else {
     await fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`, {
       method: 'PUT',
@@ -482,6 +491,22 @@ let printToPdf = async function () {
                             {{ item.blocco }} - {{ item.numero }}
                           </option>
                         </select>
+                      </div>
+                    </div>
+                    <div class="row mb-1">
+                      <div class="col-4">
+                        <label for="birth" class="col-form-label fw-bold"> Shelter Block </label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" class="form-control" id="date_in" v-model="shelter.idbox" />
+                      </div>
+                    </div>
+                    <div class="row mb-1">
+                      <div class="col-4">
+                        <label for="birth" class="col-form-label fw-bold"> Shelter Box </label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" class="form-control" id="date_in" v-model="shelter.date_in" />
                       </div>
                     </div>
                     <div class="row mb-1">

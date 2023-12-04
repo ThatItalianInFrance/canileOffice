@@ -28,7 +28,7 @@ let loadDogs = function () {
     })
     .then(function (foo) {
       dogs.value = foo.data;
-      dogs.value = dogs.value.filter(dog => dog.nome.toLowerCase().includes(searchTerm.value.toLowerCase()));
+      dogs.value = dogs.value.filter(dog => dog.do_name.toLowerCase().includes(searchTerm.value.toLowerCase()));
 
       console.log(dogs.value)
       // console.log(cani)
@@ -82,19 +82,19 @@ loadDogs()
             </tr>
           </thead>
           <tbody>
-            <tr v-for="dog in dogs" :key="dog.id">
-              <td><router-link :to="{ path: '/cani/edit/' + dog.id }">{{ dog.nome }}</router-link></td>
-              <td>{{ dog.chip }}</td>
-              <td :class="dog.morsicatore === 'yes' ? 'status-inactive' : 'status-active'">
-                {{ dog.morsicatore }}
+            <tr v-for="dog in dogs" :key="dog.do_id">
+              <td><router-link :to="{ path: '/cani/edit/' + dog.do_id }">{{ dog.do_name }}</router-link></td>
+              <td>{{ dog.do_chip }}</td>
+              <td :class="dog.do_biter === 1 ? 'status-inactive' : 'status-active'">
+                {{ dog.do_biter }}
               </td>
-              <td>{{ dog.razza }}</td>
-              <td>{{ dog.taglia }}</td>
-              <td>{{ dog.sesso }}</td>
-              <td>{{ dog.carattere }}</td>
-              <td>{{ dog.birth }}</td>
-              <td>{{ dog.patologie }}</td>
-              <td class="status-active">{{ dog.alive }}</td>
+              <td>{{ dog.ki_id }}</td>
+              <td>{{ dog.do_size }}</td>
+              <td>{{ dog.do_sex }}</td>
+              <td>{{ dog.do_attitude }}</td>
+              <td>{{ dog.do_birth }}</td>
+              <td>{{ dog.do_pathologies }}</td>
+              <td class="status-active">{{ dog.do_alive }}</td>
             </tr>
           </tbody>
         </table>
