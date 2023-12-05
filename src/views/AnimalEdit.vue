@@ -58,7 +58,7 @@ let shelter = ref({})
 let box = ref({})
 let boxes = ref({})
 let idcaneValue;
-
+let attachments = ref({})
 let loadCane = async function (id) {
   if (id == 0) {
     return
@@ -66,8 +66,10 @@ let loadCane = async function (id) {
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/animal/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   cane.value = json.data
+  attachments.value = json.files
 }
-
+console.log(attachments.value);
+console.log(cane.value);
 let loadKind = async function (id) {
   if (id == 0) {
     return
@@ -149,17 +151,32 @@ loadCane(id)
 function getImageUrl(id) {
   return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
 }
-
+let formData = ref({});
 let uploadFile = async function () {
-  let formData = new FormData(); 
+  formData.value = new FormData(); 
+  
+  formData.value.keepExtensions = true;
+  formData.value.options = {
+    filter: function ({name, originalFilename, mimetype}) {
+  console.log(name);
+  
+  formData.value.options.originalFilename = originalFilename    
+  // keep only images
+      // return mimetype && mimetype.includes("image");
+    }
+  };
 console.log('thui');
-formData.append("fileupload", fileupload.files[0]);
-console.log(formData);
-
+formData.value.append("fileupload", fileupload.files[0]);
 // console.log(formData);
-    fetch('http://localhost:8000/office/cane', {
-    method: "POST", 
-    body: formData
+
+console.log(formData.value);
+    fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`, {
+    method: "PUT", 
+    // headers: {
+    //     // 'Authorization': `Bearer ${check.token}`,
+    //     'Content-Type': 'multipart/form-data'
+    //   },
+    body: formData.value
   }); 
   // router.push({ path: '/listanimal' })
 
@@ -386,11 +403,16 @@ let printToPdf = async function () {
             <hr class="">
             <div class="my-3">
               <input id="fileupload" type="file" name="fileupload" />
-<button type="button" id="upload-button" @click="uploadFile" > Upload </button>
+<button type="button" id="upload-button" @click.prevent="uploadFile" > Upload </button>
 <button type="button"
             class="btn btn-primary"
             @click="uploadFile">Save</button>
               <h4 class="fw-bold">Attachments</h4>
+              
+              <div v-for="item in attachments" :key="item.id">
+                re
+                {{ item }}
+              </div>
               <ul class="list-group">
                 <li class="list-group-item my-2"
                   v-for="attachment in dog.attachments"
