@@ -1,0 +1,1996 @@
+{}{}this AnimalEdit.vue:156:11
+route change index.js:97:11
+token OK index.js:109:13
+[Vue Router warn]: No match found for location with path "/food" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food/edit/0" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food/edit/0" vue-router.mjs:35:17
+XHRGET
+http://localhost:8000/office/cani
+[HTTP/1.1 304 Not Modified 13ms]
+
+Proxy { <target>: (54) […], <handler>: {…} }
+ListAnimal.vue:38:15
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701705970428
+[HTTP/1.1 200 OK 4073ms]
+
+route change index.js:97:11
+token OK index.js:109:13
+[Vue Router warn]: No match found for location with path "/food" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food/edit/0" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food/edit/0" vue-router.mjs:35:17
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:142:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:145:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:148:9
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 59ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 57ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 54ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 56ms]
+
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:132:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:138:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:98:11
+2 AnimalEdit.vue:103:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 8ms]
+
+2 AnimalEdit.vue:107:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:117:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:122:11
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+this AnimalEdit.vue:156:11
+route change index.js:97:11
+token OK index.js:109:13
+[Vue Router warn]: No match found for location with path "/food" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food/edit/0" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food/edit/0" vue-router.mjs:35:17
+XHRGET
+http://localhost:8000/office/cani
+[HTTP/1.1 304 Not Modified 9ms]
+
+Proxy { <target>: (54) […], <handler>: {…} }
+ListAnimal.vue:38:15
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706005210
+[HTTP/1.1 200 OK 4079ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706007941
+[HTTP/1.1 200 OK 27ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706012370
+[HTTP/1.1 200 OK 24ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706014260
+[HTTP/1.1 200 OK 25ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+route change index.js:97:11
+token OK index.js:109:13
+[Vue Router warn]: No match found for location with path "/food" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food/edit/0" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food" vue-router.mjs:35:17
+[Vue Router warn]: No match found for location with path "/food/edit/0" vue-router.mjs:35:17
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:142:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:145:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:148:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 7ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 7ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 7ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 8ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:98:11
+2 AnimalEdit.vue:103:11
+2 AnimalEdit.vue:107:11
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:132:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:138:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 8ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:117:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:122:11
+FormData(0)
+AnimalEdit.vue:161:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706032256
+[HTTP/1.1 200 OK 4087ms]
+
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706033343
+[HTTP/1.1 200 OK 1011ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 91ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:142:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:145:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:148:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 93ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 89ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 90ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 200 OK 90ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 200 OK 65ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 200 OK 80ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 200 OK 64ms]
+
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 7ms]
+
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+2 AnimalEdit.vue:102:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706039947
+[HTTP/1.1 200 OK 38ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 96ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 91ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 91ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 92ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+FormData(0)
+AnimalEdit.vue:156:11
+thui AnimalEdit.vue:155:9
+FormData(0)
+AnimalEdit.vue:156:11
+thui AnimalEdit.vue:155:9
+FormData(0)
+AnimalEdit.vue:156:11
+thui AnimalEdit.vue:155:9
+FormData(0)
+AnimalEdit.vue:156:11
+thui AnimalEdit.vue:155:9
+FormData(0)
+AnimalEdit.vue:156:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706090425
+[HTTP/1.1 200 OK 4084ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 114ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 115ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 112ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 111ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706092513
+[HTTP/1.1 200 OK 31ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 200 OK 44ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 200 OK 39ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 200 OK 31ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 200 OK 42ms]
+
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 8ms]
+
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 200 OK 4ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+FormData { fileupload → "undefined" }
+AnimalEdit.vue:157:9
+thui AnimalEdit.vue:155:9
+FormData { fileupload → {} }
+AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706175040
+[HTTP/1.1 200 OK 4093ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 7ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 10ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 5ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 7ms]
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+undefined AnimalEdit.vue:157:9
+thui AnimalEdit.vue:155:9
+undefined AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706188997
+[HTTP/1.1 200 OK 4085ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 7ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 4ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 4ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 9ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+FormData { fileupload → {} }
+AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706231105
+[HTTP/1.1 200 OK 4067ms]
+
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706232266
+[HTTP/1.1 200 OK 888ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 53ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 51ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 52ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 51ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 200 OK 36ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 200 OK 21ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 200 OK 36ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 200 OK 24ms]
+
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 200 OK 4ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+undefined AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706243108
+[HTTP/1.1 200 OK 4144ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 86ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 85ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 86ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 85ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+FormData { fileupload → {} }
+AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706297345
+[HTTP/1.1 200 OK 4041ms]
+
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706298598
+[HTTP/1.1 200 OK 799ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 80ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 73ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 70ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 74ms]
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 200 OK 53ms]
+
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 200 OK 58ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 200 OK 42ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 200 OK 37ms]
+
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 200 OK 4ms]
+
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 200 OK 5ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706299938
+
+Loading module from “http://localhost:5173/src/views/AnimalEdit.vue?t=1701706299938” was blocked because of a disallowed MIME type (“”). 28
+Loading failed for the module with source “http://localhost:5173/src/views/AnimalEdit.vue?t=1701706299938”. 28:4:46
+TypeError: error loading dynamically imported module: http://localhost:5173/src/views/AnimalEdit.vue?t=1701706299938 client.ts:115:12
+[hmr] Failed to reload /src/views/AnimalEdit.vue. This could be due to syntax errors or importing non-existent modules. (see errors above) client.ts:117:10
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706303353
+[HTTP/1.1 200 OK 40ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 6ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 5ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 4ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 12ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 5ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+function entries()
+AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706322355
+[HTTP/1.1 200 OK 4070ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 9ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 6ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 7ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 8ms]
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 3ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706325639
+[HTTP/1.1 200 OK 19ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 18ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 17ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 6ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 9ms]
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 6ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706327018
+
+Loading module from “http://localhost:5173/src/views/AnimalEdit.vue?t=1701706327018” was blocked because of a disallowed MIME type (“”). 28
+Loading failed for the module with source “http://localhost:5173/src/views/AnimalEdit.vue?t=1701706327018”. 28:4:46
+TypeError: error loading dynamically imported module: http://localhost:5173/src/views/AnimalEdit.vue?t=1701706327018 client.ts:115:12
+[hmr] Failed to reload /src/views/AnimalEdit.vue. This could be due to syntax errors or importing non-existent modules. (see errors above) client.ts:117:10
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706334850
+[HTTP/1.1 200 OK 4085ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 30ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 25ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 24ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 26ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 6ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+function values()
+AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706348432
+[HTTP/1.1 200 OK 4092ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 6ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 5ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 8ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 4ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 3ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706354119
+[HTTP/1.1 200 OK 47ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 6ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 5ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 7ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 7ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 6ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+undefined AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706364684
+[HTTP/1.1 200 OK 4108ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 48ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 41ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 41ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 43ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+[Vue warn]: Unhandled error during execution of native event handler 
+  at <AnimalEdit onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy { <target>: Proxy, <handler>: {…} }
+ > > 
+  at <RouterView> 
+  at <App> runtime-core.esm-bundler.js:41:12
+Uncaught (in promise) TypeError: formData.json is not a function
+    uploadFile AnimalEdit.vue:157
+    9 AnimalEdit.vue:392
+    callWithErrorHandling runtime-core.esm-bundler.js:158
+    callWithAsyncErrorHandling runtime-core.esm-bundler.js:166
+    invoker runtime-dom.esm-bundler.js:278
+    addEventListener runtime-dom.esm-bundler.js:233
+    patchEvent runtime-dom.esm-bundler.js:247
+    patchProp runtime-dom.esm-bundler.js:310
+    mountElement runtime-core.esm-bundler.js:5209
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    processFragment runtime-core.esm-bundler.js:5499
+    patch runtime-core.esm-bundler.js:5014
+    componentUpdateFn runtime-core.esm-bundler.js:5708
+    run reactivity.esm-bundler.js:178
+    update runtime-core.esm-bundler.js:5814
+    setupRenderEffect runtime-core.esm-bundler.js:5822
+    mountComponent runtime-core.esm-bundler.js:5612
+    processComponent runtime-core.esm-bundler.js:5565
+    patch runtime-core.esm-bundler.js:5040
+    componentUpdateFn runtime-core.esm-bundler.js:5773
+    run reactivity.esm-bundler.js:178
+    update runtime-core.esm-bundler.js:5814
+    callWithErrorHandling runtime-core.esm-bundler.js:158
+    flushJobs runtime-core.esm-bundler.js:357
+    promise callback*queueFlush runtime-core.esm-bundler.js:270
+    queueJob runtime-core.esm-bundler.js:264
+    reload runtime-core.esm-bundler.js:464
+    tryWrap runtime-core.esm-bundler.js:494
+    <anonymous> AnimalEdit.vue:1269
+    accept client.ts:559
+    fetchUpdate client.ts:476
+    queueUpdate client.ts:323
+    queueUpdate client.ts:323
+    handleMessage client.ts:176
+    handleMessage client.ts:174
+    setupWebSocket client.ts:91
+    setupWebSocket client.ts:90
+    <anonymous> client.ts:67
+AnimalEdit.vue:157:22
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706382707
+[HTTP/1.1 200 OK 4130ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 6ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 5ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 15ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 6ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 6ms]
+
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706385481
+[HTTP/1.1 200 OK 32ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 8ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 4ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 8ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 10ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706397365
+[HTTP/1.1 200 OK 4065ms]
+
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706398751
+[HTTP/1.1 200 OK 661ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 108ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 107ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 111ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 108ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 200 OK 96ms]
+
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 200 OK 101ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 200 OK 102ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 200 OK 99ms]
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 3ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+Object { formData: FormData(1) }
+AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706421276
+[HTTP/1.1 200 OK 4087ms]
+
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706422468
+[HTTP/1.1 200 OK 869ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 10ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 9ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 11ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 13ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 5ms]
+
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 6ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 5ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 7ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 3ms]
+
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 3ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+FormData { fileupload → {} }
+AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706442267
+
+Loading module from “http://localhost:5173/src/views/AnimalEdit.vue?t=1701706442267” was blocked because of a disallowed MIME type (“”). 28
+Loading failed for the module with source “http://localhost:5173/src/views/AnimalEdit.vue?t=1701706442267”. 28:4:46
+TypeError: error loading dynamically imported module: http://localhost:5173/src/views/AnimalEdit.vue?t=1701706442267 client.ts:115:12
+[hmr] Failed to reload /src/views/AnimalEdit.vue. This could be due to syntax errors or importing non-existent modules. (see errors above) client.ts:117:10
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706446299
+[HTTP/1.1 200 OK 59ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 46ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 44ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 46ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 43ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 13ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706453472
+
+Loading module from “http://localhost:5173/src/views/AnimalEdit.vue?t=1701706453472” was blocked because of a disallowed MIME type (“”). 28
+Loading failed for the module with source “http://localhost:5173/src/views/AnimalEdit.vue?t=1701706453472”. 28:4:46
+TypeError: error loading dynamically imported module: http://localhost:5173/src/views/AnimalEdit.vue?t=1701706453472 client.ts:115:12
+[hmr] Failed to reload /src/views/AnimalEdit.vue. This could be due to syntax errors or importing non-existent modules. (see errors above) client.ts:117:10
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706457075
+[HTTP/1.1 200 OK 39ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 23ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 22ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 25ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 20ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 8ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706458980
+
+Loading module from “http://localhost:5173/src/views/AnimalEdit.vue?t=1701706458980” was blocked because of a disallowed MIME type (“”). 28
+Loading failed for the module with source “http://localhost:5173/src/views/AnimalEdit.vue?t=1701706458980”. 28:4:46
+TypeError: error loading dynamically imported module: http://localhost:5173/src/views/AnimalEdit.vue?t=1701706458980 client.ts:115:12
+[hmr] Failed to reload /src/views/AnimalEdit.vue. This could be due to syntax errors or importing non-existent modules. (see errors above) client.ts:117:10
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706461442
+[HTTP/1.1 200 OK 31ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 77ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 78ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 75ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 77ms]
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+undefined AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706474603
+[HTTP/1.1 200 OK 4064ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 6ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 6ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 4ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 7ms]
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 5ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+FormData { fileupload → {} }
+AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706495094
+[HTTP/1.1 200 OK 4089ms]
+
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706496629
+[HTTP/1.1 200 OK 521ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 40ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 42ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 44ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 42ms]
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 200 OK 21ms]
+
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 200 OK 24ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 200 OK 12ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 200 OK 14ms]
+
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 200 OK 6ms]
+
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 200 OK 6ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706498083
+[HTTP/1.1 200 OK 22ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 5ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 4ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 4ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 7ms]
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 6ms]
+
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+undefined AnimalEdit.vue:157:9
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706510435
+[HTTP/1.1 200 OK 4073ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 12ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 5ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 11ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 8ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+[Vue warn]: Unhandled error during execution of native event handler 
+  at <AnimalEdit onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< 
+Proxy { <target>: Proxy, <handler>: {…} }
+ > > 
+  at <RouterView> 
+  at <App> runtime-core.esm-bundler.js:41:12
+Uncaught (in promise) TypeError: (intermediate value).formData.fileupload is not a function
+    uploadFile AnimalEdit.vue:157
+    9 AnimalEdit.vue:392
+    callWithErrorHandling runtime-core.esm-bundler.js:158
+    callWithAsyncErrorHandling runtime-core.esm-bundler.js:166
+    invoker runtime-dom.esm-bundler.js:278
+    addEventListener runtime-dom.esm-bundler.js:233
+    patchEvent runtime-dom.esm-bundler.js:247
+    patchProp runtime-dom.esm-bundler.js:310
+    mountElement runtime-core.esm-bundler.js:5209
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    mountElement runtime-core.esm-bundler.js:5191
+    processElement runtime-core.esm-bundler.js:5156
+    patch runtime-core.esm-bundler.js:5028
+    mountChildren runtime-core.esm-bundler.js:5284
+    processFragment runtime-core.esm-bundler.js:5499
+    patch runtime-core.esm-bundler.js:5014
+    componentUpdateFn runtime-core.esm-bundler.js:5708
+    run reactivity.esm-bundler.js:178
+    update runtime-core.esm-bundler.js:5814
+    setupRenderEffect runtime-core.esm-bundler.js:5822
+    mountComponent runtime-core.esm-bundler.js:5612
+    processComponent runtime-core.esm-bundler.js:5565
+    patch runtime-core.esm-bundler.js:5040
+    componentUpdateFn runtime-core.esm-bundler.js:5773
+    run reactivity.esm-bundler.js:178
+    update runtime-core.esm-bundler.js:5814
+    callWithErrorHandling runtime-core.esm-bundler.js:158
+    flushJobs runtime-core.esm-bundler.js:357
+    promise callback*queueFlush runtime-core.esm-bundler.js:270
+    queueJob runtime-core.esm-bundler.js:264
+    reload runtime-core.esm-bundler.js:464
+    tryWrap runtime-core.esm-bundler.js:494
+    <anonymous> AnimalEdit.vue:1269
+    accept client.ts:559
+    fetchUpdate client.ts:476
+    queueUpdate client.ts:323
+    queueUpdate client.ts:323
+    handleMessage client.ts:176
+    handleMessage client.ts:174
+    setupWebSocket client.ts:91
+    setupWebSocket client.ts:90
+    <anonymous> client.ts:67
+AnimalEdit.vue:157:33
+GET
+http://localhost:5173/src/views/AnimalEdit.vue?t=1701706523850
+[HTTP/1.1 200 OK 4132ms]
+
+[vite] hot updated: /src/views/AnimalEdit.vue client.ts:479:12
+XHRGET
+http://localhost:8000/office/dogsbox/28
+[HTTP/1.1 304 Not Modified 18ms]
+
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:137:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:140:9
+Object { __v_isShallow: false, dep: undefined, __v_isRef: true, _rawValue: {}, _value: Proxy }
+AnimalEdit.vue:143:9
+XHRGET
+http://localhost:8000/office/kind/
+[HTTP/1.1 304 Not Modified 18ms]
+
+XHRGET
+http://localhost:8000/office/box/
+[HTTP/1.1 304 Not Modified 16ms]
+
+XHRGET
+http://localhost:8000/office/animal/28
+[HTTP/1.1 304 Not Modified 18ms]
+
+GET
+http://localhost:8000/cani/undefined.jpg
+
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. undefined.jpg
+Object { db_id: 2, do_id: 28, bo_id: 2, db_datein: "2023-11-25", db_dateout: "2022-12-29", createdAt: "2023-11-21T08:49:21.000Z", updatedAt: "2023-11-30T14:41:44.000Z" }
+AnimalEdit.vue:93:11
+2 AnimalEdit.vue:98:11
+2 AnimalEdit.vue:102:11
+XHRGET
+http://localhost:8000/office/box/2
+[HTTP/1.1 304 Not Modified 4ms]
+
+Array(4) [ {…}, {…}, {…}, {…} ]
+AnimalEdit.vue:127:11
+Proxy { <target>: (4) […], <handler>: {…} }
+AnimalEdit.vue:133:11
+Object { bo_id: 2, bo_block: "A", bo_number: 2, createdAt: "2023-11-21T15:53:31.000Z", updatedAt: "2023-11-21T15:53:33.000Z" }
+AnimalEdit.vue:112:11
+Proxy { <target>: {…}, <handler>: {…} }
+AnimalEdit.vue:117:11
+thui AnimalEdit.vue:155:9
+FormData { fileupload → {} }
+AnimalEdit.vue:157:9
+
+FormData { fileupload → {} }
+​
+<entries>
+​​
+0: fileupload → File { name: "luciano.jpg", lastModified: 1693514925707, size: 100455, … }
+​
+<prototype>: FormDataPrototype { append: append(), delete: delete(), get: get(), … }
+AnimalEdit.vue:157:9
+

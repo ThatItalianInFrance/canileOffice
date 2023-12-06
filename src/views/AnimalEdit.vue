@@ -39,7 +39,16 @@ dog.value.actions = [
   { id: 6, actionType: 'Walk in the Park', date: '2023-06-15', time: '12.00', status: 'Pending' },
   { id: 7, actionType: 'Dental Checkup', date: '2023-07-10', time: '12.00', status: 'Completed' }
   // ... (other actions for Dog 1) ...
-]
+];
+
+dog.value.attachments = [
+  { id: 1, type: 'image', url: getImageUrl(id), name: 'Dog Image 1' },
+  { id: 2, type: 'image', url: 'https://placehold.co/50', name: 'Dog Image 2' },
+  { id: 3, type: 'document', url: 'https://example.com/medical-record.pdf', name: 'Medical Record' },
+  { id: 4, type: 'image', url: 'https://placehold.co/50', name: 'Dog Image 3' },
+  { id: 5, type: 'document', url: 'https://example.com/training-certificate.pdf', name: 'Training Certificate' },
+  // Add more attachments as needed
+];
 
 let cane = ref({})
 let kind = ref({})
@@ -47,7 +56,7 @@ let shelter = ref({})
 let box = ref({})
 let boxes = ref({})
 let idcaneValue;
-
+let attachments = ref({})
 let loadCane = async function (id) {
   console.log("load Dog");
   if (id == 0) {
@@ -56,16 +65,14 @@ let loadCane = async function (id) {
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/animal/${id}`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   cane.value = json.data
-
-  console.log("cane.value", cane.value);
+  attachments.value = json.files
 }
-
-console.log("shelter.value", shelter.value);
-
-let loadKind = async function () {
-  // if (id == 0) {
-  //   return
-  // }
+console.log(attachments.value);
+console.log(cane.value);
+let loadKind = async function (id) {
+  if (id == 0) {
+    return
+  }
   let response = await fetch(`${import.meta.env.VITE_SERVER}/office/kind/`) // par défaut, fetch() fait une requête GET
   let json = await response.json()
   kind.value = json.data
@@ -142,18 +149,39 @@ console.log(boxes)
 // console.log(idcaneValue)
 loadCane(id)
 function getImageUrl(id) {
-  if(id == 0){
-    console.log("Get image of dog id: 0");
-    return;
-  } else{
-    return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
-  }
+  return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
+}
+let formData = ref({});
+let uploadFile = async function () {
+  formData.value = new FormData(); 
+  
+  formData.value.keepExtensions = true;
+  formData.value.options = {
+    filter: function ({name, originalFilename, mimetype}) {
+  console.log(name);
+  
+  formData.value.options.originalFilename = originalFilename    
+  // keep only images
+      // return mimetype && mimetype.includes("image");
+    }
+  };
+console.log('thui');
+formData.value.append("fileupload", fileupload.files[0]);
+// console.log(formData);
+
+console.log(formData.value);
+    fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`, {
+    method: "PUT", 
+    // headers: {
+    //     // 'Authorization': `Bearer ${check.token}`,
+    //     'Content-Type': 'multipart/form-data'
+    //   },
+    body: formData.value
+  }); 
+  // router.push({ path: '/listanimal' })
+
 }
 
-let initShelter = function(dogId){
-  shelter.value.do_id = dogId;
-
-}
 
 let saveCane = async function () {
   
@@ -383,13 +411,27 @@ let printToPdf = async function () {
 
             <hr class="">
             <div class="my-3">
-
+              <input id="fileupload" type="file" name="fileupload" />
+<button type="button" id="upload-button" @click.prevent="uploadFile" > Upload </button>
+<button type="button"
+            class="btn btn-primary"
+            @click="uploadFile">Save</button>
               <h4 class="fw-bold">Attachments</h4>
+              
+              <div v-for="item in attachments" :key="item.id">
+                re
+                {{ item }}
+              </div>
               <ul class="list-group">
-                <li class="list-group-item my-2" v-for="attachment in dog.attachments" :key="attachment.id">
-                  <img v-if="attachment.type === 'image'" :src="attachment.url" alt="Attachment"
-                    class="img img-thumbnail">
-                  <span v-else-if="attachment.type === 'document'" class="icon-doc">📄</span>
+                <li class="list-group-item my-2"
+                  v-for="attachment in dog.attachments"
+                  :key="attachment.id">
+                  <img v-if="attachment.type === 'image'"
+                    :src="attachment.url"
+                    alt="Attachment"
+                    class="img img-thumbnail" width="50">
+                  <span v-else-if="attachment.type === 'document'"
+                    class="icon-doc">📄</span>
                   <!-- Add more conditions for other types of attachments -->
                   <a :href="attachment.url" target="_blank">{{ attachment.name }}</a>
                 </li>
@@ -600,7 +642,8 @@ let printToPdf = async function () {
                     </div>
                     <div class="row mb-1">
                       <div class="col-4">
-                        <label for="birth" class="col-form-label fw-bold"> Entry date </label>
+                        <label for="birth"
+                          class="col-form-label fw-bold"> Entry date </label>
                       </div>
                       <div class="col-8">
                         <input type="date"
