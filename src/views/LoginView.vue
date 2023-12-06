@@ -6,7 +6,7 @@ let user = ref({})
 
 const userLogIn = async function () {
   console.log('welcome to the LOGIN FORM')
-  let name = document.getElementById('username').value
+  let email = document.getElementById('username').value
   let pwd = document.getElementById('password').value
 
   let response = await fetch('https://canile.wywiwyg.net/office/login', {
@@ -64,13 +64,32 @@ const userLogIn = async function () {
 
 
 <template>
+
+  <div class="container card ">
+    <div class="col-6">
+          <div class="form" method="POST" action="login">
+            <h2 class="my-3">Login</h2>
+            <h5 class="my-3">please insert your username and your password</h5>
+            <p class="my-3">this form is secured by https encryption and SHA1 hashing</p>
+            <p>BEWARE OF REST API METHOD FOR HASHED PWD MATCH ((SHA1()//PASSWORD()))</p>
+            <div class="my-3">
+              <input type="text" name="name" id="username" placeholder="insert username" />
+            </div>
+            <div class="my-3">
+              <input type="password" name="pass" id="password" placeholder="insert password" />
+            </div>
+            <button class="btn btn-info" @click="userLogIn()">log in</button>
+            <button class="btn btn-danger" @click="logOut()">log OUT</button>
+          </div>
+        </div>
+  </div>
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card">
           <div class="card-header">Login</div>
           <div class="card-body">
-            <form @submit.prevent="userLogIn">
+            <form>
               <div class="form-group">
                 <label for="username" class="small">Username:</label>
                 <input type="text" class="form-control" id="username" v-model="username" required>
@@ -79,8 +98,9 @@ const userLogIn = async function () {
                 <small for="password">Password:</small>
                 <input type="password" class="form-control" id="password" v-model="password" required>
               </div>
-              <button type="submit" class="btn btn-primary my-3">Login</button>
             </form>
+              <button type="submit" class="btn btn-primary my-3" @click="userLogIn">Login</button>
+            <button type="submit" class="btn btn-primary my-3" :on-click="logOut">Log out</button>
           </div>
         </div>
       </div>
