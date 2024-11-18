@@ -46,7 +46,9 @@ export default defineComponent({
                 eventRemove:
                 */
             },
-            currentEvents: [],
+            currentEvents: [    
+                
+            ],
         }
     },
     methods: {
@@ -79,7 +81,75 @@ export default defineComponent({
         },
     }
 })
+function generateRecurringEvents(events) {
+    const recurringEvents = [];
 
+    events.forEach(event => {
+        if (event.recurrence) {
+            const { frequency, interval, daysOfWeek, endDate } = event.recurrence;
+            const current = new Date(event.start);
+            const recurrenceEndDate = new Date(endDate);
+
+            while (current <= recurrenceEndDate) {
+                const dayOfWeek = current.getDay();
+
+                // Check if the current day matches the recurrence pattern
+                if (!daysOfWeek || daysOfWeek.includes(dayOfWeek)) {
+                    recurringEvents.push({
+                        id: `${event.id}-${current.toISOString()}`, // Unique ID for instance
+                        title: event.title,
+                        start: new Date(current).toISOString(),
+                        end: new Date(current.getTime() + (new Date(event.end) - new Date(event.start))).toISOString(),
+                        type: "Recurring"
+                    });
+                }
+
+                // Increment date based on frequency and interval
+                if (frequency === "daily") {
+                    current.setDate(current.getDate() + interval);
+                } else if (frequency === "weekly" || frequency === "bi-weekly") {
+                    current.setDate(current.getDate() + 7 * interval);
+                } else if (frequency === "monthly") {
+                    current.setMonth(current.getMonth() + interval);
+                }
+            }
+        } else {
+            // Non-recurring event, push as is
+            recurringEvents.push(event);
+        }
+    });
+
+    return recurringEvents;
+}
+
+// Example Usage
+const events = [
+    {
+        id: "1",
+        title: "Bi-weekly Standup Meeting",
+        start: "2024-11-22T10:00:00",
+        end: "2024-11-22T11:00:00",
+        recurrence: {
+            frequency: "bi-weekly",
+            interval: 2,
+            daysOfWeek: [5], // Fridays
+            endDate: "2025-01-01"
+        }
+    },
+    {
+        id: "2",
+        title: "Daily Check-In",
+        start: "2024-11-20T09:00:00",
+        end: "2024-11-20T09:30:00",
+        recurrence: {
+            frequency: "daily",
+            interval: 1,
+            endDate: "2024-11-27"
+        }
+    }
+];
+
+console.log(generateRecurringEvents(events));
 </script>
 
 <template>
@@ -105,16 +175,18 @@ export default defineComponent({
                     <li v-for='event in currentEvents' :key='event.id'>
                         <b>{{ event.startStr }}</b>
                         <i>{{ event.title }}</i>
+
                     </li>
                 </ul>
             </div>
         </div>
         <div class='demo-app-main'>
             <FullCalendar class='demo-app-calendar' :options='calendarOptions'>
-                <template v-slot:eventContent='arg'>
-                    <b>{{ arg.timeText }}</b>
-                    <i>{{ arg.event.title }}</i>
-                </template>
+                <template v-slot:eventContent="arg">
+  <b>{{ arg.timeText }}</b>
+  <i>{{ arg.event.title }}</i>
+  <p>{{ arg.event.extendedProps.description }}</p>
+</template>
             </FullCalendar>
         </div>
     </div>
