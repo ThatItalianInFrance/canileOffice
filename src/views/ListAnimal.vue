@@ -14,7 +14,7 @@ let searchTerm = ref('')
 let loadDogs = function () {
   // check = JSON.parse(localStorage.getItem('user'))
   // console.log('ciccio' + check.token)
-  fetch(`${import.meta.env.VITE_SERVER}/office/cani`, {
+  fetch(`${import.meta.env.VITE_SERVER}/office/dogs`, {
     method: 'GET',
     // withCredentials: true,
     // credentials: 'include',

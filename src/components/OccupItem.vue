@@ -9,7 +9,7 @@ const numberOfDogs = ref(0) // Initialize with 0
 // const token = getUserToken()
 
 let loadDogs = function () {
-  fetch(`${import.meta.env.VITE_SERVER}/office/cani`, {
+  fetch(`${import.meta.env.VITE_SERVER}/office/dogs`, {
     method: 'GET',
     headers: {
       // Uncomment the next line and replace `getUserToken` with the actual token if required
@@ -25,8 +25,8 @@ let loadDogs = function () {
     })
     .then(function (data) {
       // Adjust this depending on the shape of the data returned by your server
-      numberOfDogs.value = data.data.length // If the server returns an array of dogs
-      console.log(data)
+      numberOfDogs.value = data.total // If the server returns an array of dogs
+      // console.log(data)
     })
     .catch(function (error) {
       console.error('Failed to load dogs:', error)

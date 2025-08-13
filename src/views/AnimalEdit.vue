@@ -82,7 +82,7 @@ let loadKind = async function (id) {
 let shelterAssign = function () {
   // this.shelter.value.bo_id = this.box.value.db_id;
   box.value.db_id = shelter.value.bo_id;
-  console.log('chqnge');
+  console.log('change');
 }
 
 
@@ -149,7 +149,7 @@ console.log(boxes)
 // console.log(idcaneValue)
 loadCane(id)
 function getImageUrl(id) {
-  return `${import.meta.env.VITE_SERVER}/cani/${id}.jpg`
+  return `${import.meta.env.VITE_SERVER}/dogs/${id}.jpg`
 }
 let formData = ref({});
 let uploadFile = async function () {
@@ -170,7 +170,7 @@ formData.value.append("fileupload", fileupload.files[0]);
 // console.log(formData);
 
 console.log(formData.value);
-    fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`, {
+    fetch(`${import.meta.env.VITE_SERVER}/office/dog/${id}`, {
     method: "PUT", 
     // headers: {
     //     // 'Authorization': `Bearer ${check.token}`,
@@ -205,7 +205,7 @@ let saveCane = async function () {
       body: JSON.stringify(shelter.value)
     })
   } else {
-    await fetch(`${import.meta.env.VITE_SERVER}/office/cane/${id}`, {
+    await fetch(`${import.meta.env.VITE_SERVER}/office/dog/${id}`, {
       method: 'PUT',
       headers: {
         // 'Authorization': `Bearer ${check.token}`,
